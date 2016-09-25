@@ -1,0 +1,26 @@
+{
+  "name": "arnold",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "react-scripts": "0.6.0"
+  },
+  "dependencies": {
+    "debug": "^2.2.0",
+    "flux": "^2.1.1",
+    "object-assign": "^4.1.0",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "react-router": "^2.8.1",
+    "redux": "^3.6.0",
+    "semantic-ui": "^2.2.4",
+    "stardust": "^0.45.3",
+    "superagent": "^2.3.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
