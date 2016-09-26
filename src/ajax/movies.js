@@ -2,7 +2,6 @@ import request from './request.js';
 import Dispatcher from '../dispatcher/';
 import Constants from '../constants/';
 import { getMoviesError, setMovies } from '../actions/movie-actions.js';
-import { addNotification } from '../actions/notification-actions.js';
 
 function getMovies(start = 0, end = -1) {
   const params = {
@@ -36,11 +35,6 @@ function getMovies(start = 0, end = -1) {
   request('VideoLibrary.GetMovies', params, (err, res) => {
     if (err) {
       getMoviesError(err);
-      addNotification({
-        title: 'Error',
-        message: 'Failed to retrieve movie library.',
-        level: 'error'
-      });
       return;
     };
 

@@ -7,7 +7,10 @@ import debug from 'debug';
 const CHANGE_EVENT = 'change';
 const logger = debug('store:movies');
 
-let movies = [];
+let state = {
+  movies: [],
+  lastFetchFailed: false
+};
 
 let MovieStore = assign({}, EventEmitter.prototype, {
 
@@ -26,8 +29,8 @@ let MovieStore = assign({}, EventEmitter.prototype, {
     logger('removeChangeListener', EventEmitter.listenerCount(this, CHANGE_EVENT));
   },
 
-  getAll: function() {
-    return movies;
+  get: function() {
+    return state;
   }
 
 });
@@ -35,7 +38,13 @@ let MovieStore = assign({}, EventEmitter.prototype, {
 MovieStore.dispatchToken = Dispatcher.register(function(action) {
   switch(action.type) {
     case Constants.MovieActions.SET_MOVIES:
-      movies = action.movies;
+      state.lastFetchFailed = false;
+      state.movies = action.movies;
+      MovieStore.emitChange();
+      break;
+
+    case Constants.MovieActions.GET_MOVIES_ERROR:
+      state.lastFetchFailed = true;
       MovieStore.emitChange();
       break;
 

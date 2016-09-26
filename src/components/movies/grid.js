@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Card, Menu, Container } from 'stardust'
 
 import LoaderSegment from '../misc/loader-segment.js';
+import ReloadSegment from '../misc/reload-segment.js';
 import MovieStore from '../../stores/movie-store.js';
 import SettingsStore from '../../stores/settings-store.js';
 import { getMovies } from '../../actions/movie-actions.js';
@@ -15,8 +16,11 @@ class MovieGrid extends Component {
 
     const settings = SettingsStore.get();
 
+    const storeState = MovieStore.get();
+
     this.state = {
-      movies: MovieStore.getAll(),
+      movies: storeState.movies,
+      lastFetchFailed: false,
       loading: true,
       page: '1',
       itemsPerPage: settings.itemsPerPage,
@@ -28,10 +32,21 @@ class MovieGrid extends Component {
   }
 
   _onChange() {
+    const storeState = MovieStore.get();
+
     this.setState({
       loading: false,
-      movies: MovieStore.getAll()
+      movies: storeState.movies,
+      lastFetchFailed: storeState.lastFetchFailed
     });
+  }
+
+  _onReload() {
+    this.setState({
+      loading: true
+    });
+
+    getMovies();
   }
 
   _showDetail(movie) {
@@ -68,6 +83,10 @@ class MovieGrid extends Component {
   render() {
     if(this.state.loading) {
       return <LoaderSegment />;
+    }
+
+    if(!this.state.loading && this.state.lastFetchFailed === true) {
+      return <ReloadSegment message='Failed to load movies' onClick={this._onReload.bind(this)} />
     }
 
     const paginationItemCount = Math.ceil(this.state.movies.length / this.state.itemsPerPage);
