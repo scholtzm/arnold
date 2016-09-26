@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import { Card, Menu, Container } from 'stardust'
+import { Card } from 'stardust'
 
 import LoaderSegment from '../misc/loader-segment.js';
 import ReloadSegment from '../misc/reload-segment.js';
+import BasicContainer from '../misc/basic-container.js';
 import MovieStore from '../../stores/movie-store.js';
 import SettingsStore from '../../stores/settings-store.js';
 import { getMovies } from '../../actions/movie-actions.js';
@@ -89,33 +90,18 @@ class MovieGrid extends Component {
       return <ReloadSegment message='Failed to load movies' onClick={this._onReload.bind(this)} />
     }
 
-    const paginationItemCount = Math.ceil(this.state.movies.length / this.state.itemsPerPage);
-
-    let paginationItems = [];
-    for(let i = 1; i <= paginationItemCount; i++) {
-      paginationItems.push(<Menu.Item key={i.toString()} name={i.toString()} active={this.state.page === i.toString()} onClick={this._paginate.bind(this)} />)
-    }
-
-    let movieItems = [];
-    const low = (this.state.page - 1) * this.state.itemsPerPage;
-    const high = Math.min(this.state.movies.length -1, low + this.state.itemsPerPage);
-
-    for(let i = low; i < high; i++) {
-      let movie = this.state.movies[i];
-      movieItems.push(<MovieCard key={movie.movieid} movie={movie} showDetail={() => this._showDetail(movie)} />);
-    }
-
     return (
-      <Container fluid>
+      <BasicContainer>
         <MovieDetail active={this.state.detailActive} movie={this.state.detailMovie} hide={this._hideDetail.bind(this)}/>
 
         <Card.Group itemsPerRow={this.state.itemsPerRow}>
-          {movieItems}
+          {
+            this.state.movies
+              .filter(movie => this.props.showSeen || movie.playcount === 0)
+              .map(movie => <MovieCard key={movie.movieid} movie={movie} showDetail={() => this._showDetail(movie)} />)
+          }
         </Card.Group>
-          {/* <Menu pagination>
-            {paginationItems}
-          </Menu> */}
-      </Container>
+      </BasicContainer>
     )
   }
 

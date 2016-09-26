@@ -71,7 +71,7 @@ export function send(data) {
 }
 
 function setBaseUrl(reconnect) {
-  logger('settings base url');
+  logger('setting base url');
   const settings = SettingsStore.get();
   baseUrl = `ws://${settings.ipAddress}:${settings.webSocketPort}/jsonrpc`;
 
