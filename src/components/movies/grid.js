@@ -24,7 +24,7 @@ class MovieGrid extends Component {
       detailActive: false
     };
 
-    this.onChange = this._onChange.bind(this);
+    this._onChange = this._onChange.bind(this);
   }
 
   _onChange() {
@@ -52,7 +52,7 @@ class MovieGrid extends Component {
   }
 
   componentDidMount() {
-    MovieStore.addChangeListener(this.onChange);
+    MovieStore.addChangeListener(this._onChange);
 
     if(this.state.movies.length > 0) {
       this.setState({loading: false});
@@ -62,7 +62,7 @@ class MovieGrid extends Component {
   }
 
   componentWillUnmount() {
-    MovieStore.removeChangeListener(this.onChange);
+    MovieStore.removeChangeListener(this._onChange);
   }
 
   render() {

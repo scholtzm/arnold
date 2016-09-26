@@ -9,8 +9,6 @@ class App extends Component {
     this.state = {
       activeItem: this.props.location.pathname
     };
-
-    console.log('>>>', this.props);
   }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })

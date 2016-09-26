@@ -1,5 +1,6 @@
 import debug from 'debug';
 import SettingsStore from '../stores/settings-store.js';
+import { addNotification } from '../actions/notification-actions.js';
 
 const logger = debug('socket:client');
 
@@ -13,16 +14,37 @@ export function connect() {
 
   socket.onopen = function(event) {
     logger('event open', event);
+
+    addNotification({
+      title: 'WebSocket Client',
+      message: 'WebSocket client has successfully connected to Kodi.',
+      level: 'info'
+    });
+
     isOpen = true;
   };
 
   socket.onerror = function(event) {
     logger('event error', event);
+
+    addNotification({
+      title: 'WebSocket Client',
+      message: 'WebSocket client received error and got disconnected.',
+      level: 'error'
+    });
+
     isOpen = false;
   };
 
   socket.onclose = function(event) {
     logger('event close', event);
+
+    addNotification({
+      title: 'WebSocket Client',
+      message: 'WebSocket client connection has been closed.',
+      level: 'warning'
+    });
+
     isOpen = false;
   };
 
@@ -32,7 +54,7 @@ export function connect() {
 }
 
 export function close() {
-  debug('close');
+  logger('close');
 
   if(!isOpen) {
     return;
@@ -42,7 +64,7 @@ export function close() {
 }
 
 export function send(data) {
-  debug('send', data);
+  logger('send', data);
 
   if(!isOpen) {
     return;
@@ -55,13 +77,17 @@ export function send(data) {
   socket.send(data);
 }
 
-function setBaseUrl() {
+function setBaseUrl(reconnect) {
+  logger('settings base url');
   const settings = SettingsStore.get();
   baseUrl = `ws://${settings.ipAddress}:${settings.webSocketPort}/jsonrpc`;
-  close();
-  connect();
+
+  if(reconnect) {
+    close();
+    setTimeout(() => connect(), 2000);
+  }
 }
 
-SettingsStore.addChangeListener(setBaseUrl);
+SettingsStore.addChangeListener(() => setBaseUrl(true));
 
-setBaseUrl();
+setBaseUrl(false);

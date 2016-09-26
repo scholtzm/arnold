@@ -10,6 +10,10 @@ export default {
     SET_SETTINGS: 'SET_SETTINGS'
   },
 
+  NotificationActions: {
+    ADD_NOTIFICATION: 'ADD_NOTIFICATION'
+  },
+
   AjaxActions: {
     SUCCESS: 'SUCCESS',
     ERROR: 'ERROR'

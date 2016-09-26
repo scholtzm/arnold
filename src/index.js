@@ -4,6 +4,7 @@ import App from './App';
 import { Router, IndexRoute, Route, browserHistory } from 'react-router';
 import Movies from './components/movies';
 import Settings from './components/settings';
+import Notifications from './components/misc/notifications.js';
 import { init } from './ajax/';
 import { connect } from './ws/';
 
@@ -35,15 +36,18 @@ connect();
 
 // Render
 ReactDOM.render(
-  <Router history={browserHistory}>
-    <Route path='/' component={App}>
-      <IndexRoute component={Movies} />
-      <Route path='remote' component={Remote} />
-      <Route path='movies' component={Movies} />
-      <Route path='tvshows' component={TVShows} />
-      <Route path='music' component={Music} />
-      <Route path='settings' component={Settings} />
-    </Route>
-  </Router>,
+  <div>
+    <Router history={browserHistory}>
+      <Route path='/' component={App}>
+        <IndexRoute component={Movies} />
+        <Route path='remote' component={Remote} />
+        <Route path='movies' component={Movies} />
+        <Route path='tvshows' component={TVShows} />
+        <Route path='music' component={Music} />
+        <Route path='settings' component={Settings} />
+      </Route>
+    </Router>
+    <Notifications />
+  </div>,
   document.getElementById('root')
 );

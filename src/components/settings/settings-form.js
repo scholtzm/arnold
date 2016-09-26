@@ -1,34 +1,29 @@
 import React, { Component } from 'react';
-import { Form, Button, Header, Segment, Message } from 'stardust';
+import { Form, Button, Header, Segment } from 'stardust';
 import SettingsStore from '../../stores/settings-store.js';
 import { setSettings } from '../../actions/settings-actions.js';
+import { addNotification } from '../../actions/notification-actions.js';
 
 class SettingsForm extends Component {
   state = {
-    settings: SettingsStore.get(),
-    submitted: false,
-    success: false
+    settings: SettingsStore.get()
   }
 
   _handleSubmit(e, serializedForm) {
     e.preventDefault();
     this.setState(serializedForm);
     setSettings(serializedForm);
-    this.setState({
-      submitted: true,
-      success: true
+
+    addNotification({
+      title: 'Settings',
+      message: 'Your settings have been saved.',
+      level: 'success'
     });
   }
 
   render() {
     return (
-      <Form success={this.state.success} onSubmit={this._handleSubmit.bind(this)}>
-        <Message
-          success={this.state.success}
-          hidden={!this.state.submitted}
-          header='Saved'
-          content='Settings have been saved.'
-        />
+      <Form onSubmit={this._handleSubmit.bind(this)}>
         <Segment>
           <Header size='medium'>Connection</Header>
           <Form.Input label='Kodi IP Address' name='ipAddress' defaultValue={this.state.settings.ipAddress} />
