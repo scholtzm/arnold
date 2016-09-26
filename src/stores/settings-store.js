@@ -11,8 +11,10 @@ const logger = debug('store:settings');
 
 const _defaultSettings = {
   ipAddress: 'localhost',
-  ajaxPort: '8080',
-  webSocketPort: '9090'
+  ajaxPort: 8080,
+  webSocketPort: 9090,
+  itemsPerPage: 48,
+  itemsPerRow: 8
 };
 
 let settings = assign({}, _defaultSettings);

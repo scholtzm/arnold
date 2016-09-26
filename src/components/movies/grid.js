@@ -3,6 +3,7 @@ import { Card, Menu, Container } from 'stardust'
 
 import LoaderSegment from '../misc/loader-segment.js';
 import MovieStore from '../../stores/movie-store.js';
+import SettingsStore from '../../stores/settings-store.js';
 import { getMovies } from '../../actions/movie-actions.js';
 import MovieCard from './movie-card.js';
 import MovieDetail from './detail.js';
@@ -12,11 +13,14 @@ class MovieGrid extends Component {
   constructor(props, context) {
     super(props, context);
 
+    const settings = SettingsStore.get();
+
     this.state = {
       movies: MovieStore.getAll(),
       loading: true,
       page: '1',
-      pageSize: 50,
+      itemsPerPage: settings.itemsPerPage,
+      itemsPerRow: settings.itemsPerRow,
       detailActive: false
     };
 
@@ -66,7 +70,7 @@ class MovieGrid extends Component {
       return <LoaderSegment />;
     }
 
-    const paginationItemCount = Math.ceil(this.state.movies.length / this.state.pageSize);
+    const paginationItemCount = Math.ceil(this.state.movies.length / this.state.itemsPerPage);
 
     let paginationItems = [];
     for(let i = 1; i <= paginationItemCount; i++) {
@@ -74,8 +78,8 @@ class MovieGrid extends Component {
     }
 
     let movieItems = [];
-    const low = (this.state.page - 1) * this.state.pageSize;
-    const high = Math.min(this.state.movies.length -1, low + this.state.pageSize);
+    const low = (this.state.page - 1) * this.state.itemsPerPage;
+    const high = Math.min(this.state.movies.length -1, low + this.state.itemsPerPage);
 
     for(let i = low; i < high; i++) {
       let movie = this.state.movies[i];
@@ -86,7 +90,7 @@ class MovieGrid extends Component {
       <Container fluid>
         <MovieDetail active={this.state.detailActive} movie={this.state.detailMovie} hide={this._hideDetail.bind(this)}/>
 
-        <Card.Group itemsPerRow={8}>
+        <Card.Group itemsPerRow={this.state.itemsPerRow}>
           {movieItems}
         </Card.Group>
           {/* <Menu pagination>
