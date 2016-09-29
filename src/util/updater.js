@@ -1,6 +1,9 @@
+import React from 'react';
 import request from 'superagent';
 import debug from 'debug';
 import semver from 'semver';
+import { Button } from 'stardust';
+import { Link } from 'react-router';
 
 import packageJson from '../../package.json';
 import { addNotification } from '../actions/notification-actions.js';
@@ -9,7 +12,7 @@ const UPDATE_URL = 'https://api.github.com/repos/scholtzm/arnold/releases';
 const RELEASE_PAGE = 'https://github.com/scholtzm/arnold/releases';
 const logger = debug('util:updater');
 
-export function checkUpdate(notifyIfNoUpdate = false) {
+export function checkUpdate(notifyOnAllActions = false) {
   request
     .get(UPDATE_URL)
     .end((err, res) => {
@@ -17,6 +20,15 @@ export function checkUpdate(notifyIfNoUpdate = false) {
 
       if(err) {
         logger(err, res);
+
+        if(notifyOnAllActions) {
+          addNotification({
+            title: 'Failed to check for updates',
+            message: `${res.status} ${res.statusText}`,
+            level: 'error'
+          });
+        }
+
         return;
       }
 
@@ -24,8 +36,7 @@ export function checkUpdate(notifyIfNoUpdate = false) {
         return;
       }
 
-      const latestRelease = res.body[0];
-      const latestVersion = semver.clean(latestRelease.tag_name);
+      const latestVersion = semver.clean(res.body[0].tag_name);
 
       if(semver.lt(packageJson.version, latestVersion)) {
         addNotification({
@@ -33,17 +44,13 @@ export function checkUpdate(notifyIfNoUpdate = false) {
           message: 'New Arnold update is available!',
           level: 'success',
           autoDismiss: 0,
-          action: {
-            label: 'Download',
-            callback: function() {
-              logger('Opening download page.');
-              window.open(RELEASE_PAGE, '_blank');
-            }
-          }
+          children: (
+            <Button as={Link} href={RELEASE_PAGE} target='_blank' color='green' content='Download' style={{marginTop: '5px'}} />
+          )
         });
       }
 
-      if(notifyIfNoUpdate) {
+      if(notifyOnAllActions) {
         if(semver.eq(packageJson.version, latestVersion)) {
           addNotification({
             title: 'All good!',
