@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Form, Button, Header, Segment } from 'stardust';
-import BasicContainer from '../misc/basic-container.js';
 import SettingsStore from '../../stores/settings-store.js';
 import { setSettings } from '../../actions/settings-actions.js';
 import { addNotification } from '../../actions/notification-actions.js';
@@ -24,7 +23,7 @@ class SettingsForm extends Component {
 
   render() {
     return (
-      <BasicContainer>
+      <div>
         <Form onSubmit={this._handleSubmit.bind(this)}>
           <Segment>
             <Header size='medium'>Connection</Header>
@@ -43,7 +42,7 @@ class SettingsForm extends Component {
           </Segment>
           <Button primary type='submit'>Save</Button>
         </Form>
-      </BasicContainer>
+      </div>
     );
   }
 }

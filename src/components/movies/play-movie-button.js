@@ -43,8 +43,8 @@ class PlayMovieButton extends Component {
 
   render() {
     const color = this.props.movie.playcount === 0
-      ? 'blue'
-      : 'black';
+      ? 'black'
+      : 'grey';
 
     return (
       <Button labeled loading={this.state.loading} icon color={color} onClick={this._onPlay.bind(this)}>

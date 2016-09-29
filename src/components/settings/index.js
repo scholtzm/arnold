@@ -19,7 +19,9 @@ class Settings extends Component {
             </Grid.Column>
           </Grid.Row>
           <Grid.Row columns={1}>
-            <SettingsForm />
+            <Grid.Column>
+              <SettingsForm />
+            </Grid.Column>
           </Grid.Row>
         </Grid>
       </BasicContainer>

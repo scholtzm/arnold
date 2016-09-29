@@ -29,7 +29,9 @@ class Movies extends Component {
             </Grid.Column>
           </Grid.Row>
           <Grid.Row columns={1}>
-            <MovieGrid showSeen={this.state.showSeen} />
+            <Grid.Column>
+              <MovieGrid showSeen={this.state.showSeen} />
+            </Grid.Column>
           </Grid.Row>
         </Grid>
       </BasicContainer>

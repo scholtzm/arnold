@@ -3,7 +3,6 @@ import { Card } from 'stardust'
 
 import LoaderSegment from '../misc/loader-segment.js';
 import ReloadSegment from '../misc/reload-segment.js';
-import BasicContainer from '../misc/basic-container.js';
 import MovieStore from '../../stores/movie-store.js';
 import SettingsStore from '../../stores/settings-store.js';
 import { getMovies } from '../../actions/movie-actions.js';
@@ -91,7 +90,7 @@ class MovieGrid extends Component {
     }
 
     return (
-      <BasicContainer>
+      <div>
         <MovieDetail active={this.state.detailActive} movie={this.state.detailMovie} hide={this._hideDetail.bind(this)}/>
 
         <Card.Group itemsPerRow={this.state.itemsPerRow}>
@@ -101,7 +100,7 @@ class MovieGrid extends Component {
               .map(movie => <MovieCard key={movie.movieid} movie={movie} showDetail={() => this._showDetail(movie)} />)
           }
         </Card.Group>
-      </BasicContainer>
+      </div>
     )
   }
 
