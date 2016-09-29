@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
-    "react-scripts": "0.6.0"
+    "react-scripts": "0.6.1"
   },
   "dependencies": {
     "debug": "^2.2.0",
@@ -15,6 +15,7 @@
     "react-router": "^2.8.1",
     "redux": "^3.6.0",
     "semantic-ui": "^2.2.4",
+    "semver": "^5.3.0",
     "stardust": "^0.45.3",
     "superagent": "^2.3.0"
   },

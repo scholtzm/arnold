@@ -7,6 +7,7 @@ import Settings from './components/settings';
 import Notifications from './components/misc/notifications.js';
 import { init } from './ajax/';
 import { connect } from './ws/';
+import { checkUpdate } from './util/updater.js';
 
 import 'semantic-ui-css/semantic.css';
 
@@ -33,6 +34,9 @@ init();
 
 // Connect via websockets
 connect();
+
+// Check for updates
+checkUpdate();
 
 // Render
 ReactDOM.render(
