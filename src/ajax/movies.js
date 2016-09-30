@@ -41,6 +41,7 @@ function getMovies(start = 0, end = -1) {
     let movies = res.body.result.movies.map(movie => {
       // Fix thumbnail URL
       movie.thumbnail = decodeURIComponent(movie.thumbnail.replace('image://', ''));
+      movie.youtubeId = movie.trailer.replace(/^(.+?)videoid=/, '');
       return movie;
     });
 

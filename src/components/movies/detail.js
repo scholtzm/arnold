@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Modal, Image, Button, Rating } from 'stardust';
+import { Modal, Image, Button, Rating, Header } from 'stardust';
+import YouTube from 'react-youtube';
 import PlayMovieButton from './play-movie-button.js';
 
 class MovieDetail extends Component {
@@ -17,13 +18,17 @@ class MovieDetail extends Component {
       <Modal active={this.props.active} onHide={this.props.hide}>
         <Modal.Header>{movie.originaltitle} ({movie.year})</Modal.Header>
         <Modal.Content image>
-          <Image wrapped className='medium' src={movie.thumbnail} />
+          <Image wrapped bordered shape='rounded' className='medium' src={movie.thumbnail} />
           <Modal.Description>
-            <p>{movie.plot}</p>
-            <p><b>Directed by:</b> {movie.director[0]}</p>
-            <p><b>Year:</b> {movie.year}</p>
-            <p><b>Rating:</b> {movie.rating.toFixed(1)} <Rating defaultRating={Math.round(movie.rating)} maxRating={10} icon='star' disabled /></p>
-            <p><b>Runtime:</b> {runtimeHours} hour{runtimeHours > 1 ? 's' : ''} {runtimeMinutes} minute{runtimeMinutes > 1 ? 's' : ''}</p>
+            <div>{movie.plot}</div>
+            <div style={{padding: '10px 0'}}>
+              <div><b>Directed by:</b> {movie.director[0]}</div>
+              <div><b>Year:</b> {movie.year}</div>
+              <div><b>Rating:</b> {movie.rating.toFixed(1)} <Rating defaultRating={Math.round(movie.rating)} maxRating={10} icon='star' disabled /></div>
+              <div><b>Runtime:</b> {runtimeHours} hour{runtimeHours > 1 ? 's' : ''} {runtimeMinutes} minute{runtimeMinutes > 1 ? 's' : ''}</div>
+            </div>
+            <div><b>Trailer:</b></div>
+            <YouTube videoId={movie.youtubeId} opts={{width: '600'}} />
           </Modal.Description>
         </Modal.Content>
         <Modal.Actions>
