@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal, Image, Button, Rating, Header } from 'stardust';
+import { Modal, Image, Button, Rating } from 'stardust';
 import YouTube from 'react-youtube';
 import PlayMovieButton from './play-movie-button.js';
 
@@ -13,6 +13,7 @@ class MovieDetail extends Component {
     const movie = this.props.movie;
     const runtimeHours = Math.floor(movie.runtime / 60 / 60);
     const runtimeMinutes = Math.floor((movie.runtime % (runtimeHours * 60 * 60)) / 60);
+    const runtime = `${runtimeHours} hour${runtimeHours > 1 ? 's' : ''} ${runtimeMinutes} minute${runtimeMinutes > 1 ? 's' : ''}`;
 
     return (
       <Modal active={this.props.active} onHide={this.props.hide}>
@@ -25,7 +26,7 @@ class MovieDetail extends Component {
               <div><b>Directed by:</b> {movie.director[0]}</div>
               <div><b>Year:</b> {movie.year}</div>
               <div><b>Rating:</b> {movie.rating.toFixed(1)} <Rating defaultRating={Math.round(movie.rating)} maxRating={10} icon='star' disabled /></div>
-              <div><b>Runtime:</b> {runtimeHours} hour{runtimeHours > 1 ? 's' : ''} {runtimeMinutes} minute{runtimeMinutes > 1 ? 's' : ''}</div>
+              <div><b>Runtime:</b> {runtime}</div>
             </div>
             <div><b>Trailer:</b></div>
             <YouTube videoId={movie.youtubeId} opts={{width: '600'}} />
