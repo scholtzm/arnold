@@ -49,7 +49,15 @@ function getMovies(start = 0, end = -1) {
   });
 };
 
-export function init() {
+function scan(callback) {
+  request('VideoLibrary.Scan', {}, callback);
+}
+
+function clean(callback) {
+  request('VideoLibrary.Clean', {}, callback);
+}
+
+function init() {
   Dispatcher.register(function(action) {
     switch(action.type) {
       case Constants.MovieActions.GET_MOVIES:
@@ -61,3 +69,9 @@ export function init() {
     }
   });
 };
+
+export default {
+  init,
+  scan,
+  clean
+}

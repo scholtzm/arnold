@@ -1,5 +1,5 @@
-import { init as initVideoLibrary } from './video-library.js';
+import videoLibrary from './video-library.js';
 
 export function init() {
-  initVideoLibrary();
+  videoLibrary.init();
 }
