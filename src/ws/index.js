@@ -1,4 +1,4 @@
-import debug from 'debug';
+import debug from '../util/debug.js';
 import SettingsStore from '../stores/settings-store.js';
 import { addNotification } from '../actions/notification-actions.js';
 

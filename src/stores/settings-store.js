@@ -2,7 +2,7 @@ import Dispatcher from '../dispatcher/';
 import Constants from '../constants';
 import { EventEmitter } from 'events';
 import assign from 'object-assign';
-import debug from 'debug';
+import debug from '../util/debug.js';
 
 const CHANGE_EVENT = 'change';
 const LOCALSTORAGE_KEY = 'settings';

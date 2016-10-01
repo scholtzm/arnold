@@ -1,10 +1,10 @@
 import React from 'react';
 import request from 'superagent';
-import debug from 'debug';
 import semver from 'semver';
 import { Button } from 'stardust';
 import { Link } from 'react-router';
 
+import debug from '../util/debug.js';
 import packageJson from '../../package.json';
 import { addNotification } from '../actions/notification-actions.js';
 

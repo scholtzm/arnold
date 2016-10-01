@@ -1,7 +1,7 @@
 import { EventEmitter } from 'events';
 import assign from 'object-assign';
-import debug from 'debug';
 
+import debug from '../util/debug.js';
 import Dispatcher from '../dispatcher/';
 import Constants from '../constants';
 import storage from '../util/storage.js';
@@ -35,7 +35,6 @@ let MovieStore = assign({}, EventEmitter.prototype, {
   removeChangeListener: function(callback) {
     logger('removeChangeListener');
     this.removeListener(CHANGE_EVENT, callback);
-    logger('removeChangeListener', EventEmitter.listenerCount(this, CHANGE_EVENT));
   },
 
   get: function() {
