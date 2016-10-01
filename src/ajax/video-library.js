@@ -49,25 +49,11 @@ function getMovies(start = 0, end = -1) {
   });
 };
 
-export function playMovie(movieid, callback) {
-  const params = {
-    item: {
-      movieid
-    }
-  };
-
-  request('Player.Open', params, callback);
-}
-
 export function init() {
   Dispatcher.register(function(action) {
     switch(action.type) {
       case Constants.MovieActions.GET_MOVIES:
         getMovies();
-        break;
-
-      case Constants.MovieActions.PLAY_MOVIE:
-        playMovie(action.movieid);
         break;
 
       default:

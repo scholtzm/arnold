@@ -8,6 +8,7 @@
   "dependencies": {
     "debug": "^2.2.0",
     "flux": "^3.0.0",
+    "lodash": "^4.16.2",
     "object-assign": "^4.1.0",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",

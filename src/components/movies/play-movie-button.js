@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Icon } from 'stardust';
 
-import { playMovie } from '../../ajax/movies.js';
+import player from '../../ajax/player.js';
 import { addNotification } from '../../actions/notification-actions.js';
 
 class PlayMovieButton extends Component {
@@ -23,7 +23,7 @@ class PlayMovieButton extends Component {
       level: 'info'
     });
 
-    playMovie(movieid, (err, res) => {
+    player.playMovie(movieid, (err, res) => {
       if(err) {
         addNotification({
           title: 'Unable to play movie',

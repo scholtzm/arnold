@@ -2,8 +2,7 @@ export default {
   MovieActions: {
     GET_MOVIES: 'GET_MOVIES',
     GET_MOVIES_ERROR: 'GET_MOVIES_ERROR',
-    SET_MOVIES: 'SET_MOVIES',
-    PLAY_MOVIE: 'PLAY_MOVIE'
+    SET_MOVIES: 'SET_MOVIES'
   },
 
   SettingsActions: {
