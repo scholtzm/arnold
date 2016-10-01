@@ -16,6 +16,7 @@ class Settings extends Component {
             </Grid.Column>
             <Grid.Column textAlign='right'>
               <Button basic color='green' onClick={() => checkUpdate(true)}>Check for updates</Button>
+              <Button basic color='blue' onClick={() => localStorage.clear()}>Clear local storage</Button>
             </Grid.Column>
           </Grid.Row>
           <Grid.Row columns={1}>

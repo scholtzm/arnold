@@ -24,19 +24,28 @@ class App extends Component {
     const movies = MovieStore.get().movies;
 
     let results = {
-      'movies': {
-        name: 'movies',
+      movies: {
+        name: 'Movies',
         results: movies
           .filter(movie => movie.originaltitle.toLowerCase().indexOf(value.toLowerCase()) > -1)
           .map(movie => {
             return {
               title: movie.originaltitle,
-              description: movie.year,
+              description: movie.year.toString(),
               image: movie.thumbnail,
             }
           })
       }
     };
+
+    if(movies.length === 0) {
+      results.movies.results = [
+        {
+          title: 'Info',
+          description: 'You have no movies in your library or Arnold\'s movie catalogue has not been populated yet.'
+        }
+      ];
+    }
 
     this.setState({ results });
   }
