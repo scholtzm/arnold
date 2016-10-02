@@ -26,6 +26,10 @@ class SettingsForm extends Component {
       <div>
         <Form onSubmit={this._handleSubmit.bind(this)}>
           <Segment>
+            <Header size='medium'>General</Header>
+            <Form.Checkbox label='Check for updates on initial load' name='checkForUpdatesOnInitialState' defaultChecked={this.state.settings.checkForUpdatesOnInitialState} />
+          </Segment>
+          <Segment>
             <Header size='medium'>Connection</Header>
             <Form.Input label='Kodi IP Address' name='ipAddress' defaultValue={this.state.settings.ipAddress} />
             <Form.Group widths='equal'>

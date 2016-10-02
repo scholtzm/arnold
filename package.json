@@ -18,7 +18,7 @@
     "redux": "^3.6.0",
     "semantic-ui": "^2.2.4",
     "semver": "^5.3.0",
-    "stardust": "^0.48.3",
+    "stardust": "^0.51.0",
     "superagent": "^2.3.0"
   },
   "scripts": {

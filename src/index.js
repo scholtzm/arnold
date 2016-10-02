@@ -5,11 +5,14 @@ import { Router, IndexRoute, Route, browserHistory } from 'react-router';
 import Movies from './components/movies';
 import Settings from './components/settings';
 import Notifications from './components/misc/notifications.js';
+import SettingsStore from './stores/settings-store.js';
 import { init } from './ajax/';
 import { connect } from './ws/';
 import { checkUpdate } from './util/updater.js';
 
 import 'semantic-ui-css/semantic.css';
+
+const settings = SettingsStore.get();
 
 const TVShows = () => (
   <div>
@@ -36,7 +39,9 @@ init();
 connect();
 
 // Check for updates
-checkUpdate();
+if(settings.checkForUpdatesOnInitialState) {
+  checkUpdate();
+}
 
 // Render
 ReactDOM.render(

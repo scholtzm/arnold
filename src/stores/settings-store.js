@@ -10,11 +10,12 @@ const LOCALSTORAGE_KEY = 'settings';
 const logger = debug('store:settings');
 
 const _defaultSettings = {
+  checkForUpdatesOnInitialState: true,
   ipAddress: 'localhost',
   ajaxPort: 8080,
   webSocketPort: 9090,
-  itemsPerPage: 48,
-  itemsPerRow: 8
+  itemsPerPage: 50,
+  itemsPerRow: 10
 };
 
 let settings = assign({}, _defaultSettings);
@@ -37,7 +38,7 @@ if(localStorage[LOCALSTORAGE_KEY]) {
 
 function setSettings(newSettings) {
   settings = assign({}, settings, newSettings);
-  localStorage[LOCALSTORAGE_KEY] = JSON.stringify(newSettings);
+  localStorage[LOCALSTORAGE_KEY] = JSON.stringify(settings);
 }
 
 let SettingsStore = assign({}, EventEmitter.prototype, {
@@ -55,7 +56,6 @@ let SettingsStore = assign({}, EventEmitter.prototype, {
   },
 
   get: function() {
-    logger('sending settings', settings);
     return settings;
   }
 

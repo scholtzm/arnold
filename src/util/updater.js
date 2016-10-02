@@ -16,8 +16,6 @@ export function checkUpdate(notifyOnAllActions = false) {
   request
     .get(UPDATE_URL)
     .end((err, res) => {
-      logger(err, res);
-
       if(err) {
         logger(err, res);
 
