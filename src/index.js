@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import { Router, IndexRoute, Route, browserHistory } from 'react-router';
+import Remote from './components/remote';
 import Movies from './components/movies';
 import Settings from './components/settings';
 import Notifications from './components/misc/notifications.js';
@@ -23,12 +24,6 @@ const TVShows = () => (
 const Music = () => (
   <div>
     music
-  </div>
-);
-
-const Remote = () => (
-  <div>
-    remote
   </div>
 );
 

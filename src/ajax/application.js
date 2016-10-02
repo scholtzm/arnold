@@ -1,6 +1,6 @@
 import request from './request.js';
 
-// NOTE: `volume` can be 'increase' or 'decrease'
+// NOTE: `volume` can be 'decrement' or 'increment'
 function setVolume(volume, callback) {
   const params = {
     volume
