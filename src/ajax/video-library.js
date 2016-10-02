@@ -1,13 +1,9 @@
 import request from './request.js';
-import Dispatcher from '../dispatcher/';
-import Constants from '../constants/';
-import { getMoviesError, setMovies } from '../actions/movie-actions.js';
 
-function getMovies(start = 0, end = -1) {
+function getMovies(callback) {
   const params = {
     limits: {
-      start,
-      // end: end
+      start: 0,
     },
     properties: [
       'genre',
@@ -32,21 +28,7 @@ function getMovies(start = 0, end = -1) {
     }
   };
 
-  request('VideoLibrary.GetMovies', params, (err, res) => {
-    if (err) {
-      getMoviesError(err);
-      return;
-    };
-
-    let movies = res.body.result.movies.map(movie => {
-      // Fix thumbnail URL
-      movie.thumbnail = decodeURIComponent(movie.thumbnail.replace('image://', ''));
-      movie.youtubeId = movie.trailer.replace(/^(.+?)videoid=/, '');
-      return movie;
-    });
-
-    setMovies(movies);
-  });
+  request('VideoLibrary.GetMovies', params, callback);
 };
 
 function scan(callback) {
@@ -57,21 +39,8 @@ function clean(callback) {
   request('VideoLibrary.Clean', {}, callback);
 }
 
-function init() {
-  Dispatcher.register(function(action) {
-    switch(action.type) {
-      case Constants.MovieActions.GET_MOVIES:
-        getMovies();
-        break;
-
-      default:
-        // ignore
-    }
-  });
-};
-
 export default {
-  init,
   scan,
-  clean
+  clean,
+  getMovies
 }

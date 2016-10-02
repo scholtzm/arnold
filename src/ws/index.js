@@ -14,6 +14,14 @@ export function connect() {
 
   socket.onopen = function(event) {
     logger('event open', event);
+
+    addNotification({
+      title: 'WebSocket Client',
+      message: 'WebSocket client has connected to Kodi.',
+      level: 'info',
+      autoDismiss: 3
+    });
+
     isOpen = true;
   };
 
