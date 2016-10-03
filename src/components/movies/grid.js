@@ -15,14 +15,12 @@ class MovieGrid extends Component {
     super(props, context);
 
     const settings = SettingsStore.get();
-
     const storeState = MovieStore.get();
 
     this.state = {
       movies: storeState.movies,
       lastFetchFailed: false,
       loading: true,
-      page: '1',
       itemsPerPage: settings.itemsPerPage,
       itemsPerRow: settings.itemsPerRow,
       detailActive: false

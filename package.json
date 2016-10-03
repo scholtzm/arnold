@@ -8,7 +8,7 @@
   "dependencies": {
     "debug": "^2.2.0",
     "flux": "^3.0.0",
-    "lodash": "^4.16.2",
+    "lodash": "^4.16.3",
     "object-assign": "^4.1.0",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
@@ -16,9 +16,9 @@
     "react-router": "^2.8.1",
     "react-youtube": "^7.2.0",
     "redux": "^3.6.0",
-    "semantic-ui": "^2.2.4",
+    "semantic-ui-css": "^2.2.4",
     "semver": "^5.3.0",
-    "stardust": "^0.51.0",
+    "stardust": "^0.52.2",
     "superagent": "^2.3.0"
   },
   "scripts": {

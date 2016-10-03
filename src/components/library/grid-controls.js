@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Checkbox } from 'stardust';
 
-class MovieControls extends Component {
+class GridControls extends Component {
   render() {
     return (
       <div>
@@ -11,4 +11,4 @@ class MovieControls extends Component {
   }
 }
 
-export default MovieControls;
+export default GridControls;

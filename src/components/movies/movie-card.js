@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Card, Image, Container } from 'stardust';
 
-import PlayMovieButton from './play-movie-button.js';
+import PlayMovieButton from './play-button.js';
 
 class MovieCard extends Component {
   render() {

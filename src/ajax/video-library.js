@@ -31,6 +31,27 @@ function getMovies(callback) {
   request('VideoLibrary.GetMovies', params, callback);
 };
 
+function getTvShows(callback) {
+  const params = {
+    properties: [
+      'genre',
+      'plot',
+      'title',
+      'lastplayed',
+      'episode',
+      'year',
+      'playcount',
+      'rating',
+      'thumbnail',
+      'studio',
+      'mpaa',
+      'premiered'
+    ]
+  };
+
+  request('VideoLibrary.GetTVShows', params, callback);
+}
+
 function scan(callback) {
   request('VideoLibrary.Scan', {}, callback);
 }
@@ -42,5 +63,6 @@ function clean(callback) {
 export default {
   scan,
   clean,
-  getMovies
+  getMovies,
+  getTvShows
 }

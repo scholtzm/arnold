@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Modal, Image, Button, Rating } from 'stardust';
 import YouTube from 'react-youtube';
-import PlayMovieButton from './play-movie-button.js';
+import PlayMovieButton from './play-button.js';
 
 class MovieDetail extends Component {
 
