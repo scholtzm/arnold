@@ -4,6 +4,7 @@ import App from './App';
 import { Router, IndexRoute, Route, browserHistory } from 'react-router';
 import Remote from './components/remote';
 import Movies from './components/movies';
+import TvShows from './components/tvshows';
 import Settings from './components/settings';
 import Notifications from './components/misc/notifications.js';
 import SettingsStore from './stores/settings-store.js';
@@ -14,12 +15,6 @@ import { checkUpdate } from './util/updater.js';
 import 'semantic-ui-css/semantic.css';
 
 const settings = SettingsStore.get();
-
-const TVShows = () => (
-  <div>
-    tv shows
-  </div>
-);
 
 const Music = () => (
   <div>
@@ -46,7 +41,7 @@ ReactDOM.render(
         <IndexRoute component={Movies} />
         <Route path='remote' component={Remote} />
         <Route path='movies' component={Movies} />
-        <Route path='tvshows' component={TVShows} />
+        <Route path='tvshows' component={TvShows} />
         <Route path='music' component={Music} />
         <Route path='settings' component={Settings} />
       </Route>

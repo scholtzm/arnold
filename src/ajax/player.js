@@ -51,6 +51,10 @@ function openMovie(movieid, callback) {
   open({ movieid }, callback);
 }
 
+function openTvShow(tvshowid, callback) {
+  open({ tvshowid }, callback);
+}
+
 export default {
   getActivePlayers,
   playPause,
@@ -58,5 +62,6 @@ export default {
   goTo,
   setSpeed,
   open,
-  openMovie
+  openMovie,
+  openTvShow
 }

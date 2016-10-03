@@ -3,22 +3,22 @@ import { Card } from 'stardust'
 
 import LoaderSegment from '../misc/loader-segment.js';
 import ReloadSegment from '../misc/reload-segment.js';
-import MovieStore from '../../stores/movie-store.js';
+import TvShowStore from '../../stores/tvshow-store.js';
 import SettingsStore from '../../stores/settings-store.js';
-import { getMovies } from '../../actions/movie-actions.js';
-import MovieCard from './movie-card.js';
-import MovieDetail from './detail.js';
+import { getTvShows } from '../../actions/tvshow-actions.js';
+import TvShowCard from './tvshow-card.js';
+import TvShowDetail from './detail.js';
 
-class MovieGrid extends Component {
+class TvShowGrid extends Component {
 
   constructor(props, context) {
     super(props, context);
 
     const settings = SettingsStore.get();
-    const storeState = MovieStore.get();
+    const storeState = TvShowStore.get();
 
     this.state = {
-      movies: storeState.movies,
+      tvShows: storeState.tvShows,
       lastFetchFailed: false,
       loading: true,
       itemsPerPage: settings.itemsPerPage,
@@ -30,11 +30,11 @@ class MovieGrid extends Component {
   }
 
   _onChange() {
-    const storeState = MovieStore.get();
+    const storeState = TvShowStore.get();
 
     this.setState({
       loading: false,
-      movies: storeState.movies,
+      tvShows: storeState.tvShows,
       lastFetchFailed: storeState.lastFetchFailed
     });
   }
@@ -44,13 +44,13 @@ class MovieGrid extends Component {
       loading: true
     });
 
-    getMovies();
+    getTvShows();
   }
 
-  _showDetail(movie) {
+  _showDetail(tvShow) {
     this.setState({
       detailActive: true,
-      detailMovie: movie
+      detailTvShow: tvShow
     });
   }
 
@@ -61,17 +61,17 @@ class MovieGrid extends Component {
   }
 
   componentDidMount() {
-    MovieStore.addChangeListener(this._onChange);
+    TvShowStore.addChangeListener(this._onChange);
 
-    if(this.state.movies.length > 0) {
+    if(this.state.tvShows.length > 0) {
       this.setState({loading: false});
     }
 
-    getMovies();
+    getTvShows();
   }
 
   componentWillUnmount() {
-    MovieStore.removeChangeListener(this._onChange);
+    TvShowStore.removeChangeListener(this._onChange);
   }
 
   render() {
@@ -80,18 +80,18 @@ class MovieGrid extends Component {
     }
 
     if(!this.state.loading && this.state.lastFetchFailed === true) {
-      return <ReloadSegment message='Failed to load movies' onClick={this._onReload.bind(this)} />
+      return <ReloadSegment message='Failed to load TV shows' onClick={this._onReload.bind(this)} />
     }
 
     return (
       <div>
-        <MovieDetail active={this.state.detailActive} movie={this.state.detailMovie} hide={() => this._hideDetail()}/>
+        <TvShowDetail active={this.state.detailActive} tvShow={this.state.detailTvShow} hide={() => this._hideDetail()}/>
 
         <Card.Group itemsPerRow={this.state.itemsPerRow}>
           {
-            this.state.movies
-              .filter(movie => this.props.showSeen || movie.playcount === 0)
-              .map(movie => <MovieCard key={movie.movieid} movie={movie} showDetail={() => this._showDetail(movie)} />)
+            this.state.tvShows
+              .filter(tvShow => this.props.showSeen || tvShow.playcount === 0)
+              .map(tvShow => <TvShowCard key={tvShow.tvshowid} tvShow={tvShow} showDetail={() => this._showDetail(tvShow)} />)
           }
         </Card.Group>
       </div>
@@ -100,4 +100,4 @@ class MovieGrid extends Component {
 
 };
 
-export default MovieGrid;
+export default TvShowGrid;

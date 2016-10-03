@@ -5,6 +5,12 @@ export default {
     SET_MOVIES: 'SET_MOVIES'
   },
 
+  TvShowActions: {
+    GET_TVSHOWS: 'GET_TVSHOWS',
+    GET_TVSHOWS_ERROR: 'GET_TVSHOWS_ERROR',
+    SET_TVSHOWS: 'SET_TVSHOWS'
+  },
+
   SettingsActions: {
     GET_SETTINGS: 'GET_SETTINGS',
     SET_SETTINGS: 'SET_SETTINGS'

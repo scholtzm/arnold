@@ -11,7 +11,7 @@ class Remote extends Component {
         <Grid>
           <Grid.Row columns={1}>
             <Grid.Column>
-              <BasicHeader icon='television' text='Remote' subtext='Control your Kodi' />
+              <BasicHeader icon='keyboard' text='Remote' subtext='Control your Kodi' />
             </Grid.Column>
           </Grid.Row>
           <Grid.Row columns={1}>

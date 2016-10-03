@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Menu, Search } from 'stardust';
 import { Link } from 'react-router';
 import MovieStore from './stores/movie-store.js';
+import TvShowStore from './stores/tvshow-store.js';
 
 class App extends Component {
   constructor(...args) {
@@ -22,27 +23,58 @@ class App extends Component {
     this.setState({ searchTerm: value });
 
     const movies = MovieStore.get().movies;
+    const tvShows = TvShowStore.get().tvShows;
 
-    let results = {
-      movies: {
+    const matchingMovies = movies
+      .filter(movie => movie.originaltitle.toLowerCase().includes(value.toLowerCase()))
+      .map(movie => {
+        return {
+          title: movie.originaltitle,
+          description: movie.year.toString(),
+          image: movie.thumbnail,
+        }
+      });
+
+    const matchingTvShows = tvShows
+      .filter(tvShow => tvShow.title.toLowerCase().includes(value.toLowerCase()))
+      .map(tvShow => {
+        return {
+          title: tvShow.title,
+          description: tvShow.year.toString(),
+          image: tvShow.thumbnail,
+        }
+      });
+
+    let results = {};
+
+    if(matchingMovies.length > 0) {
+      results['movies'] = {
         name: 'Movies',
-        results: movies
-          .filter(movie => movie.originaltitle.toLowerCase().indexOf(value.toLowerCase()) > -1)
-          .map(movie => {
-            return {
-              title: movie.originaltitle,
-              description: movie.year.toString(),
-              image: movie.thumbnail,
-            }
-          })
-      }
-    };
+        results: matchingMovies
+      };
+    }
+
+    if(matchingTvShows.length > 0) {
+      results['tvShows'] = {
+        name: 'TV Shows',
+        results: matchingTvShows
+      };
+    }
 
     if(movies.length === 0) {
       results.movies.results = [
         {
           title: 'Info',
           description: 'You have no movies in your library or Arnold\'s movie catalogue has not been populated yet.'
+        }
+      ];
+    }
+
+    if(tvShows.length === 0) {
+      results.tvShows.results = [
+        {
+          title: 'Info',
+          description: 'You have no TV shows in your library or Arnold\'s TV show catalogue has not been populated yet.'
         }
       ];
     }

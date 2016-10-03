@@ -45,7 +45,9 @@ function getTvShows(callback) {
       'thumbnail',
       'studio',
       'mpaa',
-      'premiered'
+      'premiered',
+      'episodeguide',
+      'watchedepisodes'
     ]
   };
 

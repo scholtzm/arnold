@@ -16,7 +16,7 @@ class MovieDetail extends Component {
     const runtime = `${runtimeHours} hour${runtimeHours > 1 ? 's' : ''} ${runtimeMinutes} minute${runtimeMinutes > 1 ? 's' : ''}`;
 
     return (
-      <Modal active={this.props.active} onHide={this.props.hide}>
+      <Modal open={this.props.active} onClose={this.props.hide}>
         <Modal.Header>{movie.originaltitle} ({movie.year})</Modal.Header>
         <Modal.Content image>
           <Image wrapped bordered shape='rounded' className='medium' src={movie.thumbnail} />
