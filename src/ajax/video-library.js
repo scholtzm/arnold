@@ -81,7 +81,8 @@ function getEpisodes(tvshowid, season, callback) {
       'plot',
       'episode',
       'season',
-      'tvshowid'
+      'tvshowid',
+      'playcount'
     ]
   };
 

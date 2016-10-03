@@ -5,6 +5,8 @@ import SeasonStore from '../../stores/season-store.js';
 import EpisodeStore from '../../stores/episode-store.js';
 import { getSeasons } from '../../actions/season-actions.js';
 import { getEpisodes } from '../../actions/episode-actions.js';
+import EpisodeTable from './episode-table.js';
+import LoaderSegment from '../misc/loader-segment.js';
 
 class TvShowDetail extends Component {
 
@@ -16,14 +18,13 @@ class TvShowDetail extends Component {
       episodes: {}
     };
 
-    this.activeSeason = 1;
+    this.activeSeason = 0;
 
     this._onSeasonsChange = this._onSeasonsChange.bind(this);
     this._onEpisodesChange = this._onEpisodesChange.bind(this);
   }
 
-  _onTitleClick(event, index) {
-    const season = index + 1;
+  _onTitleClick(season) {
     const { tvShow } = this.props;
 
     getEpisodes(tvShow.tvshowid, season);
@@ -66,7 +67,30 @@ class TvShowDetail extends Component {
 
   render() {
     const { tvShow } = this.props;
-    const progress = Math.floor((tvShow.watchedepisodes / tvShow.episode) * 100);
+    const progress = Math.ceil((tvShow.watchedepisodes / tvShow.episode) * 100);
+
+    let seasons;
+    if(this.state.seasons.length === 0) {
+      seasons = <LoaderSegment size='medium' />;
+    } else {
+      seasons = (
+        <Accordion>
+          {
+            this.state.seasons.map(season => {
+              return ([
+                <Accordion.Title onClick={() => this._onTitleClick(season.season)}>
+                  <Icon name={season.playcount > 0 ? 'checkmark' : 'dropdown'} />
+                  Season {season.season} ({season.episode} episode{season.episode === 1 ? '' : 's'})
+                </Accordion.Title>,
+                <Accordion.Content>
+                  <EpisodeTable episodes={this.state.episodes[season.season]} />
+                </Accordion.Content>
+              ])
+            })
+          }
+        </Accordion>
+      );
+    }
 
     return (
       <Modal open={this.props.active} onClose={this.props.hide}>
@@ -81,31 +105,9 @@ class TvShowDetail extends Component {
               <div><b>Rating:</b> {tvShow.rating.toFixed(1)} <Rating defaultRating={Math.round(tvShow.rating)} maxRating={10} icon='star' disabled /></div>
               <div>
                 <b>Progress:</b> seen {tvShow.watchedepisodes} out of {tvShow.episode} episodes available in the library
-                <Progress percent={progress} size='tiny' color='green' />
+                <Progress percent={progress} size='tiny' color={progress === 100 ? 'green' : 'orange'} />
               </div>
-              <div>
-                <Accordion onTitleClick={(event, index) => this._onTitleClick(event, index)}>
-                  {
-                    this.state.seasons.map(season => {
-                      return ([
-                        <Accordion.Title>
-                          <Icon name='dropdown' />
-                          Season {season.season} ({season.episode} episode{season.episode === 1 ? '' : 's'})
-                        </Accordion.Title>,
-                        <Accordion.Content>
-                          {
-                            (this.state.episodes[season.season] || []).map(episode => {
-                              return (
-                                <span key={episode.episodeid}>{episode.title}</span>
-                              )
-                            })
-                          }
-                        </Accordion.Content>
-                      ])
-                    })
-                  }
-                </Accordion>
-              </div>
+              {seasons}
             </div>
           </Modal.Description>
         </Modal.Content>
