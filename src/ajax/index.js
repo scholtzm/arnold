@@ -2,6 +2,8 @@ import Dispatcher from '../dispatcher/';
 import Constants from '../constants/';
 import { setMovies, getMoviesError } from '../actions/movie-actions.js';
 import { setTvShows, getTvShowsError } from '../actions/tvshow-actions.js';
+import { setSeasons } from '../actions/season-actions.js';
+import { setEpisodes } from '../actions/episode-actions.js';
 import videoLibrary from './video-library.js';
 
 function initVideoLibrary() {
@@ -38,6 +40,30 @@ function initVideoLibrary() {
           });
 
           setTvShows(tvShows);
+        });
+        break;
+
+      case Constants.SeasonActions.GET_SEASONS:
+        videoLibrary.getSeasons(action.tvshowid, (err, res) => {
+          let seasons = res.body.result.seasons.map(season => {
+            const decoded = decodeURIComponent(season.thumbnail.replace('image://', ''));
+            season.thumbnail = decoded.substring(0, decoded.length - 1);
+            return season;
+          });
+
+          setSeasons(seasons);
+        });
+        break;
+
+      case Constants.EpisodeActions.GET_EPISODES:
+        videoLibrary.getEpisodes(action.tvshowid, action.season, (err, res) => {
+          let episodes = res.body.result.episodes.map(episode => {
+            const decoded = decodeURIComponent(episode.thumbnail.replace('image://', ''));
+            episode.thumbnail = decoded.substring(0, decoded.length - 1);
+            return episode;
+          });
+
+          setEpisodes(episodes);
         });
         break;
 

@@ -55,6 +55,14 @@ function openTvShow(tvshowid, callback) {
   open({ tvshowid }, callback);
 }
 
+function openTvShowSeason(seasonid, callback) {
+  open({ seasonid }, callback);
+}
+
+function openTvShowEpisode(episodeid, callback) {
+  open({ episodeid }, callback);
+}
+
 export default {
   getActivePlayers,
   playPause,
@@ -63,5 +71,7 @@ export default {
   setSpeed,
   open,
   openMovie,
-  openTvShow
+  openTvShow,
+  openTvShowSeason,
+  openTvShowEpisode
 }

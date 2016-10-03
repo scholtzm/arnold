@@ -83,9 +83,16 @@ class TvShowGrid extends Component {
       return <ReloadSegment message='Failed to load TV shows' onClick={this._onReload.bind(this)} />
     }
 
+    let detail;
+    if(this.state.detailActive) {
+      detail = <TvShowDetail active={this.state.detailActive} tvShow={this.state.detailTvShow} hide={() => this._hideDetail()} />;
+    } else {
+      detail = null;
+    }
+
     return (
       <div>
-        <TvShowDetail active={this.state.detailActive} tvShow={this.state.detailTvShow} hide={() => this._hideDetail()}/>
+        {detail}
 
         <Card.Group itemsPerRow={this.state.itemsPerRow}>
           {

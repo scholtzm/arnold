@@ -54,6 +54,40 @@ function getTvShows(callback) {
   request('VideoLibrary.GetTVShows', params, callback);
 }
 
+function getSeasons(tvshowid, callback) {
+  const params = {
+    tvshowid,
+    properties: [
+      'season',
+      'showtitle',
+      'playcount',
+      'episode',
+      'thumbnail',
+      'fanart',
+      'tvshowid'
+    ]
+  };
+
+  request('VideoLibrary.GetSeasons', params, callback);
+}
+
+function getEpisodes(tvshowid, season, callback) {
+  const params = {
+    tvshowid,
+    season,
+    properties: [
+      'title',
+      'thumbnail',
+      'plot',
+      'episode',
+      'season',
+      'tvshowid'
+    ]
+  };
+
+  request('VideoLibrary.GetEpisodes', params, callback);
+}
+
 function scan(callback) {
   request('VideoLibrary.Scan', {}, callback);
 }
@@ -66,5 +100,7 @@ export default {
   scan,
   clean,
   getMovies,
-  getTvShows
+  getTvShows,
+  getSeasons,
+  getEpisodes
 }

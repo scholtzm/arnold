@@ -6,10 +6,6 @@ import PlayMovieButton from './play-button.js';
 class MovieDetail extends Component {
 
   render() {
-    if(!this.props.active) {
-      return <div/>;
-    }
-
     const movie = this.props.movie;
     const runtimeHours = Math.floor(movie.runtime / 60 / 60);
     const runtimeMinutes = Math.floor((movie.runtime % (runtimeHours * 60 * 60)) / 60);

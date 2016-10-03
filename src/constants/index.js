@@ -11,6 +11,16 @@ export default {
     SET_TVSHOWS: 'SET_TVSHOWS'
   },
 
+  SeasonActions: {
+    GET_SEASONS: 'GET_SEASONS',
+    SET_SEASONS: 'SET_SEASONS'
+  },
+
+  EpisodeActions: {
+    GET_EPISODES: 'GET_EPISODES',
+    SET_EPISODES: 'SET_EPISODES'
+  },
+
   SettingsActions: {
     GET_SETTINGS: 'GET_SETTINGS',
     SET_SETTINGS: 'SET_SETTINGS'

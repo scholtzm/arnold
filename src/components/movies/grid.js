@@ -83,9 +83,16 @@ class MovieGrid extends Component {
       return <ReloadSegment message='Failed to load movies' onClick={this._onReload.bind(this)} />
     }
 
+    let detail;
+    if(this.state.detailActive) {
+      detail = <MovieDetail active={this.state.detailActive} movie={this.state.detailMovie} hide={() => this._hideDetail()}/>;
+    } else {
+      detail = null;
+    }
+
     return (
       <div>
-        <MovieDetail active={this.state.detailActive} movie={this.state.detailMovie} hide={() => this._hideDetail()}/>
+        {detail}
 
         <Card.Group itemsPerRow={this.state.itemsPerRow}>
           {
