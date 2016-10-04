@@ -1,9 +1,10 @@
 import Dispatcher from '../dispatcher';
 import Constants from '../constants';
 
-export function getSongs() {
+export function getSongs(albumid) {
   Dispatcher.dispatch({
     type: Constants.SongActions.GET_SONGS,
+    albumid
   });
 }
 

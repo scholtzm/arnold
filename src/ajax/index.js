@@ -11,6 +11,8 @@ import { setAlbums, getAlbumsError } from '../actions/album-actions.js';
 import { setSongs } from '../actions/song-actions.js';
 import audioLibrary from './audio-library.js';
 
+import defaultAlbumCover from '../static/image/default-album-cover.png';
+
 function initVideoLibrary() {
   Dispatcher.register(function(action) {
     switch(action.type) {
@@ -90,6 +92,11 @@ function initAudioLibrary() {
 
           let albums = res.body.result.albums.map(album => {
             album.thumbnail = decodeURIComponent(album.thumbnail.replace('image://', ''));
+
+            if(album.thumbnail === '') {
+              album.thumbnail = defaultAlbumCover;
+            }
+
             return album;
           });
 
@@ -98,8 +105,25 @@ function initAudioLibrary() {
         break;
 
       case Constants.SongActions.GET_SONGS:
-        videoLibrary.getSongs(action.albumid, (err, res) => {
-          setSongs(res.body.result.songs);
+        audioLibrary.getSongs(action.albumid, (err, res) => {
+
+          let songs = res.body.result.songs.map(song => {
+            let minutes = Math.floor(song.duration / 60);
+            let seconds = song.duration % 60;
+
+            if(minutes < 10) {
+              minutes = `0${minutes}`;
+            }
+
+            if(seconds < 10) {
+              seconds = `0${seconds}`;
+            }
+
+            song.durationReadable = `${minutes}:${seconds}`;
+            return song;
+          });
+
+          setSongs(songs);
         });
         break;
 

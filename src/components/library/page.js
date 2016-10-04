@@ -18,6 +18,18 @@ class LibraryPage extends Component {
 
   render() {
     const MovieGrid = this.props.grid;
+    const showControls = this.props.showControls;
+
+    let controls;
+    if(showControls) {
+      controls = (
+        <Grid.Column textAlign='right'>
+          <GridControls onShowSeenToggle={this._onShowSeenToggle.bind(this)}/>
+        </Grid.Column>
+      );
+    } else {
+      controls = null;
+    }
 
     return (
       <BasicContainer>
@@ -26,9 +38,7 @@ class LibraryPage extends Component {
             <Grid.Column>
               <BasicHeader icon={this.props.headerIcon} text={this.props.headerText} subtext={this.props.headerSubText} />
             </Grid.Column>
-            <Grid.Column textAlign='right'>
-              <GridControls onShowSeenToggle={this._onShowSeenToggle.bind(this)}/>
-            </Grid.Column>
+            {controls}
           </Grid.Row>
           <Grid.Row columns={1}>
             <Grid.Column>
@@ -40,5 +50,9 @@ class LibraryPage extends Component {
     );
   }
 }
+
+LibraryPage.defaultProps = {
+  showControls: true
+};
 
 export default LibraryPage;

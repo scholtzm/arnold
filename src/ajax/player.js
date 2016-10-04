@@ -63,6 +63,10 @@ function openTvShowEpisode(episodeid, callback) {
   open({ episodeid }, callback);
 }
 
+function openAlbum(albumid, callback) {
+  open({ albumid }, callback);
+}
+
 export default {
   getActivePlayers,
   playPause,
@@ -73,5 +77,6 @@ export default {
   openMovie,
   openTvShow,
   openTvShowSeason,
-  openTvShowEpisode
+  openTvShowEpisode,
+  openAlbum
 }

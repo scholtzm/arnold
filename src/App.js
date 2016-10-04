@@ -3,6 +3,7 @@ import { Menu, Search } from 'stardust';
 import { Link } from 'react-router';
 import MovieStore from './stores/movie-store.js';
 import TvShowStore from './stores/tvshow-store.js';
+import AlbumStore from './stores/album-store.js';
 
 class App extends Component {
   constructor(...args) {
@@ -24,6 +25,7 @@ class App extends Component {
 
     const movies = MovieStore.get().movies;
     const tvShows = TvShowStore.get().tvShows;
+    const albums = AlbumStore.get().albums;
 
     const matchingMovies = movies
       .filter(movie => movie.originaltitle.toLowerCase().includes(value.toLowerCase()))
@@ -45,6 +47,16 @@ class App extends Component {
         }
       });
 
+    const matchingAlbums = albums
+      .filter(album => album.label.toLowerCase().includes(value.toLowerCase()))
+      .map(album => {
+        return {
+          title: album.label,
+          description: album.year.toString(),
+          image: album.thumbnail,
+        }
+      });
+
     let results = {};
 
     if(matchingMovies.length > 0) {
@@ -58,6 +70,13 @@ class App extends Component {
       results['tvShows'] = {
         name: 'TV Shows',
         results: matchingTvShows
+      };
+    }
+
+    if(matchingAlbums.length > 0) {
+      results['albums'] = {
+        name: 'Albums',
+        results: matchingAlbums
       };
     }
 
@@ -75,6 +94,15 @@ class App extends Component {
         {
           title: 'Info',
           description: 'You have no TV shows in your library or Arnold\'s TV show catalogue has not been populated yet.'
+        }
+      ];
+    }
+
+    if(albums.length === 0) {
+      results.albums.results = [
+        {
+          title: 'Info',
+          description: 'You have no albums in your library or Arnold\'s album catalogue has not been populated yet.'
         }
       ];
     }
