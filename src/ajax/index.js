@@ -1,10 +1,15 @@
 import Dispatcher from '../dispatcher/';
 import Constants from '../constants/';
+
 import { setMovies, getMoviesError } from '../actions/movie-actions.js';
 import { setTvShows, getTvShowsError } from '../actions/tvshow-actions.js';
 import { setSeasons } from '../actions/season-actions.js';
 import { setEpisodes } from '../actions/episode-actions.js';
 import videoLibrary from './video-library.js';
+
+import { setAlbums, getAlbumsError } from '../actions/album-actions.js';
+import { setSongs } from '../actions/song-actions.js';
+import audioLibrary from './audio-library.js';
 
 function initVideoLibrary() {
   Dispatcher.register(function(action) {
@@ -73,6 +78,38 @@ function initVideoLibrary() {
   });
 }
 
+function initAudioLibrary() {
+  Dispatcher.register(function(action) {
+    switch(action.type) {
+      case Constants.AlbumActions.GET_ALBUMS:
+        audioLibrary.getAlbums((err, res) => {
+          if (err) {
+            getAlbumsError(err);
+            return;
+          };
+
+          let albums = res.body.result.albums.map(album => {
+            album.thumbnail = decodeURIComponent(album.thumbnail.replace('image://', ''));
+            return album;
+          });
+
+          setAlbums(albums);
+        });
+        break;
+
+      case Constants.SongActions.GET_SONGS:
+        videoLibrary.getSongs(action.albumid, (err, res) => {
+          setSongs(res.body.result.songs);
+        });
+        break;
+
+      default:
+        // ignore
+    }
+  });
+}
+
 export function init() {
   initVideoLibrary();
+  initAudioLibrary();
 }
