@@ -21,6 +21,17 @@ export default {
     SET_EPISODES: 'SET_EPISODES'
   },
 
+  AlbumActions: {
+    GET_ALBUMS: 'GET_ALBUMS',
+    GET_ALBUMS_ERROR: 'GET_ALBUMS_ERROR',
+    SET_ALBUMS: 'SET_ALBUMS'
+  },
+
+  SongActions: {
+    GET_SONGS: 'GET_SONGS',
+    SET_SONGS: 'SET_SONGS'
+  },
+
   SettingsActions: {
     GET_SETTINGS: 'GET_SETTINGS',
     SET_SETTINGS: 'SET_SETTINGS'

@@ -18,5 +18,5 @@ export function getMoviesError(error) {
   Dispatcher.dispatch({
     type: Constants.MovieActions.GET_MOVIES_ERROR,
     error
-  })
+  });
 }

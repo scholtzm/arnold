@@ -18,5 +18,5 @@ export function getTvShowsError(error) {
   Dispatcher.dispatch({
     type: Constants.TvShowActions.GET_TVSHOWS_ERROR,
     error
-  })
+  });
 }
