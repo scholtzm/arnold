@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Menu, Search } from 'stardust';
+import { Menu, Search } from 'semantic-ui-react';
 import { Link } from 'react-router';
 import MovieStore from './stores/movie-store.js';
 import TvShowStore from './stores/tvshow-store.js';

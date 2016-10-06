@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal, Image, Button, Rating } from 'stardust';
+import { Modal, Image, Button, Rating } from 'semantic-ui-react';
 import YouTube from 'react-youtube';
 import PlayMovieButton from './play-button.js';
 

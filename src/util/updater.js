@@ -1,7 +1,7 @@
 import React from 'react';
 import request from 'superagent';
 import semver from 'semver';
-import { Button } from 'stardust';
+import { Button } from 'semantic-ui-react';
 import { Link } from 'react-router';
 
 import debug from '../util/debug.js';

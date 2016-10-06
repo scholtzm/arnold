@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container } from 'stardust';
+import { Container } from 'semantic-ui-react';
 
 const BasicContainer = (props) => (
   <Container fluid style={{ padding: '0 15px' }}>

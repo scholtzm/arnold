@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal, Image, Button, Rating, Progress, Accordion, Icon } from 'stardust';
+import { Modal, Image, Button, Rating, Progress, Accordion, Icon } from 'semantic-ui-react';
 import PlayTvShowButton from './play-button.js';
 import SeasonStore from '../../stores/season-store.js';
 import EpisodeStore from '../../stores/episode-store.js';

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Icon } from 'stardust';
+import { Button } from 'semantic-ui-react';
 
 import player from '../../ajax/player.js';
 import { addNotification } from '../../actions/notification-actions.js';
@@ -43,9 +43,7 @@ class AlbumPlayButton extends Component {
 
   render() {
     return (
-      <Button labeled loading={this.state.loading} icon color='black' onClick={this._onPlay.bind(this)}>
-        <Icon name='play' /> Play
-      </Button>
+      <Button content='Play' icon='play' labelPosition='left' loading={this.state.loading} color='black' onClick={this._onPlay.bind(this)} />
     );
   }
 }

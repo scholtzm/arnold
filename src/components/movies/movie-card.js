@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Image, Container } from 'stardust';
+import { Card, Image, Container } from 'semantic-ui-react';
 
 import PlayMovieButton from './play-button.js';
 

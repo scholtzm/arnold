@@ -1,5 +1,5 @@
 import React from 'react';
-import { Segment, Button, Header } from 'stardust';
+import { Segment, Button, Header } from 'semantic-ui-react';
 
 const ReloadSegment = (props) => {
   return (

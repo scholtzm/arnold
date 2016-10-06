@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Button, Header, Segment } from 'stardust';
+import { Form, Button, Header, Segment } from 'semantic-ui-react';
 import SettingsStore from '../../stores/settings-store.js';
 import { setSettings } from '../../actions/settings-actions.js';
 import { addNotification } from '../../actions/notification-actions.js';

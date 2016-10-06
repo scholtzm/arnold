@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Button } from 'stardust';
+import { Grid, Button } from 'semantic-ui-react';
 import BasicHeader from '../misc/basic-header.js';
 import BasicContainer from '../misc/basic-container.js';
 import SettingsForm from './settings-form.js';

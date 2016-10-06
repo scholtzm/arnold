@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Card } from 'stardust'
+import { Card } from 'semantic-ui-react'
 
 import LoaderSegment from '../misc/loader-segment.js';
 import ReloadSegment from '../misc/reload-segment.js';

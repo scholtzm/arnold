@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal, Image, Button } from 'stardust';
+import { Modal, Image, Button } from 'semantic-ui-react';
 import PlayAlbumButton from './play-button.js';
 import SongStore from '../../stores/song-store.js';
 import { getSongs } from '../../actions/song-actions.js';

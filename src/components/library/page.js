@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid } from 'stardust';
+import { Grid } from 'semantic-ui-react';
 import BasicHeader from '../misc/basic-header.js';
 import BasicContainer from '../misc/basic-container.js';
 // import LibraryGrid from './grid.js';

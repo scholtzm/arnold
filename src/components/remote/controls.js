@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Container, Button, Header } from 'stardust';
+import { Grid, Container, Button, Header } from 'semantic-ui-react';
 
 import debug from '../../util/debug.js';
 import input from '../../ajax/input.js';
