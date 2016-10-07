@@ -17,7 +17,7 @@
     "react-youtube": "^7.2.0",
     "redux": "^3.6.0",
     "semantic-ui-css": "^2.2.4",
-    "semantic-ui-react": "^0.54.2",
+    "semantic-ui-react": "^0.54.3",
     "semver": "^5.3.0",
     "superagent": "^2.3.0"
   },
