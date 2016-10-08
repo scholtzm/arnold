@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import { Router, IndexRoute, Route, browserHistory } from 'react-router';
+import { Router, IndexRoute, Route, hashHistory } from 'react-router';
 import Remote from './components/remote';
 import Movies from './components/movies';
 import TvShows from './components/tvshows';
@@ -31,7 +31,7 @@ if(settings.checkForUpdatesOnInitialState) {
 // Render
 ReactDOM.render(
   <div>
-    <Router history={browserHistory}>
+    <Router history={hashHistory}>
       <Route path='/' component={App}>
         <IndexRoute component={Movies} />
         <Route path='remote' component={Remote} />

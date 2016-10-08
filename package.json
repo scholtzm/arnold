@@ -1,9 +1,26 @@
 {
   "name": "arnold",
+  "description": "A modern Kodi web interface",
   "version": "0.1.0",
+  "author": {
+    "name": "Michael Scholtz",
+    "email": "michael.scholtz@outlook.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/scholtzm/arnold.git"
+  },
+  "license": "MIT",
   "private": true,
-  "devDependencies": {
-    "react-scripts": "0.6.1"
+  "homepage": "http://localhost/addons/webinterface.ARNOLD",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "package": "gulp",
+    "clean": "gulp clean",
+    "make": "npm run build && npm run package"
   },
   "dependencies": {
     "debug": "^2.2.0",
@@ -21,10 +38,13 @@
     "semver": "^5.3.0",
     "superagent": "^2.3.0"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+  "devDependencies": {
+    "del": "^2.2.2",
+    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-util": "^3.0.7",
+    "gulp-zip": "^3.2.0",
+    "jstoxml": "^0.2.4",
+    "react-scripts": "0.6.1"
   }
 }

@@ -11,7 +11,7 @@ const logger = debug('store:settings');
 
 const _defaultSettings = {
   checkForUpdatesOnInitialState: true,
-  ipAddress: 'localhost',
+  ipAddress: location.hostname,
   ajaxPort: 8080,
   webSocketPort: 9090,
   itemsPerPage: 50,
