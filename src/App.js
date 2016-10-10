@@ -8,7 +8,8 @@ import AlbumStore from './stores/album-store.js';
 import packageJson from '../package.json';
 import icon from './static/image/icon-rounded.png';
 
-const { version } = packageJson;
+const { version, repository } = packageJson;
+const releaseUrl = `${repository.url}/releases/tag/v${version}`;
 
 class App extends Component {
   constructor(...args) {
@@ -123,7 +124,7 @@ class App extends Component {
         <Menu>
           <Menu.Item>
             <img src={icon} alt='Arnold' />
-            <Label color='green' content={`v${version}`} />
+            <Label as='a' href={releaseUrl} target='_blank' content={`v${version}`} color='green' />
           </Menu.Item>
           <Menu.Item as={Link} to='/remote' name='/remote' content='Remote' active={activeItem === '/remote'} onClick={this.onItemClick} />
           <Menu.Item as={Link} to='/movies' name='/movies' content='Movies' active={activeItem === '/movies'} onClick={this.onItemClick} />
