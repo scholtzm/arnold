@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
-import { Menu, Search } from 'semantic-ui-react';
+import { Menu, Search, Label } from 'semantic-ui-react';
 import { Link } from 'react-router';
 import MovieStore from './stores/movie-store.js';
 import TvShowStore from './stores/tvshow-store.js';
 import AlbumStore from './stores/album-store.js';
 
+import packageJson from '../package.json';
 import icon from './static/image/icon-rounded.png';
+
+const { version } = packageJson;
 
 class App extends Component {
   constructor(...args) {
@@ -120,6 +123,7 @@ class App extends Component {
         <Menu>
           <Menu.Item>
             <img src={icon} alt='Arnold' />
+            <Label color='green' content={`v${version}`} />
           </Menu.Item>
           <Menu.Item as={Link} to='/remote' name='/remote' content='Remote' active={activeItem === '/remote'} onClick={this.onItemClick} />
           <Menu.Item as={Link} to='/movies' name='/movies' content='Movies' active={activeItem === '/movies'} onClick={this.onItemClick} />
@@ -128,15 +132,15 @@ class App extends Component {
           <Menu.Item as={Link} to='/settings' name='/settings' content='Settings' active={activeItem === '/settings'} onClick={this.onItemClick} />
           <Menu.Menu position='right'>
             <Menu.Item>
-            <Search
-              category
-              aligned='right'
-              placeholder='Search...'
-              onChange={this.onChange}
-              onSearchChange={this.onSearchChange}
-              results={this.state.results}
-              value={this.state.searchTerm}
-            />
+              <Search
+                category
+                aligned='right'
+                placeholder='Search...'
+                onChange={this.onChange}
+                onSearchChange={this.onSearchChange}
+                results={this.state.results}
+                value={this.state.searchTerm}
+              />
             </Menu.Item>
           </Menu.Menu>
         </Menu>

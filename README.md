@@ -1,6 +1,8 @@
 # Arnold
 
-> Arnold 🎥 is a modern Kodi web front-end written in JavaScript using [React](https://facebook.github.io/react/), [Flux](https://facebook.github.io/flux/) and [Semantic-UI-React](http://react.semantic-ui.com/).
+> 🎥 A modern Kodi web interface.
+
+Arnold is a generic Kodi web interface written in JavaScript using [React](https://facebook.github.io/react/), [Flux](https://facebook.github.io/flux/) and [Semantic-UI-React](http://react.semantic-ui.com/). Arnold aims to provide relevant information and functionality in a sleek and intuitive design.
 
 ## Features
 
