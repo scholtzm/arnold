@@ -40,7 +40,7 @@ class SettingsForm extends Component {
           <Segment>
             <Header size='medium'>Display</Header>
             <Form.Group widths='equal'>
-              <Form.Input label='Items per page' name='itemsPerPage' type='number' defaultValue={this.state.settings.itemsPerPage} />
+              {/* <Form.Input label='Items per page' name='itemsPerPage' type='number' defaultValue={this.state.settings.itemsPerPage} /> */}
               <Form.Input label='Items per row' name='itemsPerRow' type='number' defaultValue={this.state.settings.itemsPerRow} />
             </Form.Group>
           </Segment>

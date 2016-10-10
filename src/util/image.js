@@ -4,5 +4,5 @@ export function prefixImage(url) {
   const settings = SettingsStore.get();
   const address = `http://${settings.ipAddress}:${settings.ajaxPort}/`;
 
-  return `${address}../../image/${encodeURIComponent(url)}`;
+  return `${address}image/${encodeURIComponent(url)}`;
 }

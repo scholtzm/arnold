@@ -32,6 +32,11 @@ function copyReadme() {
     .pipe(dest(webinterfaceFolder));
 }
 
+function copyIcon() {
+  return src(['src/static/image/icon.png'])
+    .pipe(dest(webinterfaceFolder));
+}
+
 function pack() {
   return src(['package/**/*'])
     .pipe(zip(packageName))
@@ -39,7 +44,7 @@ function pack() {
 }
 
 module.exports = series(
-  parallel(copyFiles, copyLicense, copyReadme),
+  parallel(copyFiles, copyLicense, copyReadme, copyIcon),
   generateAddonXml,
   pack
 );

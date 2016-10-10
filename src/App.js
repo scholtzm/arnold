@@ -5,6 +5,8 @@ import MovieStore from './stores/movie-store.js';
 import TvShowStore from './stores/tvshow-store.js';
 import AlbumStore from './stores/album-store.js';
 
+import icon from './static/image/icon-rounded.png';
+
 class App extends Component {
   constructor(...args) {
     super(...args);
@@ -116,6 +118,9 @@ class App extends Component {
     return (
       <div>
         <Menu>
+          <Menu.Item>
+            <img src={icon} alt='Arnold' />
+          </Menu.Item>
           <Menu.Item as={Link} to='/remote' name='/remote' content='Remote' active={activeItem === '/remote'} onClick={this.onItemClick} />
           <Menu.Item as={Link} to='/movies' name='/movies' content='Movies' active={activeItem === '/movies'} onClick={this.onItemClick} />
           <Menu.Item as={Link} to='/tvshows' name='/tvshows' content='TV Shows' active={activeItem === '/tvshows'} onClick={this.onItemClick} />
