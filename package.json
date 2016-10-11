@@ -12,15 +12,15 @@
   },
   "license": "MIT",
   "private": true,
-  "homepage": "http://localhost/addons/webinterface.ARNOLD",
+  "homepage": "http://scholtzm.github.io/arnold",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "package": "gulp",
-    "clean": "gulp clean",
-    "make": "npm run build && npm run package"
+    "make": "gulp",
+    "pack": "gulp pack",
+    "clean": "gulp clean"
   },
   "dependencies": {
     "debug": "^2.2.0",
@@ -42,6 +42,7 @@
     "del": "^2.2.2",
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-rename": "^1.2.2",
+    "gulp-shell": "^0.5.2",
     "gulp-util": "^3.0.7",
     "gulp-zip": "^3.2.0",
     "jstoxml": "^0.2.4",
