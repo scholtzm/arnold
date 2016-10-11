@@ -1,94 +1,62 @@
 import debug from '../util/debug.js';
 import SettingsStore from '../stores/settings-store.js';
+import SocketClient from './client.js';
 import { addNotification } from '../actions/notification-actions.js';
 
 const logger = debug('socket:client');
+const client = new SocketClient();
 
-let socket;
-let baseUrl;
-let isOpen = false;
+let ip, port;
 
 export function connect() {
-  logger('connect');
-  socket = new WebSocket(baseUrl);
+  logger('connect', client);
 
-  socket.onopen = function(event) {
-    logger('event open', event);
+  client.on('open', event => {
+    logger('open', event);
+  });
 
-    addNotification({
-      title: 'WebSocket Client',
-      message: 'WebSocket client has connected to Kodi.',
-      level: 'info',
-      autoDismiss: 3
-    });
+  client.on('close', event => {
+    logger('close', event);
+  });
 
-    isOpen = true;
-  };
+  client.on('error', event => {
+    logger('error', event);
+  });
 
-  socket.onerror = function(event) {
-    logger('event error', event);
+  client.on('message', event => {
+    logger('message', event);
+  });
 
-    addNotification({
-      title: 'WebSocket Client',
-      message: 'WebSocket client received error and got disconnected.',
-      level: 'error'
-    });
-
-    isOpen = false;
-  };
-
-  socket.onclose = function(event) {
-    logger('event close', event);
-
-    addNotification({
-      title: 'WebSocket Client',
-      message: 'WebSocket client connection has been closed.',
-      level: 'warning'
-    });
-
-    isOpen = false;
-  };
-
-  socket.onmessage = function(event) {
-    logger('event message', event);
-  };
+  client.connect(ip, port);
 }
 
-export function close() {
-  logger('close');
+export function request(method, params, callback) {
+  client.request(method, params, (error, ...args) => {
+    if(error) {
+      addNotification({
+        title: 'WebSocket Request',
+        message: 'WebSocket request has failed.',
+        level: 'error'
+      });
+    }
 
-  if(!isOpen) {
-    return;
-  }
-
-  socket.close();
+    callback(error, ...args);
+  });
 }
 
-export function send(data) {
-  logger('send', data);
+function setup(reconnect) {
+  logger('running setup');
 
-  if(!isOpen) {
-    return;
-  }
-
-  if(typeof data === 'object') {
-    data = JSON.stringify(data);
-  }
-
-  socket.send(data);
-}
-
-function setBaseUrl(reconnect) {
-  logger('setting base url');
   const settings = SettingsStore.get();
-  baseUrl = `ws://${settings.ipAddress}:${settings.webSocketPort}/jsonrpc`;
+  ip = settings.ipAddress;
+  port = settings.webSocketPort;
 
   if(reconnect) {
-    close();
+    client.close();
     setTimeout(() => connect(), 2000);
   }
 }
 
-SettingsStore.addChangeListener(() => setBaseUrl(true));
+SettingsStore.addChangeListener(() => setup(true));
 
-setBaseUrl(false);
+setup(false);
