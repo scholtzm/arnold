@@ -17,13 +17,8 @@ class PlayMovieButton extends Component {
     const movieid = this.props.movie.movieid;
 
     this.setState({loading: true});
-    addNotification({
-      title: 'Starting movie',
-      message: this.props.movie.originaltitle,
-      level: 'info'
-    });
 
-    player.playMovie(movieid, (err, res) => {
+    player.open({ movieid }, (err, res) => {
       if(err) {
         addNotification({
           title: 'Unable to play movie',

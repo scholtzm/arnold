@@ -17,13 +17,8 @@ class TvShowPlayButton extends Component {
     const tvshowid = this.props.tvShow.tvshowid;
 
     this.setState({loading: true});
-    addNotification({
-      title: 'Starting TV show',
-      message: this.props.tvShow.title,
-      level: 'info'
-    });
 
-    player.openTvShow(tvshowid, (err, res) => {
+    player.open({ tvshowid }, (err, res) => {
       if(err) {
         addNotification({
           title: 'Unable to play TV show',

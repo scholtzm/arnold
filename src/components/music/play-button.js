@@ -17,13 +17,8 @@ class AlbumPlayButton extends Component {
     const albumid = this.props.album.albumid;
 
     this.setState({loading: true});
-    addNotification({
-      title: 'Starting album',
-      message: this.props.album.label,
-      level: 'info'
-    });
 
-    player.openAlbum(albumid, (err, res) => {
+    player.open({ albumid }, (err, res) => {
       if(err) {
         addNotification({
           title: 'Unable to play album',

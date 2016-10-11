@@ -47,36 +47,11 @@ function open(item, callback) {
   request('Player.Open', params, callback);
 }
 
-function openMovie(movieid, callback) {
-  open({ movieid }, callback);
-}
-
-function openTvShow(tvshowid, callback) {
-  open({ tvshowid }, callback);
-}
-
-function openTvShowSeason(seasonid, callback) {
-  open({ seasonid }, callback);
-}
-
-function openTvShowEpisode(episodeid, callback) {
-  open({ episodeid }, callback);
-}
-
-function openAlbum(albumid, callback) {
-  open({ albumid }, callback);
-}
-
 export default {
   getActivePlayers,
   playPause,
   stop,
   goTo,
   setSpeed,
-  open,
-  openMovie,
-  openTvShow,
-  openTvShowSeason,
-  openTvShowEpisode,
-  openAlbum
+  open
 }

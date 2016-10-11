@@ -17,13 +17,8 @@ class PlayEpisodeButton extends Component {
     const episodeid = this.props.episode.episodeid;
 
     this.setState({loading: true});
-    addNotification({
-      title: 'Starting episode',
-      message: this.props.episode.label,
-      level: 'info'
-    });
 
-    player.openTvShowEpisode(episodeid, (err, res) => {
+    player.open({ episodeid }, (err, res) => {
       if(err) {
         addNotification({
           title: 'Unable to play episode',
