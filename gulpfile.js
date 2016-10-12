@@ -5,6 +5,6 @@ const make = require('./tasks/make.js');
 const pack = require('./tasks/pack.js');
 const clean = require('./tasks/clean.js');
 
-task('default', make);
+task('default', series(clean, make));
 task('pack', series(clean, pack));
 task('clean', clean);
