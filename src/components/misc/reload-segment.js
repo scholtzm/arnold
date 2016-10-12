@@ -5,7 +5,7 @@ const ReloadSegment = (props) => {
   return (
     <Segment textAlign='center'>
       <Header size='medium'>{props.message}</Header>
-      <Button labeled icon='refresh' content='Reload' onClick={props.onClick} />
+      <Button icon='refresh' content='Reload' labelPosition='left' onClick={props.onClick} />
     </Segment>
   );
 };

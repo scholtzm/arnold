@@ -1,6 +1,6 @@
 /**
  * Kodi requires the package to work properly from /addons/webinterface.ARNOLD
- * In order to coply with this, we need to build such package with `react-scripts`.
+ * In order to comply with this, we need to build such package with `react-scripts`.
  * Easiest way is to temporarily patch package.json
  */
 

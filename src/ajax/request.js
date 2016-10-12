@@ -22,7 +22,7 @@ export default function(method, params, callback) {
     .send({
       jsonrpc: '2.0',
       method: method,
-      id: 1,
+      id: 'Arnold',
       params
     })
     .end((err, res) => {

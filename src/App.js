@@ -63,27 +63,22 @@ class App extends Component {
         }
       });
 
-    let results = {};
+    let results = {
+      movies: { name: 'Movies' },
+      tvShows: { name: 'TV Shows' },
+      albums: { name: 'Albums' }
+    };
 
     if(matchingMovies.length > 0) {
-      results['movies'] = {
-        name: 'Movies',
-        results: matchingMovies
-      };
+      results.movies.results = matchingMovies;
     }
 
     if(matchingTvShows.length > 0) {
-      results['tvShows'] = {
-        name: 'TV Shows',
-        results: matchingTvShows
-      };
+      results.tvShows.results = matchingTvShows;
     }
 
     if(matchingAlbums.length > 0) {
-      results['albums'] = {
-        name: 'Albums',
-        results: matchingAlbums
-      };
+      results.albums.results = matchingAlbums;
     }
 
     if(movies.length === 0) {

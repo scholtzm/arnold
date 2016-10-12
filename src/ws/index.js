@@ -31,6 +31,8 @@ export function connect() {
 }
 
 export function request(method, params, callback) {
+  logger('request', method);
+
   client.request(method, params, (error, ...args) => {
     if(error) {
       addNotification({

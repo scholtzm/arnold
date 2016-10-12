@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Grid, Container, Button, Header } from 'semantic-ui-react';
 
 import debug from '../../util/debug.js';
-import input from '../../ajax/input.js';
+// import input from '../../ajax/input.js';
+import input from '../../ws/input.js';
 import videoLibrary from '../../ajax/video-library.js';
 import audioLibrary from '../../ajax/audio-library.js';
 import player from '../../ajax/player.js';

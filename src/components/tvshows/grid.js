@@ -79,7 +79,7 @@ class TvShowGrid extends Component {
       return <LoaderSegment />;
     }
 
-    if(!this.state.loading && this.state.lastFetchFailed === true) {
+    if(!this.state.loading && this.state.lastFetchFailed === true && this.state.tvShows.length === 0) {
       return <ReloadSegment message='Failed to load TV shows' onClick={this._onReload.bind(this)} />
     }
 

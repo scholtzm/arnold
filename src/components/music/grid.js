@@ -79,7 +79,7 @@ class AlbumGrid extends Component {
       return <LoaderSegment />;
     }
 
-    if(!this.state.loading && this.state.lastFetchFailed === true) {
+    if(!this.state.loading && this.state.lastFetchFailed === true && this.state.albums.length === 0) {
       return <ReloadSegment message='Failed to load albums' onClick={this._onReload.bind(this)} />
     }
 

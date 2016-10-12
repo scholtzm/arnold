@@ -79,7 +79,7 @@ class MovieGrid extends Component {
       return <LoaderSegment />;
     }
 
-    if(!this.state.loading && this.state.lastFetchFailed === true) {
+    if(!this.state.loading && this.state.lastFetchFailed === true && this.state.movies.length === 0) {
       return <ReloadSegment message='Failed to load movies' onClick={this._onReload.bind(this)} />
     }
 

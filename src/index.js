@@ -9,8 +9,9 @@ import Music from './components/music';
 import Settings from './components/settings';
 import Notifications from './components/misc/notifications.js';
 import SettingsStore from './stores/settings-store.js';
-import { init } from './ajax/';
-// import { connect } from './ws/';
+// import { init } from './ajax/';
+import { connect } from './ws/';
+import { init } from './ws/flux-listeners.js';
 import { checkUpdate } from './util/updater.js';
 
 import 'semantic-ui-css/semantic.css';
@@ -18,10 +19,12 @@ import 'semantic-ui-css/semantic.css';
 const settings = SettingsStore.get();
 
 // Initialize AJAX data services
-init();
+// init();
 
 // Connect via websockets
-// connect();
+connect();
+
+init();
 
 // Check for updates
 if(settings.checkForUpdatesOnInitialLoad) {

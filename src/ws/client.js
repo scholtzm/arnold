@@ -25,7 +25,6 @@ class SocketClient extends EventEmitter {
 
     this._webSocket.onclose = (event) => {
       this.emit('close', event);
-      this._webSocket = null;
       this._isOpen = false;
     };
 
@@ -66,7 +65,8 @@ class SocketClient extends EventEmitter {
 
   request(method, params, callback) {
     if(!this._isOpen) {
-      callback(new Error('Socket connection is closed.'));
+      // NOTE: This callback is called `asynchronously`.
+      setTimeout(() => callback(new Error('Socket connection is closed.')), 0);
       return;
     }
 
