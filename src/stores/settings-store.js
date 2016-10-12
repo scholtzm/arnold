@@ -10,7 +10,7 @@ const LOCALSTORAGE_KEY = 'settings';
 const logger = debug('store:settings');
 
 const _defaultSettings = {
-  checkForUpdatesOnInitialState: true,
+  checkForUpdatesOnInitialLoad: true,
   ipAddress: location.hostname,
   ajaxPort: 8080,
   webSocketPort: 9090,

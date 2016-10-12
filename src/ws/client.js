@@ -25,6 +25,7 @@ class SocketClient extends EventEmitter {
 
     this._webSocket.onclose = (event) => {
       this.emit('close', event);
+      this._webSocket = null;
       this._isOpen = false;
     };
 

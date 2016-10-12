@@ -27,7 +27,7 @@ class SettingsForm extends Component {
         <Form onSubmit={this._handleSubmit.bind(this)}>
           <Segment>
             <Header size='medium'>General</Header>
-            <Form.Checkbox label='Check for updates on initial load' name='checkForUpdatesOnInitialState' defaultChecked={this.state.settings.checkForUpdatesOnInitialState} />
+            <Form.Checkbox label='Check for updates on initial load' name='checkForUpdatesOnInitialLoad' defaultChecked={this.state.settings.checkForUpdatesOnInitialLoad} />
           </Segment>
           <Segment>
             <Header size='medium'>Connection</Header>

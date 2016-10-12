@@ -10,7 +10,7 @@ import Settings from './components/settings';
 import Notifications from './components/misc/notifications.js';
 import SettingsStore from './stores/settings-store.js';
 import { init } from './ajax/';
-import { connect } from './ws/';
+// import { connect } from './ws/';
 import { checkUpdate } from './util/updater.js';
 
 import 'semantic-ui-css/semantic.css';
@@ -21,10 +21,10 @@ const settings = SettingsStore.get();
 init();
 
 // Connect via websockets
-connect();
+// connect();
 
 // Check for updates
-if(settings.checkForUpdatesOnInitialState) {
+if(settings.checkForUpdatesOnInitialLoad) {
   checkUpdate();
 }
 
