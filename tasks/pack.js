@@ -10,7 +10,7 @@ const packageName = `${packageJson.name}-v${packageJson.version}.zip`;
 
 const sources = [
   'build/**/*',
-  'addon/**/*'
+  '!build/**/*.map'
 ];
 
 const packageFolder = 'package';
