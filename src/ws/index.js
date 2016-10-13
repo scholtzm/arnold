@@ -11,6 +11,12 @@ let ip, port;
 export function connect() {
   logger('connect', client);
 
+  if(client) {
+    client.close();
+    client = null;
+    return;
+  }
+
   client = new SocketClient();
 
   client.on('open', event => {
@@ -34,6 +40,8 @@ export function connect() {
     });
 
     client = null;
+
+    setTimeout(() => connect(), 5000);
   });
 
   client.on('error', event => {
@@ -76,9 +84,8 @@ function setup(reconnect) {
   ip = settings.ipAddress;
   port = settings.webSocketPort;
 
-  if(reconnect) {
+  if(reconnect && client) {
     client.close();
-    setTimeout(() => connect(), 2000);
   }
 }
 

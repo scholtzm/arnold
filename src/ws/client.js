@@ -7,6 +7,7 @@ class SocketClient extends EventEmitter {
 
     this._webSocket = null;
     this._isOpen = null;
+    this._postponedRequests = [];
   }
 
   connect(address, port) {
@@ -16,6 +17,8 @@ class SocketClient extends EventEmitter {
     this._webSocket.onopen = (event) => {
       this.emit('open', event)
       this._isOpen = true;
+
+      this._processPostponedRequests();
     };
 
     this._webSocket.onerror = (event) => {
@@ -65,14 +68,32 @@ class SocketClient extends EventEmitter {
 
   request(method, params, callback) {
     if(!this._isOpen) {
-      // NOTE: This callback is called `asynchronously`.
-      setTimeout(() => callback(new Error('Socket connection is closed.')), 0);
+      this._postponeRequest(method, params, callback);
       return;
     }
 
     const id = uuid();
     this.send(method, params, id);
     this.once(`request:${id}`, callback);
+  }
+
+  _postponeRequest(method, params, callback) {
+    this._postponedRequests.push({
+      method,
+      params,
+      callback
+    });
+  }
+
+  _processPostponedRequests() {
+    let postponedRequest = this._postponedRequests.shift();
+
+    while(postponedRequest !== undefined) {
+      const { method, params, callback } = postponedRequest;
+      this.request(method, params, callback);
+
+      postponedRequest = this._postponedRequests.shift();
+    }
   }
 }
 
