@@ -13,7 +13,7 @@ import { setAlbums, getAlbumsError } from '../actions/album-actions.js';
 import { setSongs } from '../actions/song-actions.js';
 import audioLibrary from './audio-library.js';
 
-import defaultAlbumCover from '../static/image/default-album-cover.png';
+import defaultAlbumCover from '../static/image/default-album-cover.svg';
 
 function initVideoLibrary() {
   Dispatcher.register(function(action) {

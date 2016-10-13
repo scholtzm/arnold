@@ -33,8 +33,8 @@ class SettingsForm extends Component {
             <Header size='medium'>Connection</Header>
             <Form.Input label='Kodi IP Address' name='ipAddress' defaultValue={this.state.settings.ipAddress} />
             <Form.Group widths='equal'>
-              <Form.Input label='AJAX Port' name='ajaxPort' type='number' defaultValue={this.state.settings.ajaxPort} />
               <Form.Input label='WebSocket Port' name='webSocketPort' type='number' defaultValue={this.state.settings.webSocketPort} />
+              <Form.Input label='AJAX Port' name='ajaxPort' type='number' defaultValue={this.state.settings.ajaxPort} />
             </Form.Group>
           </Segment>
           <Segment>

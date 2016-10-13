@@ -4,23 +4,46 @@ import SocketClient from './client.js';
 import { addNotification } from '../actions/notification-actions.js';
 
 const logger = debug('socket:client');
-const client = new SocketClient();
+let client;
 
 let ip, port;
 
 export function connect() {
   logger('connect', client);
 
+  client = new SocketClient();
+
   client.on('open', event => {
     logger('open', event);
+
+    addNotification({
+      title: 'WebSocket Client',
+      message: 'WebSocket client has connected to Kodi.',
+      level: 'info',
+      autoDismiss: 3
+    });
   });
 
   client.on('close', event => {
     logger('close', event);
+
+    addNotification({
+      title: 'WebSocket Client',
+      message: 'WebSocket client connection has been closed.',
+      level: 'warning'
+    });
+
+    client = null;
   });
 
   client.on('error', event => {
     logger('error', event);
+
+    addNotification({
+      title: 'WebSocket Client',
+      message: 'WebSocket client received error.',
+      level: 'error'
+    });
   });
 
   client.on('message', event => {
