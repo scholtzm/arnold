@@ -11,9 +11,9 @@ function callPlayerMethod(method, extraParams, callback) {
       return;
     }
 
-    const firstPlayer = res.body.result[0];
+    const firstPlayer = res.result[0];
     if(!firstPlayer) {
-      callback(new Error('No player is available.'));
+      callback(new Error('No active player is available.'));
       return;
     }
 

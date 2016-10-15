@@ -14,6 +14,14 @@ class ActionButton extends Component {
 
     let args = asyncActionArguments || [];
     args.push((err, res) => {
+      if(err) {
+        addNotification({
+          title: 'Unable to complete action',
+          message: err.message,
+          level: 'warning'
+        });
+      }
+
       this.setState({ loading: false });
     });
 
