@@ -1,4 +1,9 @@
 language: node_js
 node_js:
   - '6'
-script: npm run make
+cache:
+  directories:
+    - node_modules
+script:
+  - npm test
+  - npm run make

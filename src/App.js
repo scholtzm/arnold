@@ -16,7 +16,7 @@ class App extends Component {
     super(...args);
 
     this.state = {
-      activeItem: this.props.location.pathname,
+      activeItem: this.props.location.pathname.replace('/', ''),
       searchTerm: '',
       results: []
     };
@@ -121,11 +121,11 @@ class App extends Component {
             <img src={icon} alt='Arnold' />
             <Label as='a' href={releaseUrl} target='_blank' content={`v${version}`} color='green' />
           </Menu.Item>
-          <Menu.Item as={Link} to='/remote' name='/remote' content='Remote' active={activeItem === '/remote'} onClick={this.onItemClick} />
-          <Menu.Item as={Link} to='/movies' name='/movies' content='Movies' active={activeItem === '/movies'} onClick={this.onItemClick} />
-          <Menu.Item as={Link} to='/tvshows' name='/tvshows' content='TV Shows' active={activeItem === '/tvshows'} onClick={this.onItemClick} />
-          <Menu.Item as={Link} to='/music' name='/music' content='Music' active={activeItem === '/music'} onClick={this.onItemClick} />
-          <Menu.Item as={Link} to='/settings' name='/settings' content='Settings' active={activeItem === '/settings'} onClick={this.onItemClick} />
+          <Menu.Item as={Link} to='remote' name='remote' content='Remote' active={activeItem === 'remote'} onClick={this.onItemClick} />
+          <Menu.Item as={Link} to='movies' name='movies' content='Movies' active={activeItem === 'movies'} onClick={this.onItemClick} />
+          <Menu.Item as={Link} to='tvshows' name='tvshows' content='TV Shows' active={activeItem === 'tvshows'} onClick={this.onItemClick} />
+          <Menu.Item as={Link} to='music' name='music' content='Music' active={activeItem === 'music'} onClick={this.onItemClick} />
+          <Menu.Item as={Link} to='settings' name='settings' content='Settings' active={activeItem === 'settings'} onClick={this.onItemClick} />
           <Menu.Menu position='right'>
             <Menu.Item>
               <Search
