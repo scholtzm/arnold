@@ -1,63 +1,14 @@
 import React, { Component } from 'react';
 import { Grid, Container, Button, Header } from 'semantic-ui-react';
 
-import debug from '../../util/debug.js';
-// import input from '../../ajax/input.js';
+import ActionButton from '../../components/misc/action-button.js';
 import input from '../../ws/input.js';
-import videoLibrary from '../../ajax/video-library.js';
-import audioLibrary from '../../ajax/audio-library.js';
-import player from '../../ajax/player.js';
-import application from '../../ajax/application.js';
-
-const logger = debug('component:controls');
+import videoLibrary from '../../ws/video-library.js';
+import audioLibrary from '../../ws/audio-library.js';
+import player from '../../ws/player.js';
+import application from '../../ws/application.js';
 
 class Controls extends Component {
-
-  _callInput(inputMethod) {
-    input[inputMethod]((err, res) => {
-      if(err) {
-        logger(err, res);
-      }
-    });
-  }
-
-  _callVideoLibrary(methodName) {
-    videoLibrary[methodName]((err, res) => {
-      if(err) {
-        logger(err, res);
-      }
-    });
-  }
-
-  _callAudioLibrary(methodName) {
-    audioLibrary[methodName]((err, res) => {
-      if(err) {
-        logger(err, res);
-      }
-    });
-  }
-
-  _callPlayer(methodName) {
-    player[methodName]((err, res) => {
-      if(err) {
-        logger(err, res);
-      }
-    });
-  }
-
-  _callApplication(methodName, param = null) {
-    const cb = (err, res) => {
-      if(err) {
-        logger(err, res);
-      }
-    }
-
-    if(param) {
-      application[methodName](param, cb);
-    } else {
-      application[methodName](cb);
-    }
-  }
 
   render() {
     return (
@@ -65,48 +16,48 @@ class Controls extends Component {
         <Grid>
           <Grid.Row columns={3} textAlign='center'>
             <Grid.Column>
-              <div><Button icon='arrow up' onClick={() => this._callInput('up')} /></div>
+              <div><ActionButton icon='arrow up' asyncAction={input.up} /></div>
               <div style={{margin: '5px 0'}}>
-                <Button icon='arrow left' onClick={() => this._callInput('left')} />
-                <Button icon='selected radio' color='green' onClick={() => this._callInput('select')} />
-                <Button icon='arrow right' onClick={() => this._callInput('right')} />
+                <ActionButton icon='arrow left' asyncAction={input.left} />
+                <ActionButton icon='selected radio' color='green' asyncAction={input.select} />
+                <ActionButton icon='arrow right' asyncAction={input.right} />
               </div>
-              <div><Button icon='arrow down' onClick={() => this._callInput('down')} /></div>
+              <div><ActionButton icon='arrow down' asyncAction={input.down} /></div>
               <div style={{paddingTop: '10px'}}>
-                <Button content='Home' onClick={() => this._callInput('home')} />
+                <ActionButton content='Home' asyncAction={input.home} />
                 {' '}
-                <Button content='Back' onClick={() => this._callInput('back')} />
+                <ActionButton content='Back' asyncAction={input.back} />
               </div>
             </Grid.Column>
             <Grid.Column>
               <Header as='h5'>Playback</Header>
               <div style={{paddingTop: '5px'}}>
                 <Button.Group color='blue'>
-                  <Button icon='play' onClick={() => this._callPlayer('playPause')} />
-                  <Button icon='pause' onClick={() => this._callPlayer('playPause')} />
-                  <Button icon='stop' onClick={() => this._callPlayer('stop')} />
+                  <ActionButton icon='play' asyncAction={player.playPause} />
+                  <ActionButton icon='pause' asyncAction={player.playPause} />
+                  <ActionButton icon='stop' asyncAction={player.stop} />
                 </Button.Group>
               </div>
               <div style={{paddingTop: '5px'}}>
                 <Button.Group basic>
-                  <Button icon='volume down' onClick={() => this._callApplication('setVolume', 'decrement')} />
-                  <Button icon='volume off' onClick={() => this._callApplication('setMute')} />
-                  <Button icon='volume up' onClick={() => this._callApplication('setVolume', 'increment')} />
+                  <ActionButton icon='volume down' asyncAction={application.setVolume} asyncActionArguments={['decrement']} />
+                  <ActionButton icon='volume off' asyncAction={application.setMute} />
+                  <ActionButton icon='volume up' asyncAction={application.setVolume} asyncActionArguments={['increment']} />
                 </Button.Group>
               </div>
             </Grid.Column>
             <Grid.Column>
               <Header as='h5'>Video Library</Header>
               <div style={{paddingTop: '5px'}}>
-                <Button content='Scan' onClick={() => this._callVideoLibrary('scan')} />
+                <ActionButton content='Scan' asyncAction={videoLibrary.scan} />
                 {' '}
-                <Button content='Clean' onClick={() => this._callVideoLibrary('clean')} />
+                <ActionButton content='Clean' asyncAction={videoLibrary.clean} />
               </div>
               <Header as='h5'>Audio Library</Header>
               <div style={{paddingTop: '5px'}}>
-                <Button content='Scan' onClick={() => this._callAudioLibrary('scan')} />
+                <ActionButton content='Scan' asyncAction={audioLibrary.scan} />
                 {' '}
-                <Button content='Clean' onClick={() => this._callAudioLibrary('clean')} />
+                <ActionButton content='Clean' asyncAction={audioLibrary.clean} />
               </div>
             </Grid.Column>
           </Grid.Row>
