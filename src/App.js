@@ -38,6 +38,14 @@ class App extends Component {
     const tvShows = TvShowStore.get().tvShows;
     const albums = AlbumStore.get().albums;
 
+    const emptyResult = [{ title: 'No results.' }];
+
+    let results = {
+      movies: { name: 'Movies', results: emptyResult },
+      tvShows: { name: 'TV Shows', results: emptyResult },
+      albums: { name: 'Albums', results: emptyResult }
+    };
+
     const matchingMovies = movies
       .filter(movie => movie.originaltitle.toLowerCase().includes(value.toLowerCase()))
       .map(movie => {
@@ -68,12 +76,6 @@ class App extends Component {
         }
       });
 
-    let results = {
-      movies: { name: 'Movies' },
-      tvShows: { name: 'TV Shows' },
-      albums: { name: 'Albums' }
-    };
-
     if(matchingMovies.length > 0) {
       results.movies.results = matchingMovies;
     }
@@ -89,8 +91,7 @@ class App extends Component {
     if(movies.length === 0) {
       results.movies.results = [
         {
-          title: 'Info',
-          description: 'You have no movies in your library or Arnold\'s movie catalogue has not been populated yet.'
+          title: 'You have no movies in your library or Arnold\'s movie catalogue has not been populated yet.'
         }
       ];
     }
@@ -98,8 +99,7 @@ class App extends Component {
     if(tvShows.length === 0) {
       results.tvShows.results = [
         {
-          title: 'Info',
-          description: 'You have no TV shows in your library or Arnold\'s TV show catalogue has not been populated yet.'
+          title: 'You have no TV shows in your library or Arnold\'s TV show catalogue has not been populated yet.'
         }
       ];
     }
@@ -107,8 +107,7 @@ class App extends Component {
     if(albums.length === 0) {
       results.albums.results = [
         {
-          title: 'Info',
-          description: 'You have no albums in your library or Arnold\'s album catalogue has not been populated yet.'
+          title: 'You have no albums in your library or Arnold\'s album catalogue has not been populated yet.'
         }
       ];
     }
