@@ -15,8 +15,13 @@ class App extends Component {
   constructor(...args) {
     super(...args);
 
+    const pathname = this.props.location.pathname.replace('/', '');
+    const activeItem = pathname === ''
+      ? 'movies'
+      : pathname;
+
     this.state = {
-      activeItem: this.props.location.pathname.replace('/', ''),
+      activeItem,
       searchTerm: '',
       results: []
     };
