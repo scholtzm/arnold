@@ -4,8 +4,19 @@ import BasicHeader from '../misc/basic-header.js';
 import BasicContainer from '../misc/basic-container.js';
 import SettingsForm from './settings-form.js';
 import { checkUpdate } from '../../util/updater.js';
+import { addNotification } from '../../actions/notification-actions.js';
 
 class Settings extends Component {
+  _clearStorage() {
+    localStorage.clear();
+
+    addNotification({
+      title: 'Local Storage',
+      message: 'Local storage has been cleared.',
+      level: 'info'
+    });
+  }
+
   render() {
     return (
       <BasicContainer>
@@ -16,7 +27,7 @@ class Settings extends Component {
             </Grid.Column>
             <Grid.Column textAlign='right'>
               <Button basic color='green' onClick={() => checkUpdate(true)}>Check for updates</Button>
-              <Button basic color='blue' onClick={() => localStorage.clear()}>Clear local storage</Button>
+              <Button basic color='blue' onClick={this._clearStorage}>Clear local storage</Button>
             </Grid.Column>
           </Grid.Row>
           <Grid.Row columns={1}>

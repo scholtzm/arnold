@@ -1,4 +1,3 @@
-import request from 'superagent';
 import debug from '../util/debug.js';
 import SettingsStore from '../stores/settings-store.js';
 import { addNotification } from '../actions/notification-actions.js';
@@ -16,26 +15,34 @@ SettingsStore.addChangeListener(setBaseUrl);
 setBaseUrl();
 
 export default function(method, params, callback) {
-  request
-    .post(baseUrl)
-    .query(method)
-    .send({
-      jsonrpc: '2.0',
-      method: method,
-      id: 'Arnold',
-      params
-    })
-    .end((err, res) => {
-      logger(err, res);
+  fetch(`${baseUrl}?${method}`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      mode: 'cors',
+      body: JSON.stringify({
+        jsonrpc: '2.0',
+        id: 'Arnold',
+        method,
+        params
+      })
+    }).then(function(response) {
+      return response.json()
+    }).then(function(json) {
+      logger('success', json);
 
-      if(err) {
-        addNotification({
-          title: 'AJAX Request',
-          message: 'AJAX request has failed.',
-          level: 'error'
-        });
-      }
+      callback(null, json);
+    }).catch(function(err) {
+      logger('error', err);
 
-      callback(err, res);
+      addNotification({
+        title: 'AJAX Request',
+        message: 'AJAX request has failed.',
+        level: 'error'
+      });
+
+      callback(err);
     });
 };

@@ -8,7 +8,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/scholtzm/arnold"
+    "url": "https://github.com/scholtzm/arnold",
+    "updateUrl": "https://api.github.com/repos/scholtzm/arnold/releases"
   },
   "license": "MIT",
   "private": true,
@@ -35,8 +36,7 @@
     "semantic-ui-css": "^2.2.4",
     "semantic-ui-react": "^0.56.1",
     "semver": "^5.3.0",
-    "shortid": "^2.2.6",
-    "superagent": "^2.3.0"
+    "shortid": "^2.2.6"
   },
   "devDependencies": {
     "del": "^2.2.2",

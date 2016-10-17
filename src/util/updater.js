@@ -1,61 +1,71 @@
 import React from 'react';
-import request from 'superagent';
 import semver from 'semver';
 import { Button } from 'semantic-ui-react';
-import { Link } from 'react-router';
 
 import debug from '../util/debug.js';
-import packageJson from '../../package.json';
 import { addNotification } from '../actions/notification-actions.js';
+import pkg from '../../package.json';
 
-const UPDATE_URL = 'https://api.github.com/repos/scholtzm/arnold/releases';
-const RELEASE_PAGE = 'https://github.com/scholtzm/arnold/releases';
 const logger = debug('util:updater');
 
 export function checkUpdate(notifyOnAllActions = false) {
-  request
-    .get(UPDATE_URL)
-    .end((err, res) => {
-      if(err) {
-        logger(err, res);
+  fetch(pkg.repository.updateUrl)
+    .then(response => {
+      if(response.status !== 200) {
+        const err = new Error('Invalid response');
+        err.response = response;
 
-        if(notifyOnAllActions) {
-          addNotification({
-            title: 'Failed to check for updates',
-            message: `${res.status} ${res.statusText}`,
-            level: 'error'
-          });
-        }
+        throw err;
+      }
 
+      return response.json();
+    })
+    .then(json => {
+      logger('success', json);
+
+      if(json.length === 0) {
         return;
       }
 
-      if(res.body.length === 0) {
-        return;
-      }
+      const latestVersion = semver.clean(json[0].tag_name);
 
-      const latestVersion = semver.clean(res.body[0].tag_name);
-
-      if(semver.lt(packageJson.version, latestVersion)) {
+      if(semver.lt(pkg.version, latestVersion)) {
         addNotification({
           title: 'Update available',
           message: 'New Arnold update is available!',
           level: 'success',
           autoDismiss: 0,
           children: (
-            <Button as={Link} href={RELEASE_PAGE} target='_blank' color='green' content='Download' style={{marginTop: '5px'}} />
+            <Button as='a' href={json[0].html_url} target='_blank' color='green' content='Download' style={{marginTop: '5px'}} />
           )
         });
       }
 
       if(notifyOnAllActions) {
-        if(semver.eq(packageJson.version, latestVersion)) {
+        if(semver.eq(pkg.version, latestVersion)) {
           addNotification({
             title: 'All good!',
             message: 'You are running the latest version.',
             level: 'info'
           });
         }
+      }
+
+    })
+    .catch(err => {
+      logger('error', err);
+
+      let message = err.message;
+      if(err.response) {
+        message = `${err.response.status} ${err.response.statusText}`
+      }
+
+      if(notifyOnAllActions) {
+        addNotification({
+          title: 'Failed to check for updates',
+          message,
+          level: 'error'
+        });
       }
     });
 }
