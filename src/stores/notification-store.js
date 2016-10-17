@@ -1,41 +1,50 @@
 import Dispatcher from '../dispatcher/';
 import Constants from '../constants';
 import { EventEmitter } from 'events';
-import assign from 'object-assign';
 
 const CHANGE_EVENT = 'change';
 
-let notifications = [];
+class NotificationStore extends EventEmitter {
 
-let NotificationStore = assign({}, EventEmitter.prototype, {
+  constructor() {
+    super();
 
-  emitChange: function() {
-    this.emit(CHANGE_EVENT);
-  },
-
-  addChangeListener: function(callback) {
-    this.on(CHANGE_EVENT, callback);
-  },
-
-  removeChangeListener: function(callback) {
-    this.removeListener(CHANGE_EVENT, callback);
-  },
-
-  getAll: function() {
-    return notifications;
-  },
-
-  getLast: function() {
-    return notifications[notifications.length - 1];
+    this.notifications = [];
   }
 
-});
+  emitChange() {
+    this.emit(CHANGE_EVENT);
+  }
+
+  addChangeListener(callback) {
+    this.on(CHANGE_EVENT, callback);
+  }
+
+  removeChangeListener(callback) {
+    this.removeListener(CHANGE_EVENT, callback);
+  }
+
+  getAll() {
+    return this.notifications;
+  }
+
+  getLast() {
+    return this.notifications[this.notifications.length - 1];
+  }
+
+  addNotification(notification) {
+    this.notifications.push(notification);
+    this.emitChange();
+  }
+
+};
+
+const notificationStore = new NotificationStore();
 
 NotificationStore.dispatchToken = Dispatcher.register(function(action) {
   switch(action.type) {
     case Constants.NotificationActions.ADD_NOTIFICATION:
-      notifications.push(action.notification);
-      NotificationStore.emitChange();
+      notificationStore.addNotification(action.notification);
       break;
 
     default:
@@ -43,4 +52,4 @@ NotificationStore.dispatchToken = Dispatcher.register(function(action) {
   }
 });
 
-export default NotificationStore;
+export default notificationStore;

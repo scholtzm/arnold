@@ -1,5 +1,4 @@
 import { EventEmitter } from 'events';
-import assign from 'object-assign';
 
 import debug from '../util/debug.js';
 import Dispatcher from '../dispatcher/';
@@ -10,50 +9,64 @@ const CHANGE_EVENT = 'change';
 const LOCAL_STORAGE_KEY = 'TvShowStore';
 const logger = debug('store:tvshows');
 
-let state = {
-  tvShows: [],
-  lastFetchFailed: false
-}
+class TvShowStore extends EventEmitter {
 
-const oldState = storage.get(LOCAL_STORAGE_KEY);
-if(oldState !== null) {
-  state = oldState;
-}
+  constructor() {
+    super();
 
-let TvShowStore = assign({}, EventEmitter.prototype, {
+    this.state = {
+      tvShows: [],
+      lastFetchFailed: false
+    };
 
-  emitChange: function() {
-    storage.set(LOCAL_STORAGE_KEY, state);
-    this.emit(CHANGE_EVENT);
-  },
-
-  addChangeListener: function(callback) {
-    logger('addChangeListener');
-    this.on(CHANGE_EVENT, callback);
-  },
-
-  removeChangeListener: function(callback) {
-    logger('removeChangeListener');
-    this.removeListener(CHANGE_EVENT, callback);
-  },
-
-  get: function() {
-    return state;
+    const oldState = storage.get(LOCAL_STORAGE_KEY);
+    if(oldState !== null) {
+      this.state = oldState;
+    }
   }
 
-});
+  emitChange() {
+    storage.set(LOCAL_STORAGE_KEY, this.state);
+    this.emit(CHANGE_EVENT);
+  }
+
+  addChangeListener(callback) {
+    logger('addChangeListener');
+    this.on(CHANGE_EVENT, callback);
+  }
+
+  removeChangeListener(callback) {
+    logger('removeChangeListener');
+    this.removeListener(CHANGE_EVENT, callback);
+  }
+
+  get() {
+    return this.state;
+  }
+
+  setTvShows(tvShows) {
+    this.state.lastFetchFailed = false;
+    this.state.tvShows = tvShows;
+    this.emitChange();
+  }
+
+  setLastFetchFailed(value) {
+    this.state.lastFetchFailed = value;
+    this.emitChange();
+  }
+
+};
+
+const tvShowStore = new TvShowStore();
 
 TvShowStore.dispatchToken = Dispatcher.register(function(action) {
   switch(action.type) {
     case Constants.TvShowActions.SET_TVSHOWS:
-      state.lastFetchFailed = false;
-      state.tvShows = action.tvShows;
-      TvShowStore.emitChange();
+      tvShowStore.setTvShows(action.tvShows);
       break;
 
     case Constants.TvShowActions.GET_TVSHOWS_ERROR:
-      state.lastFetchFailed = true;
-      TvShowStore.emitChange();
+      tvShowStore.setLastFetchFailed(true);
       break;
 
     default:
@@ -61,4 +74,4 @@ TvShowStore.dispatchToken = Dispatcher.register(function(action) {
   }
 });
 
-export default TvShowStore;
+export default tvShowStore;

@@ -1,5 +1,4 @@
 import { EventEmitter } from 'events';
-import assign from 'object-assign';
 
 import debug from '../util/debug.js';
 import Dispatcher from '../dispatcher/';
@@ -10,52 +9,58 @@ const CHANGE_EVENT = 'change';
 const LOCAL_STORAGE_KEY = 'SongStore';
 const logger = debug('store:songs');
 
-let state = {
-  songs: {}
-}
+class SongStore extends EventEmitter {
 
-const oldState = storage.get(LOCAL_STORAGE_KEY);
-if(oldState !== null) {
-  state = oldState;
-}
+  constructor() {
+    super();
 
-function addSongs(songs) {
-  const albumid = songs[0].albumid;
-  state.songs[albumid] = songs;
-}
+    this.state = {
+      songs: {}
+    };
 
-let SongStore = assign({}, EventEmitter.prototype, {
-
-  emitChange: function() {
-    storage.set(LOCAL_STORAGE_KEY, state);
-    this.emit(CHANGE_EVENT);
-  },
-
-  addChangeListener: function(callback) {
-    logger('addChangeListener');
-    this.on(CHANGE_EVENT, callback);
-  },
-
-  removeChangeListener: function(callback) {
-    logger('removeChangeListener');
-    this.removeListener(CHANGE_EVENT, callback);
-  },
-
-  get: function() {
-    return state;
-  },
-
-  getBy: function(albumid) {
-    return state.songs[albumid] || [];
+    const oldState = storage.get(LOCAL_STORAGE_KEY);
+    if(oldState !== null) {
+      this.state = oldState;
+    }
   }
 
-});
+  emitChange() {
+    storage.set(LOCAL_STORAGE_KEY, this.state);
+    this.emit(CHANGE_EVENT);
+  }
+
+  addChangeListener(callback) {
+    logger('addChangeListener');
+    this.on(CHANGE_EVENT, callback);
+  }
+
+  removeChangeListener(callback) {
+    logger('removeChangeListener');
+    this.removeListener(CHANGE_EVENT, callback);
+  }
+
+  get() {
+    return this.state;
+  }
+
+  getBy(albumid) {
+    return this.state.songs[albumid] || [];
+  }
+
+  addSongs(songs) {
+    const albumid = songs[0].albumid;
+    this.state.songs[albumid] = songs;
+  }
+
+};
+
+const songStore = new SongStore();
 
 SongStore.dispatchToken = Dispatcher.register(function(action) {
   switch(action.type) {
     case Constants.SongActions.SET_SONGS:
-      addSongs(action.songs);
-      SongStore.emitChange();
+      songStore.addSongs(action.songs);
+      songStore.emitChange();
       break;
 
     default:
@@ -63,4 +68,4 @@ SongStore.dispatchToken = Dispatcher.register(function(action) {
   }
 });
 
-export default SongStore;
+export default songStore;

@@ -1,5 +1,4 @@
 import { EventEmitter } from 'events';
-import assign from 'object-assign';
 
 import debug from '../util/debug.js';
 import Dispatcher from '../dispatcher/';
@@ -10,50 +9,64 @@ const CHANGE_EVENT = 'change';
 const LOCAL_STORAGE_KEY = 'AlbumStore';
 const logger = debug('store:albums');
 
-let state = {
-  albums: [],
-  lastFetchFailed: false
-}
+class AlbumStore extends EventEmitter {
 
-const oldState = storage.get(LOCAL_STORAGE_KEY);
-if(oldState !== null) {
-  state = oldState;
-}
+  constructor() {
+    super();
 
-let AlbumStore = assign({}, EventEmitter.prototype, {
+    this.state = {
+      albums: [],
+      lastFetchFailed: false
+    };
 
-  emitChange: function() {
-    storage.set(LOCAL_STORAGE_KEY, state);
-    this.emit(CHANGE_EVENT);
-  },
-
-  addChangeListener: function(callback) {
-    logger('addChangeListener');
-    this.on(CHANGE_EVENT, callback);
-  },
-
-  removeChangeListener: function(callback) {
-    logger('removeChangeListener');
-    this.removeListener(CHANGE_EVENT, callback);
-  },
-
-  get: function() {
-    return state;
+    const oldState = storage.get(LOCAL_STORAGE_KEY);
+    if(oldState !== null) {
+      this.state = oldState;
+    }
   }
 
-});
+  emitChange() {
+    storage.set(LOCAL_STORAGE_KEY, this.state);
+    this.emit(CHANGE_EVENT);
+  }
+
+  addChangeListener(callback) {
+    logger('addChangeListener');
+    this.on(CHANGE_EVENT, callback);
+  }
+
+  removeChangeListener(callback) {
+    logger('removeChangeListener');
+    this.removeListener(CHANGE_EVENT, callback);
+  }
+
+  get() {
+    return this.state;
+  }
+
+  setAlbums(albums) {
+    this.state.lastFetchFailed = false;
+    this.state.albums = albums;
+    this.emitChange();
+  }
+
+  setLastFetchFailed(value) {
+    this.state.lastFetchFailed = value;
+    this.emitChange();
+  }
+
+};
+
+const albumStore = new AlbumStore();
 
 AlbumStore.dispatchToken = Dispatcher.register(function(action) {
   switch(action.type) {
     case Constants.AlbumActions.SET_ALBUMS:
-      state.lastFetchFailed = false;
-      state.albums = action.albums;
-      AlbumStore.emitChange();
+      albumStore.setAlbums(action.albums);
       break;
 
     case Constants.AlbumActions.GET_ALBUMS_ERROR:
-      state.lastFetchFailed = true;
-      AlbumStore.emitChange();
+      albumStore.setLastFetchFailed(true);
       break;
 
     default:
@@ -61,4 +74,4 @@ AlbumStore.dispatchToken = Dispatcher.register(function(action) {
   }
 });
 
-export default AlbumStore;
+export default albumStore;
