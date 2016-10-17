@@ -1,4 +1,4 @@
-import request from './request.js';
+import { request } from './base.js';
 
 function getAlbums(callback) {
   const params = {

@@ -12,17 +12,15 @@ import Settings from './components/settings';
 import Notifications from './components/misc/notifications.js';
 import SettingsStore from './stores/settings-store.js';
 
-import { connect } from './ws/';
-import { init as initWebSockets } from './ws/flux-listeners.js';
+import { init as initRpc } from './rpc/';
 import { checkUpdate } from './util/updater.js';
 
 import 'semantic-ui-css/semantic.css';
 
 const settings = SettingsStore.get();
 
-// Connect via websockets and init flux listeners
-connect();
-initWebSockets();
+// Init transport layer.
+initRpc(settings.transportLayer);
 
 // Check for updates
 if(settings.checkForUpdatesOnInitialLoad) {

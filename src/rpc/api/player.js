@@ -1,4 +1,4 @@
-import { request } from './';
+import { request } from './base.js';
 
 function getActivePlayers(callback) {
   request('Player.GetActivePlayers', {}, callback);

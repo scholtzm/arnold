@@ -1,5 +1,5 @@
 import { camelCase } from 'lodash';
-import { request } from './';
+import { request } from './base.js';
 
 const methods = [
   'Back',

@@ -1,6 +1,6 @@
-import debug from '../util/debug.js';
-import SettingsStore from '../stores/settings-store.js';
-import { addNotification } from '../actions/notification-actions.js';
+import debug from '../../util/debug.js';
+import SettingsStore from '../../stores/settings-store.js';
+import { addNotification } from '../../actions/notification-actions.js';
 
 const logger = debug('ajax:request');
 let baseUrl;
@@ -14,7 +14,7 @@ SettingsStore.addChangeListener(setBaseUrl);
 
 setBaseUrl();
 
-export default function(method, params, callback) {
+export function request(method, params, callback) {
   fetch(`${baseUrl}?${method}`, {
       method: 'POST',
       headers: {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button } from 'semantic-ui-react';
 
-import player from '../../ajax/player.js';
+import player from '../../rpc/api/player.js';
 import { addNotification } from '../../actions/notification-actions.js';
 
 class PlayEpisodeButton extends Component {

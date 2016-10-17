@@ -1,7 +1,7 @@
-import debug from '../util/debug.js';
-import SettingsStore from '../stores/settings-store.js';
-import SocketClient from './client.js';
-import { addNotification } from '../actions/notification-actions.js';
+import debug from '../../util/debug.js';
+import SettingsStore from '../../stores/settings-store.js';
+import SocketClient from './SocketClient.js';
+import { addNotification } from '../../actions/notification-actions.js';
 
 const logger = debug('socket:client');
 let client;

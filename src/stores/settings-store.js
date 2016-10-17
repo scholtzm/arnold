@@ -11,6 +11,7 @@ const logger = debug('store:settings');
 
 const _defaultSettings = {
   checkForUpdatesOnInitialLoad: true,
+  transportLayer: 'websocket',
   ipAddress: location.hostname,
   ajaxPort: 8080,
   webSocketPort: 9090,

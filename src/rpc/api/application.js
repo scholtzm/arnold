@@ -1,4 +1,4 @@
-import request from './request.js';
+import { request } from './base.js';
 
 // NOTE: `volume` can be 'decrement' or 'increment'
 function setVolume(volume, callback) {

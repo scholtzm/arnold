@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { Grid, Container, Button, Header } from 'semantic-ui-react';
 
 import ActionButton from '../../components/misc/action-button.js';
-import input from '../../ws/input.js';
-import videoLibrary from '../../ws/video-library.js';
-import audioLibrary from '../../ws/audio-library.js';
-import player from '../../ws/player.js';
-import application from '../../ws/application.js';
+import input from '../../rpc/api/input.js';
+import videoLibrary from '../../rpc/api/video-library.js';
+import audioLibrary from '../../rpc/api/audio-library.js';
+import player from '../../rpc/api/player.js';
+import application from '../../rpc/api/application.js';
 
 class Controls extends Component {
 

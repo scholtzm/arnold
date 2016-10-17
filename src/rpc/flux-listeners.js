@@ -7,11 +7,11 @@ import { setMovies, getMoviesError } from '../actions/movie-actions.js';
 import { setTvShows, getTvShowsError } from '../actions/tvshow-actions.js';
 import { setSeasons } from '../actions/season-actions.js';
 import { setEpisodes } from '../actions/episode-actions.js';
-import videoLibrary from './video-library.js';
+import videoLibrary from './api/video-library.js';
 
 import { setAlbums, getAlbumsError } from '../actions/album-actions.js';
 import { setSongs } from '../actions/song-actions.js';
-import audioLibrary from './audio-library.js';
+import audioLibrary from './api/audio-library.js';
 
 import defaultAlbumCover from '../static/image/default-album-cover.svg';
 
