@@ -7,10 +7,11 @@ Arnold is a generic Kodi web interface which aims to provide relevant informatio
 ## Features
 
 * Remotely control Kodi.
-* Browser your movies, TV shows and music.
+* Browse your movies, TV shows and music.
 * Search your entire library through a single search bar.
 * Track your progress and hide seen movies and episodes.
 * Automatic update notifications.
+* Supports multiple transport layers - WebSocket and AJAX.
 
 ## Installation
 

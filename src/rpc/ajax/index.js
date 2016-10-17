@@ -21,7 +21,6 @@ export function request(method, params, callback) {
         Accept: 'application/json',
         'Content-Type': 'application/json'
       },
-      mode: 'cors',
       body: JSON.stringify({
         jsonrpc: '2.0',
         id: 'Arnold',
