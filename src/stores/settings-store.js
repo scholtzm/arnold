@@ -1,13 +1,12 @@
-import Dispatcher from '../dispatcher/';
-import Constants from '../constants';
 import { EventEmitter } from 'events';
 import assign from 'object-assign';
-import debug from '../util/debug.js';
+
+import Dispatcher from '../dispatcher/';
+import Constants from '../constants';
+import storage from '../util/storage.js';
 
 const CHANGE_EVENT = 'change';
-const LOCALSTORAGE_KEY = 'settings';
-
-const logger = debug('store:settings');
+const LOCAL_STORAGE_KEY = 'SettingsStore';
 
 const _defaultSettings = {
   checkForUpdatesOnInitialLoad: true,
@@ -15,58 +14,52 @@ const _defaultSettings = {
   ipAddress: location.hostname,
   ajaxPort: 8080,
   webSocketPort: 9090,
-  itemsPerPage: 50,
   itemsPerRow: 10
 };
 
-let settings = assign({}, _defaultSettings);
+class SettingsStore extends EventEmitter {
 
-if(localStorage[LOCALSTORAGE_KEY]) {
-  const storedSettingsString = localStorage[LOCALSTORAGE_KEY];
+  constructor() {
+    super();
 
-  try {
-    const storedSettings = JSON.parse(storedSettingsString);
+    this.settings = assign({}, _defaultSettings);
 
-    if(typeof storedSettings === 'object') {
-      settings = assign({}, settings, storedSettings);
+    const storedSettings = storage.get(LOCAL_STORAGE_KEY);
+    if(storedSettings !== null) {
+      this.settings = assign({}, this.settings, storedSettings);
     }
-  } catch(e) {
-    logger('Failed to load settings from localStorage, using defaults', e);
   }
-} else {
-  logger('No record found in localStorage. Using default settings.');
-}
 
-function setSettings(newSettings) {
-  settings = assign({}, settings, newSettings);
-  localStorage[LOCALSTORAGE_KEY] = JSON.stringify(settings);
-}
-
-let SettingsStore = assign({}, EventEmitter.prototype, {
-
-  emitChange: function() {
+  emitChange() {
     this.emit(CHANGE_EVENT);
-  },
-
-  addChangeListener: function(callback) {
-    this.on(CHANGE_EVENT, callback);
-  },
-
-  removeChangeListener: function(callback) {
-    this.removeListener(CHANGE_EVENT, callback);
-  },
-
-  get: function() {
-    return settings;
   }
 
-});
+  addChangeListener(callback) {
+    this.on(CHANGE_EVENT, callback);
+  }
+
+  removeChangeListener(callback) {
+    this.removeListener(CHANGE_EVENT, callback);
+  }
+
+  get() {
+    return this.settings;
+  }
+
+  setSettings(newSettings) {
+    this.settings = assign({}, this.settings, newSettings);
+    storage.set(LOCAL_STORAGE_KEY, this.settings);
+    this.emitChange();
+  }
+
+};
+
+const settingsStore = new SettingsStore();
 
 SettingsStore.dispatchToken = Dispatcher.register(function(action) {
   switch(action.type) {
     case Constants.SettingsActions.SET_SETTINGS:
-      setSettings(action.settings);
-      SettingsStore.emitChange();
+      settingsStore.setSettings(action.settings);
       break;
 
     default:
@@ -74,4 +67,4 @@ SettingsStore.dispatchToken = Dispatcher.register(function(action) {
   }
 });
 
-export default SettingsStore;
+export default settingsStore;

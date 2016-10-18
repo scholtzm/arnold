@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, IndexRoute, Route, hashHistory } from 'react-router';
 
+import pkg from '../package.json';
+
 import App from './App';
 import Remote from './components/remote';
 import Movies from './components/movies';
@@ -12,10 +14,15 @@ import Settings from './components/settings';
 import Notifications from './components/misc/notifications.js';
 import SettingsStore from './stores/settings-store.js';
 
+import debug from './util/debug.js';
 import { init as initRpc } from './rpc/';
 import { checkUpdate } from './util/updater.js';
 
 import 'semantic-ui-css/semantic.css';
+
+const logger = debug('index');
+
+logger(`Starting Arnold v${pkg.version}`);
 
 const settings = SettingsStore.get();
 

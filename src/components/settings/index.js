@@ -5,10 +5,11 @@ import BasicContainer from '../misc/basic-container.js';
 import SettingsForm from './settings-form.js';
 import { checkUpdate } from '../../util/updater.js';
 import { addNotification } from '../../actions/notification-actions.js';
+import storage from '../../util/storage.js';
 
 class Settings extends Component {
   _clearStorage() {
-    localStorage.clear();
+    storage.clear();
 
     addNotification({
       title: 'Local Storage',

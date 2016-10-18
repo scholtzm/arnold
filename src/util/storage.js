@@ -10,7 +10,12 @@ function get(key, value) {
   return JSON.parse(localStorage[key]);
 }
 
+function clear() {
+  localStorage.clear();
+}
+
 export default {
   set,
-  get
+  get,
+  clear
 }

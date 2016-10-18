@@ -1,5 +1,4 @@
 import { EventEmitter } from 'events';
-import assign from 'object-assign';
 
 import debug from '../util/debug.js';
 import Dispatcher from '../dispatcher/';
@@ -10,66 +9,73 @@ const CHANGE_EVENT = 'change';
 const LOCAL_STORAGE_KEY = 'EpisodeStore';
 const logger = debug('store:episodes');
 
-let state = {
-  episodes: {}
-}
+class EpisodeStore extends EventEmitter {
 
-const oldState = storage.get(LOCAL_STORAGE_KEY);
-if(oldState !== null) {
-  state = oldState;
-}
+  constructor() {
+    super();
 
-function addEpisodes(episodes) {
-  const tvshowid = episodes[0].tvshowid;
-  const season = episodes[0].season;
+    this.state = {
+      episodes: {}
+    };
 
-  if(!(tvshowid in state.episodes)) {
-    state.episodes[tvshowid] = {};
+    const oldState = storage.get(LOCAL_STORAGE_KEY);
+    if(oldState !== null) {
+      this.state = oldState;
+    }
   }
 
-  state.episodes[tvshowid][season] = episodes;
-}
-
-let EpisodeStore = assign({}, EventEmitter.prototype, {
-
-  emitChange: function() {
-    storage.set(LOCAL_STORAGE_KEY, state);
+  emitChange() {
+    storage.set(LOCAL_STORAGE_KEY, this.state);
     this.emit(CHANGE_EVENT);
-  },
+  }
 
-  addChangeListener: function(callback) {
+  addChangeListener(callback) {
     logger('addChangeListener');
     this.on(CHANGE_EVENT, callback);
-  },
-
-  removeChangeListener: function(callback) {
-    logger('removeChangeListener');
-    this.removeListener(CHANGE_EVENT, callback);
-  },
-
-  get: function() {
-    return state;
-  },
-
-  getBy: function(tvshowid, season) {
-    if(!(tvshowid in state.episodes)) {
-      return [];
-    }
-
-    if(!(season in state.episodes[tvshowid])) {
-      return [];
-    }
-
-    return state.episodes[tvshowid][season];
   }
 
-});
+  removeChangeListener(callback) {
+    logger('removeChangeListener');
+    this.removeListener(CHANGE_EVENT, callback);
+  }
+
+  get() {
+    return this.state;
+  }
+
+  getBy(tvshowid, season) {
+    if(!(tvshowid in this.state.episodes)) {
+      return [];
+    }
+
+    if(!(season in this.state.episodes[tvshowid])) {
+      return [];
+    }
+
+    return this.state.episodes[tvshowid][season];
+  }
+
+  addEpisodes(episodes) {
+    const tvshowid = episodes[0].tvshowid;
+    const season = episodes[0].season;
+
+    if(!(tvshowid in this.state.episodes)) {
+      this.state.episodes[tvshowid] = {};
+    }
+
+    this.state.episodes[tvshowid][season] = episodes;
+
+    this.emitChange();
+  }
+
+};
+
+const episodeStore = new EpisodeStore();
 
 EpisodeStore.dispatchToken = Dispatcher.register(function(action) {
   switch(action.type) {
     case Constants.EpisodeActions.SET_EPISODES:
-      addEpisodes(action.episodes);
-      EpisodeStore.emitChange();
+      episodeStore.addEpisodes(action.episodes);
       break;
 
     default:
@@ -77,4 +83,4 @@ EpisodeStore.dispatchToken = Dispatcher.register(function(action) {
   }
 });
 
-export default EpisodeStore;
+export default episodeStore;

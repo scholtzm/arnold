@@ -1,5 +1,4 @@
 import { EventEmitter } from 'events';
-import assign from 'object-assign';
 
 import debug from '../util/debug.js';
 import Dispatcher from '../dispatcher/';
@@ -10,50 +9,64 @@ const CHANGE_EVENT = 'change';
 const LOCAL_STORAGE_KEY = 'MovieStore';
 const logger = debug('store:movies');
 
-let state = {
-  movies: [],
-  lastFetchFailed: false
-}
+class MovieStore extends EventEmitter {
 
-const oldState = storage.get(LOCAL_STORAGE_KEY);
-if(oldState !== null) {
-  state = oldState;
-}
+  constructor() {
+    super();
 
-let MovieStore = assign({}, EventEmitter.prototype, {
+    this.state = {
+      movies: [],
+      lastFetchFailed: false
+    };
 
-  emitChange: function() {
-    storage.set(LOCAL_STORAGE_KEY, state);
-    this.emit(CHANGE_EVENT);
-  },
-
-  addChangeListener: function(callback) {
-    logger('addChangeListener');
-    this.on(CHANGE_EVENT, callback);
-  },
-
-  removeChangeListener: function(callback) {
-    logger('removeChangeListener');
-    this.removeListener(CHANGE_EVENT, callback);
-  },
-
-  get: function() {
-    return state;
+    const oldState = storage.get(LOCAL_STORAGE_KEY);
+    if(oldState !== null) {
+      this.state = oldState;
+    }
   }
 
-});
+  emitChange() {
+    storage.set(LOCAL_STORAGE_KEY, this.state);
+    this.emit(CHANGE_EVENT);
+  }
+
+  addChangeListener(callback) {
+    logger('addChangeListener');
+    this.on(CHANGE_EVENT, callback);
+  }
+
+  removeChangeListener(callback) {
+    logger('removeChangeListener');
+    this.removeListener(CHANGE_EVENT, callback);
+  }
+
+  get() {
+    return this.state;
+  }
+
+  setMovies(movies) {
+    this.state.lastFetchFailed = false;
+    this.state.movies = movies;
+    this.emitChange();
+  }
+
+  setLastFetchFailed(value) {
+    this.state.lastFetchFailed = value;
+    this.emitChange();
+  }
+
+};
+
+const movieStore = new MovieStore();
 
 MovieStore.dispatchToken = Dispatcher.register(function(action) {
   switch(action.type) {
     case Constants.MovieActions.SET_MOVIES:
-      state.lastFetchFailed = false;
-      state.movies = action.movies;
-      MovieStore.emitChange();
+      movieStore.setMovies(action.movies);
       break;
 
     case Constants.MovieActions.GET_MOVIES_ERROR:
-      state.lastFetchFailed = true;
-      MovieStore.emitChange();
+      movieStore.setLastFetchFailed(true);
       break;
 
     default:
@@ -61,4 +74,4 @@ MovieStore.dispatchToken = Dispatcher.register(function(action) {
   }
 });
 
-export default MovieStore;
+export default movieStore;
