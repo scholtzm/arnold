@@ -1,4 +1,4 @@
-# Arnold [![Build Status](https://travis-ci.org/scholtzm/arnold.svg?branch=master)](https://travis-ci.org/scholtzm/arnold) [![dependencies Status](https://david-dm.org/scholtzm/arnold/status.svg)](https://david-dm.org/scholtzm/arnold) [![devDependencies Status](https://david-dm.org/scholtzm/arnold/dev-status.svg)](https://david-dm.org/scholtzm/arnold?type=dev)
+# Arnold [![Build Status](https://travis-ci.org/scholtzm/arnold.svg?branch=master)](https://travis-ci.org/scholtzm/arnold) [![codecov](https://codecov.io/gh/scholtzm/arnold/branch/master/graph/badge.svg)](https://codecov.io/gh/scholtzm/arnold)
 
 > 🎥 A modern Kodi web interface.
 
