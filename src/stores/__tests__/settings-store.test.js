@@ -21,20 +21,13 @@ const mockSettings = {
 
 it('provides settings', () => {
   const settings = SettingsStore.get();
-  expect(settings).toBeDefined();
   expect(settings).toEqual(defaultSettings);
 });
 
 it('tracks settings changes', () => {
-  const mockListener = jest.fn();
-  SettingsStore.addChangeListener(mockListener);
-
   setSettings(mockSettings);
 
-  expect(mockListener).toHaveBeenCalled();
-
   const settings = SettingsStore.get();
-  expect(settings).toBeDefined();
   expect(settings).toEqual(mockSettings);
 });
 
