@@ -13,9 +13,13 @@ class TvShowDetail extends Component {
   constructor(props, context) {
     super(props, context);
 
+    const { tvShow } = this.props;
+    const seasons = SeasonStore.getBy(tvShow.tvshowid);
+    const episodes = EpisodeStore.getByTvShow(tvShow.tvshowid);
+
     this.state = {
-      seasons: [],
-      episodes: {}
+      seasons,
+      episodes
     };
 
     this.activeSeason = 0;
@@ -42,7 +46,7 @@ class TvShowDetail extends Component {
 
   _onEpisodesChange() {
     const { tvShow } = this.props;
-    const episodes = EpisodeStore.getBy(tvShow.tvshowid, this.activeSeason);
+    const episodes = EpisodeStore.getByTvShowAndSeason(tvShow.tvshowid, this.activeSeason);
     const newEpisodes = this.state.episodes;
 
     newEpisodes[this.activeSeason] = episodes;

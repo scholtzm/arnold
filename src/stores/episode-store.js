@@ -43,7 +43,11 @@ class EpisodeStore extends EventEmitter {
     return this.state;
   }
 
-  getBy(tvshowid, season) {
+  getByTvShow(tvshowid) {
+    return this.state.episodes[tvshowid] || {};
+  }
+
+  getByTvShowAndSeason(tvshowid, season) {
     if(!(tvshowid in this.state.episodes)) {
       return [];
     }
