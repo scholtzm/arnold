@@ -1,13 +1,13 @@
 import SettingsStore from '../../stores/settings-store.js';
+import { request as ajaxRequest } from '../ajax/';
+import { request as wsRequest } from '../ws/';
 
-const settings = SettingsStore.get();
+export function request(...args) {
+  const settings = SettingsStore.get();
 
-let exported = {};
-
-if(settings.transportLayer === 'websocket') {
-  exported.request = require('../ws/').request;
-} else if(settings.transportLayer === 'ajax') {
-  exported.request = require('../ajax/').request;
+  if(settings.transportLayer === 'websocket') {
+    wsRequest(...args);
+  } else if(settings.transportLayer === 'ajax') {
+    ajaxRequest(...args);
+  }
 }
-
-module.exports = exported;
