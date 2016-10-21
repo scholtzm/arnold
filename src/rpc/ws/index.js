@@ -40,8 +40,6 @@ export function connect() {
     });
 
     client = null;
-
-    setTimeout(() => connect(), 5000);
   });
 
   client.on('error', event => {
@@ -84,8 +82,17 @@ function setup(reconnect) {
   ip = settings.ipAddress;
   port = settings.webSocketPort;
 
-  if(reconnect && client) {
-    client.close();
+  if(settings.transportLayer === 'websocket') {
+    if(reconnect) {
+      if(client) {
+        client.close();
+      }
+      setTimeout(() => connect(), 3000);
+    }
+  } else {
+    if(client) {
+      client.close();
+    }
   }
 }
 
