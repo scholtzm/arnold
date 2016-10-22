@@ -1,8 +1,8 @@
 # Arnold [![Build Status](https://travis-ci.org/scholtzm/arnold.svg?branch=master)](https://travis-ci.org/scholtzm/arnold) [![codecov](https://codecov.io/gh/scholtzm/arnold/branch/master/graph/badge.svg)](https://codecov.io/gh/scholtzm/arnold)
 
-> 🎥 A modern Kodi web interface.
+> 🎬 A modern Kodi web interface
 
-Arnold is a generic Kodi web interface which aims to provide relevant information and functionality in a sleek and intuitive design. Written in JavaScript using [React](https://facebook.github.io/react/), [Flux](https://facebook.github.io/flux/) and [Semantic-UI-React](http://react.semantic-ui.com/).
+Arnold is a modern Kodi web interface which aims to provide relevant information and functionality in a sleek and intuitive design. Written in JavaScript using [React](https://facebook.github.io/react/), [Flux](https://facebook.github.io/flux/) and [Semantic-UI-React](http://react.semantic-ui.com/).
 
 ## Features
 
