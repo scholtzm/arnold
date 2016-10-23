@@ -18,14 +18,22 @@ class SongStore extends EventEmitter {
       songs: {}
     };
 
-    const oldState = storage.get(LOCAL_STORAGE_KEY);
-    if(oldState !== null) {
-      this.state = oldState;
-    }
+    storage.get(LOCAL_STORAGE_KEY)
+      .then(oldState => {
+        if(oldState !== null) {
+          this.state = oldState;
+          this.emitChange(true);
+        }
+      });
   }
 
-  emitChange() {
-    storage.set(LOCAL_STORAGE_KEY, this.state);
+  emitChange(doNotReplicate) {
+    if(doNotReplicate !== true) {
+      storage.set(LOCAL_STORAGE_KEY, this.state)
+        .then(() => logger('Replicated to local storage'))
+        .catch((err) => logger('Failed to replicate to local storage', err));
+    }
+
     this.emit(CHANGE_EVENT);
   }
 

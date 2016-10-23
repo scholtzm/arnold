@@ -24,7 +24,7 @@ class SettingsStore extends EventEmitter {
 
     this.settings = assign({}, _defaultSettings);
 
-    const storedSettings = storage.get(LOCAL_STORAGE_KEY);
+    const storedSettings = storage.getSync(LOCAL_STORAGE_KEY);
     if(storedSettings !== null) {
       this.settings = assign({}, this.settings, storedSettings);
     }
@@ -48,7 +48,7 @@ class SettingsStore extends EventEmitter {
 
   setSettings(newSettings) {
     this.settings = assign({}, this.settings, newSettings);
-    storage.set(LOCAL_STORAGE_KEY, this.settings);
+    storage.setSync(LOCAL_STORAGE_KEY, this.settings);
     this.emitChange();
   }
 

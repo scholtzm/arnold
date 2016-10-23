@@ -6,16 +6,29 @@ import SettingsForm from './settings-form.js';
 import { checkUpdate } from '../../util/updater.js';
 import { addNotification } from '../../actions/notification-actions.js';
 import storage from '../../util/storage.js';
+import debug from '../../util/debug.js';
+
+const logger = debug('components:settings');
 
 class Settings extends Component {
   _clearStorage() {
-    storage.clear();
+    storage.clear()
+      .then(() => {
+        addNotification({
+          title: 'Local Storage',
+          message: 'Local storage has been cleared.',
+          level: 'info'
+        });
+      })
+      .catch(err => {
+        addNotification({
+          title: 'Local Storage',
+          message: 'Failed to clear local storage.',
+          level: 'error'
+        });
 
-    addNotification({
-      title: 'Local Storage',
-      message: 'Local storage has been cleared.',
-      level: 'info'
-    });
+        logger('Failed to clear storage', err);
+      });
   }
 
   render() {

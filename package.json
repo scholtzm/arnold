@@ -26,6 +26,7 @@
   "dependencies": {
     "debug": "^2.2.0",
     "flux": "^3.1.0",
+    "localforage": "^1.4.3",
     "lodash": "^4.16.4",
     "object-assign": "^4.1.0",
     "react": "^15.3.2",

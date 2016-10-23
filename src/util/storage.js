@@ -1,8 +1,26 @@
+import localforage from 'localforage';
+
+const asyncStorage = localforage.createInstance({
+  name: 'arnoldAsync'
+});
+
 function set(key, value) {
+  return asyncStorage.setItem(key, value);
+}
+
+function get(key) {
+  return asyncStorage.getItem(key);
+}
+
+function clear() {
+  return asyncStorage.clear();
+}
+
+function setSync(key, value) {
   localStorage[key] = JSON.stringify(value);
 }
 
-function get(key, value) {
+function getSync(key, value) {
   if(!(key in localStorage)) {
     return null;
   }
@@ -10,12 +28,15 @@ function get(key, value) {
   return JSON.parse(localStorage[key]);
 }
 
-function clear() {
+function clearSync() {
   localStorage.clear();
 }
 
 export default {
   set,
   get,
-  clear
+  clear,
+  setSync,
+  getSync,
+  clearSync
 }
