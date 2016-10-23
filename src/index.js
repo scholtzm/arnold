@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, IndexRoute, Route, hashHistory } from 'react-router';
+import Favicon from 'react-favicon';
 
 import pkg from '../package.json';
 
@@ -17,6 +18,8 @@ import SettingsStore from './stores/settings-store.js';
 import debug from './util/debug.js';
 import { init as initRpc } from './rpc/';
 import { checkUpdate } from './util/updater.js';
+
+import favicon from './static/image/favicon.ico';
 
 import 'semantic-ui-css/semantic.css';
 
@@ -48,6 +51,7 @@ ReactDOM.render(
       </Route>
     </Router>
     <Notifications />
+    <Favicon url={favicon} />
   </div>,
   document.getElementById('root')
 );
