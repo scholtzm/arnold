@@ -4,7 +4,7 @@ import { Router, IndexRoute, Route, hashHistory } from 'react-router';
 
 import pkg from '../package.json';
 
-import App from './App';
+import App from './components/App.js';
 import Remote from './components/remote';
 import Movies from './components/movies';
 import TvShows from './components/tvshows';

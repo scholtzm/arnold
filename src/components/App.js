@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Menu, Label } from 'semantic-ui-react';
 import { Link } from 'react-router';
-import GlobalSearch from './components/misc/global-search.js';
 
-import packageJson from '../package.json';
-import icon from './static/image/icon-rounded.png';
+import GlobalSearch from './misc/global-search.js';
+import packageJson from '../../package.json';
+import icon from '../static/image/icon-rounded.png';
 
 const { version, repository } = packageJson;
 const releaseUrl = `${repository.url}/releases/tag/v${version}`;
