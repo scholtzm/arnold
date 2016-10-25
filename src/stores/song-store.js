@@ -22,18 +22,12 @@ class SongStore extends EventEmitter {
       .then(oldState => {
         if(oldState !== null) {
           this.state = oldState;
-          this.emitChange(true);
+          this.emitChange();
         }
       });
   }
 
-  emitChange(doNotReplicate) {
-    if(doNotReplicate !== true) {
-      storage.set(LOCAL_STORAGE_KEY, this.state)
-        .then(() => logger('Replicated to local storage'))
-        .catch((err) => logger('Failed to replicate to local storage', err));
-    }
-
+  emitChange() {
     this.emit(CHANGE_EVENT);
   }
 
@@ -51,6 +45,12 @@ class SongStore extends EventEmitter {
     return this.state;
   }
 
+  persist() {
+    storage.set(LOCAL_STORAGE_KEY, this.state)
+      .then(() => logger('Replicated to local storage'))
+      .catch((err) => logger('Failed to replicate to local storage', err));
+  }
+
   getBy(albumid) {
     return this.state.songs[albumid] || [];
   }
@@ -58,6 +58,9 @@ class SongStore extends EventEmitter {
   addSongs(songs) {
     const albumid = songs[0].albumid;
     this.state.songs[albumid] = songs;
+
+    this.persist();
+    this.emitChange();
   }
 
 };
@@ -68,7 +71,6 @@ SongStore.dispatchToken = Dispatcher.register(function(action) {
   switch(action.type) {
     case Constants.SongActions.SET_SONGS:
       songStore.addSongs(action.songs);
-      songStore.emitChange();
       break;
 
     default:

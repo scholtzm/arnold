@@ -22,18 +22,12 @@ class SeasonStore extends EventEmitter {
       .then(oldState => {
         if(oldState !== null) {
           this.state = oldState;
-          this.emitChange(true);
+          this.emitChange();
         }
       });
   }
 
-  emitChange(doNotReplicate) {
-    if(doNotReplicate !== true) {
-      storage.set(LOCAL_STORAGE_KEY, this.state)
-        .then(() => logger('Replicated to local storage'))
-        .catch((err) => logger('Failed to replicate to local storage', err));
-    }
-
+  emitChange() {
     this.emit(CHANGE_EVENT);
   }
 
@@ -51,6 +45,12 @@ class SeasonStore extends EventEmitter {
     return this.state;
   }
 
+  persist() {
+    storage.set(LOCAL_STORAGE_KEY, this.state)
+      .then(() => logger('Replicated to local storage'))
+      .catch((err) => logger('Failed to replicate to local storage', err));
+  }
+
   getBy(tvshowid) {
     return this.state.seasons[tvshowid] || [];
   }
@@ -58,6 +58,8 @@ class SeasonStore extends EventEmitter {
   addSeasons(seasons) {
     const tvshowid = seasons[0].tvshowid;
     this.state.seasons[tvshowid] = seasons;
+
+    this.persist();
     this.emitChange();
   }
 

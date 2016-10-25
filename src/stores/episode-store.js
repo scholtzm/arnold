@@ -22,18 +22,12 @@ class EpisodeStore extends EventEmitter {
       .then(oldState => {
         if(oldState !== null) {
           this.state = oldState;
-          this.emitChange(true);
+          this.emitChange();
         }
       });
   }
 
-  emitChange(doNotReplicate) {
-    if(doNotReplicate !== true) {
-      storage.set(LOCAL_STORAGE_KEY, this.state)
-        .then(() => logger('Replicated to local storage'))
-        .catch((err) => logger('Failed to replicate to local storage', err));
-    }
-
+  emitChange() {
     this.emit(CHANGE_EVENT);
   }
 
@@ -45,6 +39,12 @@ class EpisodeStore extends EventEmitter {
   removeChangeListener(callback) {
     logger('removeChangeListener');
     this.removeListener(CHANGE_EVENT, callback);
+  }
+
+  persist() {
+    storage.set(LOCAL_STORAGE_KEY, this.state)
+      .then(() => logger('Replicated to local storage'))
+      .catch((err) => logger('Failed to replicate to local storage', err));
   }
 
   get() {
@@ -77,6 +77,7 @@ class EpisodeStore extends EventEmitter {
 
     this.state.episodes[tvshowid][season] = episodes;
 
+    this.persist();
     this.emitChange();
   }
 
