@@ -36,7 +36,7 @@
     "react-router": "^3.0.0",
     "react-youtube": "^7.2.0",
     "semantic-ui-css": "^2.2.4",
-    "semantic-ui-react": "^0.56.13",
+    "semantic-ui-react": "^0.57.1",
     "semver": "^5.3.0",
     "shortid": "^2.2.6"
   },
