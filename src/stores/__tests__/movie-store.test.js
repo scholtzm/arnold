@@ -1,6 +1,11 @@
 import MovieStore from '../movie-store.js';
 import { setMovies, getMoviesError } from '../../actions/movie-actions.js';
 
+const emptyState = {
+  movies: [],
+  lastFetchFailed: false
+};
+
 const dummyData1 = {
   movies: ['movie1', 'movie2'],
   lastFetchFailed: false
@@ -13,7 +18,7 @@ const dummyData2 = {
 
 it('provides state', () => {
   const state = MovieStore.get();
-  expect(state).toBeDefined();
+  expect(state).toEqual(emptyState);
 });
 
 it('tracks movies', () => {
