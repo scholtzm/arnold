@@ -4,6 +4,7 @@ import assign from 'object-assign';
 import Dispatcher from '../dispatcher/';
 import Constants from '../constants';
 import storage from '../util/storage.js';
+import { isMockMode } from '../util/env.js';
 
 const CHANGE_EVENT = 'change';
 const LOCAL_STORAGE_KEY = 'SettingsStore';
@@ -16,6 +17,10 @@ const _defaultSettings = {
   webSocketPort: 9090,
   itemsPerRow: 10
 };
+
+if(isMockMode) {
+  _defaultSettings.transportLayer = 'mock';
+}
 
 class SettingsStore extends EventEmitter {
 

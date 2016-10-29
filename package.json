@@ -19,6 +19,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
+    "build:demo": "REACT_APP_MOCK_MODE=true npm run build",
     "make": "gulp",
     "pack": "gulp pack",
     "clean": "gulp clean"

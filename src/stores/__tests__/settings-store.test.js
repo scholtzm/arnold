@@ -1,5 +1,6 @@
 import SettingsStore from '../settings-store.js';
 import { setSettings } from '../../actions/settings-actions.js';
+import { isMockMode } from '../../util/env.js';
 
 const defaultSettings = {
   checkForUpdatesOnInitialLoad: true,
@@ -10,9 +11,18 @@ const defaultSettings = {
   itemsPerRow: 10
 };
 
-const mockSettings = {
+const defaultMockSettings = {
+  checkForUpdatesOnInitialLoad: true,
+  transportLayer: 'mock',
+  ipAddress: location.hostname,
+  ajaxPort: 8080,
+  webSocketPort: 9090,
+  itemsPerRow: 10
+};
+
+const testSettings = {
   checkForUpdatesOnInitialLoad: false,
-  transportLayer: 'ajax',
+  transportLayer: 'mock',
   ipAddress: '0.0.0.0',
   ajaxPort: 80,
   webSocketPort: 90,
@@ -21,14 +31,18 @@ const mockSettings = {
 
 it('provides settings', () => {
   const settings = SettingsStore.get();
-  expect(settings).toEqual(defaultSettings);
+  if(isMockMode) {
+    expect(settings).toEqual(defaultMockSettings);
+  } else {
+    expect(settings).toEqual(defaultSettings);
+  }
 });
 
 it('tracks settings changes', () => {
-  setSettings(mockSettings);
+  setSettings(testSettings);
 
   const settings = SettingsStore.get();
-  expect(settings).toEqual(mockSettings);
+  expect(settings).toEqual(testSettings);
 });
 
 it('emits change event', () => {
@@ -38,14 +52,14 @@ it('emits change event', () => {
   SettingsStore.addChangeListener(mockListener1);
   SettingsStore.addChangeListener(mockListener2);
 
-  setSettings(mockSettings);
+  setSettings(testSettings);
 
   expect(mockListener1).toHaveBeenCalledTimes(1);
   expect(mockListener2).toHaveBeenCalledTimes(1);
 
   SettingsStore.removeChangeListener(mockListener2);
 
-  setSettings(mockSettings);
+  setSettings(testSettings);
 
   expect(mockListener1).toHaveBeenCalledTimes(2);
   expect(mockListener2).toHaveBeenCalledTimes(1);
