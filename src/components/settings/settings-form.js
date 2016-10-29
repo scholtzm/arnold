@@ -3,6 +3,7 @@ import { Form, Button, Header, Segment } from 'semantic-ui-react';
 import SettingsStore from '../../stores/settings-store.js';
 import { setSettings } from '../../actions/settings-actions.js';
 import { addNotification } from '../../actions/notification-actions.js';
+import { isProduction, isMockMode } from '../../util/env.js';
 
 class SettingsForm extends Component {
   state = {
@@ -21,11 +22,31 @@ class SettingsForm extends Component {
     });
   }
 
+  _getTransportLayers(isProduction, isMockMode) {
+    let transportLayers;
+
+    if(isProduction && isMockMode) {
+      transportLayers = [
+        { text: 'Static data', value: 'mock' }
+      ];
+    } else if(isProduction) {
+      transportLayers = [
+        { text: 'WebSocket', value: 'websocket' },
+        { text: 'AJAX', value: 'ajax' }
+      ];
+    } else {
+      transportLayers = [
+        { text: 'WebSocket', value: 'websocket' },
+        { text: 'AJAX', value: 'ajax' },
+        { text: 'Mock', value: 'mock' }
+      ];
+    }
+
+    return transportLayers;
+  }
+
   render() {
-    const transportLayers = [
-      { text: 'WebSocket', value: 'websocket' },
-      { text: 'AJAX', value: 'ajax' }
-    ]
+    const transportLayers = this._getTransportLayers(isProduction, isMockMode);
 
     return (
       <div>
