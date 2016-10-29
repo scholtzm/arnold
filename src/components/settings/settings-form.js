@@ -25,21 +25,16 @@ class SettingsForm extends Component {
   _getTransportLayers(isProduction, isMockMode) {
     let transportLayers;
 
+    const webSocketLayer = { text: 'WebSocket', value: 'websocket' };
+    const ajaxLayer = { text: 'AJAX', value: 'ajax' };
+    const mockLayer = { text: 'Static data', value: 'mock' };
+
     if(isProduction && isMockMode) {
-      transportLayers = [
-        { text: 'Static data', value: 'mock' }
-      ];
+      transportLayers = [ mockLayer ];
     } else if(isProduction) {
-      transportLayers = [
-        { text: 'WebSocket', value: 'websocket' },
-        { text: 'AJAX', value: 'ajax' }
-      ];
+      transportLayers = [ webSocketLayer, ajaxLayer ];
     } else {
-      transportLayers = [
-        { text: 'WebSocket', value: 'websocket' },
-        { text: 'AJAX', value: 'ajax' },
-        { text: 'Mock', value: 'mock' }
-      ];
+      transportLayers = [ webSocketLayer, ajaxLayer, mockLayer ];
     }
 
     return transportLayers;
