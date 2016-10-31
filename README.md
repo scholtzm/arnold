@@ -2,7 +2,9 @@
 
 > 🎬 A modern Kodi web interface
 
-Arnold is a modern Kodi web interface which aims to provide relevant information and functionality in a sleek and intuitive design. Written in JavaScript using [React](https://facebook.github.io/react/), [Flux](https://facebook.github.io/flux/) and [Semantic-UI-React](http://react.semantic-ui.com/).
+Arnold is a modern Kodi web interface which aims to provide relevant information and functionality in a sleek and intuitive design.
+
+Written in JavaScript using [React](https://facebook.github.io/react/), [Flux](https://facebook.github.io/flux/) and [Semantic-UI-React](http://react.semantic-ui.com/) and all put together with [create-react-app](https://github.com/facebookincubator/create-react-app).
 
 ## Features
 
