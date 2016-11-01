@@ -19,7 +19,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
+    "start:demo": "REACT_APP_MOCK_MODE=true npm start",
     "build:demo": "REACT_APP_MOCK_MODE=true npm run build",
+    "test:demo": "REACT_APP_MOCK_MODE=true npm test",
     "make": "gulp",
     "pack": "gulp pack",
     "clean": "gulp clean"
@@ -36,6 +38,7 @@
     "react-notification-system": "^0.2.10",
     "react-router": "^3.0.0",
     "react-youtube": "^7.2.0",
+    "request": "^2.76.0",
     "semantic-ui-css": "^2.2.4",
     "semantic-ui-react": "^0.57.1",
     "semver": "^5.3.0",

@@ -25,7 +25,7 @@ function initVideoLibrary() {
             return;
           };
 
-          let movies = res.result.movies.map(movie => {
+          let movies = (res.result.movies || []).map(movie => {
             movie.thumbnail = prefixImage(movie.thumbnail);
             movie.youtubeId = movie.trailer.replace(/^(.+?)videoid=/, '');
             return movie;
@@ -42,7 +42,7 @@ function initVideoLibrary() {
             return;
           };
 
-          let tvShows = res.result.tvshows.map(tvshow => {
+          let tvShows = (res.result.tvshows || []).map(tvshow => {
             tvshow.thumbnail = prefixImage(tvshow.thumbnail);
             return tvshow;
           });
@@ -53,7 +53,7 @@ function initVideoLibrary() {
 
       case Constants.SeasonActions.GET_SEASONS:
         videoLibrary.getSeasons(action.tvshowid, (err, res) => {
-          let seasons = res.result.seasons.map(season => {
+          let seasons = (res.result.seasons || []).map(season => {
             season.thumbnail = prefixImage(season.thumbnail);
             return season;
           });
@@ -64,7 +64,7 @@ function initVideoLibrary() {
 
       case Constants.EpisodeActions.GET_EPISODES:
         videoLibrary.getEpisodes(action.tvshowid, action.season, (err, res) => {
-          let episodes = res.result.episodes.map(episode => {
+          let episodes = (res.result.episodes || []).map(episode => {
             episode.thumbnail = prefixImage(episode.thumbnail);
             return episode;
           });
@@ -89,7 +89,7 @@ function initAudioLibrary() {
             return;
           };
 
-          let albums = res.result.albums.map(album => {
+          let albums = (res.result.albums || []).map(album => {
             if(album.thumbnail === '') {
               album.thumbnail = defaultAlbumCover;
             } else {
@@ -106,7 +106,7 @@ function initAudioLibrary() {
       case Constants.SongActions.GET_SONGS:
         audioLibrary.getSongs(action.albumid, (err, res) => {
 
-          let songs = res.result.songs.map(song => {
+          let songs = (res.result.songs || []).map(song => {
             let minutes = Math.floor(song.duration / 60);
             let seconds = song.duration % 60;
 

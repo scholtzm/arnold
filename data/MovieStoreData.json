@@ -1,0 +1,568 @@
+{
+  "id": "Arnold",
+  "jsonrpc": "2.0",
+  "result": {
+    "limits": {
+      "end": 22,
+      "start": 0,
+      "total": 22
+    },
+    "movies": [
+      {
+        "director": [
+          "Roger Spottiswoode"
+        ],
+        "file": "/file/does/not/exist",
+        "genre": [
+          "Action",
+          "Mystery",
+          "Science Fiction",
+          "Thriller"
+        ],
+        "label": "The 6th Day",
+        "lastplayed": "",
+        "movieid": 16,
+        "originaltitle": "The 6th Day",
+        "playcount": 0,
+        "plot": "Futuristic action about a man who meets a clone of himself and stumbles into a grand conspiracy about clones taking over the world.",
+        "plotoutline": "",
+        "rating": 5.5,
+        "runtime": 7380,
+        "tagline": "Are You Who You Think You Are",
+        "thumbnail": "image://http%3a%2f%2fimage.tmdb.org%2ft%2fp%2foriginal%2f6pBUekwhnjW99V0cLphx7dZE2Wx.jpg/",
+        "title": "The 6th Day",
+        "trailer": "plugin://plugin.video.youtube/?action=play_video&videoid=Sz-Abh8opLo",
+        "year": 2000
+      },
+      {
+        "director": [
+          "Joel Schumacher"
+        ],
+        "file": "/file/does/not/exist",
+        "genre": [
+          "Fantasy",
+          "Action",
+          "Thriller",
+          "Crime",
+          "Science Fiction"
+        ],
+        "label": "Batman & Robin",
+        "lastplayed": "2016-10-30 15:00:56",
+        "movieid": 3,
+        "originaltitle": "Batman & Robin",
+        "playcount": 1,
+        "plot": "Along with crime-fighting partner Robin and new recruit Batgirl, Batman battles the dual threat of frosty genius Mr. Freeze and homicidal horticulturalist Poison Ivy. Freeze plans to put Gotham City on ice, while Ivy tries to drive a wedge between the dynamic duo.",
+        "plotoutline": "",
+        "rating": 4.400000095367432,
+        "runtime": 7500,
+        "tagline": "Strength. Courage. Honor. And loyalty.",
+        "thumbnail": "image://http%3a%2f%2fimage.tmdb.org%2ft%2fp%2foriginal%2f79AYCcxw3kSKbhGpx1LiqaCAbwo.jpg/",
+        "title": "Batman & Robin",
+        "trailer": "plugin://plugin.video.youtube/?action=play_video&videoid=ORAGHEV890Y",
+        "year": 1997
+      },
+      {
+        "director": [
+          "Mark L. Lester"
+        ],
+        "file": "/file/does/not/exist",
+        "genre": [
+          "Action",
+          "Adventure",
+          "Thriller"
+        ],
+        "label": "Commando",
+        "lastplayed": "",
+        "movieid": 4,
+        "originaltitle": "Commando",
+        "playcount": 0,
+        "plot": "John Matrix, the former leader of a special commando strike force that always got the toughest jobs done, is forced back into action when his young daughter is kidnapped. To find her, Matrix has to fight his way through an array of punks, killers, one of his former commandos, and a fully equipped private army. With the help of a feisty stewardess and an old friend, Matrix has only a few hours to overcome his greatest challenge: finding his daughter before she's killed.",
+        "plotoutline": "",
+        "rating": 6.199999809265137,
+        "runtime": 5400,
+        "tagline": "Somewhere... somehow... someone's going to pay.",
+        "thumbnail": "image://http%3a%2f%2fimage.tmdb.org%2ft%2fp%2foriginal%2fypfLBI0xT9yyn38BFaRtp0Ny3uw.jpg/",
+        "title": "Commando",
+        "trailer": "plugin://plugin.video.youtube/?action=play_video&videoid=dUBEt7pawFE",
+        "year": 1985
+      },
+      {
+        "director": [
+          "John Milius"
+        ],
+        "file": "/file/does/not/exist",
+        "genre": [
+          "Adventure",
+          "Fantasy",
+          "Action"
+        ],
+        "label": "Conan the Barbarian",
+        "lastplayed": "",
+        "movieid": 5,
+        "originaltitle": "Conan the Barbarian",
+        "playcount": 0,
+        "plot": "John Milius's jingoistic direction and pulpy screenplay fit perfectly into this film version of the Robert E. Howard fantasy story of the sword and sorcery hero, Conan the Barbarian. The story begins when a horde of rampaging warriors massacre the parents of young Conan and enslave the young child for years on The Wheel of Pain. As the sole survivor of the childhood massacre, Conan is released from slavery and taught the ancient arts of fighting. Transforming himself into a killing machine, Conan travels into the wilderness to seek vengeance on Thulsa Doom (James Earl Jones), the man responsible for killing his family. In the wilderness, Conan takes up with the thieves Valeria (Sandahl Bergman) and Subotai (Gerry Lopez). The group comes upon King Osric (Max Von Sydow), who wants the trio of warriors to help rescue his daughter who has joined Doom in the hills.",
+        "plotoutline": "",
+        "rating": 6.5,
+        "runtime": 7740,
+        "tagline": "Thief. Warrior. Gladiator. King.",
+        "thumbnail": "image://http%3a%2f%2fimage.tmdb.org%2ft%2fp%2foriginal%2f9siMCK6u0TtgDVtCJQGKRQAnAqA.jpg/",
+        "title": "Conan the Barbarian",
+        "trailer": "plugin://plugin.video.youtube/?action=play_video&videoid=kcP6vGwvB8I",
+        "year": 1982
+      },
+      {
+        "director": [
+          "Peter Hyams"
+        ],
+        "file": "/file/does/not/exist",
+        "genre": [
+          "Action",
+          "Fantasy",
+          "Horror",
+          "Mystery"
+        ],
+        "label": "End of Days",
+        "lastplayed": "2016-10-30 15:00:32",
+        "movieid": 6,
+        "originaltitle": "End of Days",
+        "playcount": 1,
+        "plot": "On December 28th, 1999, the citizens of New York City are getting ready for the turn of the millennium. However, the Devil decides to crash the party by coming to the city, inhabiting a man's body, and searching for his chosen bride, a 20-year-old woman named Christine York. The world will end, and the only hope lies within an atheist called Jericho Cane.",
+        "plotoutline": "",
+        "rating": 5.5,
+        "runtime": 7260,
+        "tagline": "Prepare for the end.",
+        "thumbnail": "image://http%3a%2f%2fimage.tmdb.org%2ft%2fp%2foriginal%2fbEIjH6GroeWaBkn6o7MVpMNbuyw.jpg/",
+        "title": "End of Days",
+        "trailer": "plugin://plugin.video.youtube/?action=play_video&videoid=_a_mquMR6-Y",
+        "year": 1999
+      },
+      {
+        "director": [
+          "Chuck Russell"
+        ],
+        "file": "/file/does/not/exist",
+        "genre": [
+          "Action",
+          "Drama",
+          "Mystery",
+          "Thriller"
+        ],
+        "label": "Eraser",
+        "lastplayed": "",
+        "movieid": 22,
+        "originaltitle": "Eraser",
+        "playcount": 0,
+        "plot": "U.S. Marshall John Kruger erases the identities of people enrolled in the Witness Protection Program. His current assignment is to protect Lee Cullen, who's uncovered evidence that the weapons manufacturer she works for has been selling to terrorist groups. When Kruger discovers that there's a corrupt agent within the program, he must guard his own life while trying to protect Lee's.",
+        "plotoutline": "",
+        "rating": 5.400000095367432,
+        "runtime": 6900,
+        "tagline": "He will erase your past to protect your future.",
+        "thumbnail": "image://http%3a%2f%2fimage.tmdb.org%2ft%2fp%2foriginal%2fcAc2OMJVuyCeCRgfOLg3fdcumuv.jpg/",
+        "title": "Eraser",
+        "trailer": "plugin://plugin.video.youtube/?action=play_video&videoid=-IwDKbMe7qw",
+        "year": 1996
+      },
+      {
+        "director": [
+          "Mikael Håfström"
+        ],
+        "file": "/file/does/not/exist",
+        "genre": [
+          "Action",
+          "Thriller"
+        ],
+        "label": "Escape Plan",
+        "lastplayed": "",
+        "movieid": 7,
+        "originaltitle": "Escape Plan",
+        "playcount": 0,
+        "plot": "Ray Breslin is the world's foremost authority on structural security. After analyzing every high security prison and learning a vast array of survival skills so he can design escape-proof prisons, his skills are put to the test. He's framed and incarcerated in a master prison he designed himself. He needs to escape and find the person who put him behind bars.",
+        "plotoutline": "",
+        "rating": 6.699999809265137,
+        "runtime": 6900,
+        "tagline": "No one breaks out alone.",
+        "thumbnail": "image://http%3a%2f%2fimage.tmdb.org%2ft%2fp%2foriginal%2f1jHF5or25uCZr7O5c7CYm9eTrTw.jpg/",
+        "title": "Escape Plan",
+        "trailer": "plugin://plugin.video.youtube/?action=play_video&videoid=CI4EjV_x_PQ",
+        "year": 2013
+      },
+      {
+        "director": [
+          "Simon West"
+        ],
+        "file": "/file/does/not/exist",
+        "genre": [
+          "Action",
+          "Adventure",
+          "Thriller"
+        ],
+        "label": "The Expendables 2",
+        "lastplayed": "",
+        "movieid": 8,
+        "originaltitle": "The Expendables 2",
+        "playcount": 0,
+        "plot": "Mr. Church reunites the Expendables for what should be an easy paycheck, but when one of their men is murdered on the job, their quest for revenge puts them deep in enemy territory and up against an unexpected threat.",
+        "plotoutline": "",
+        "rating": 6,
+        "runtime": 6180,
+        "tagline": "Back for War.",
+        "thumbnail": "image://http%3a%2f%2fimage.tmdb.org%2ft%2fp%2foriginal%2fdJPnTe1qOcO7XqsJvESFph83m6m.jpg/",
+        "title": "The Expendables 2",
+        "trailer": "plugin://plugin.video.youtube/?action=play_video&videoid=ip_CYHdyUBs",
+        "year": 2012
+      },
+      {
+        "director": [
+          "Arthur Allan Seidelman"
+        ],
+        "file": "/file/does/not/exist",
+        "genre": [
+          "Action",
+          "Adventure",
+          "Comedy",
+          "Fantasy",
+          "Science Fiction"
+        ],
+        "label": "Hercules in New York",
+        "lastplayed": "",
+        "movieid": 9,
+        "originaltitle": "Hercules in New York",
+        "playcount": 0,
+        "plot": "Hercules (Schwarzenegger) is sent to Earth where he finds true love and starts a promising career in the bodybuilder business.",
+        "plotoutline": "",
+        "rating": 4,
+        "runtime": 5460,
+        "tagline": "",
+        "thumbnail": "image://http%3a%2f%2fimage.tmdb.org%2ft%2fp%2foriginal%2fbtBv9Q9Ge56JhzaTZktw9VZn86p.jpg/",
+        "title": "Hercules in New York",
+        "trailer": "plugin://plugin.video.youtube/?action=play_video&videoid=NxjF8VlhuL4",
+        "year": 1969
+      },
+      {
+        "director": [
+          "Brian Levant"
+        ],
+        "file": "/file/does/not/exist",
+        "genre": [
+          "Comedy",
+          "Family"
+        ],
+        "label": "Jingle All the Way",
+        "lastplayed": "",
+        "movieid": 10,
+        "originaltitle": "Jingle All the Way",
+        "playcount": 0,
+        "plot": "Meet Howard Langston, a salesman for a mattress company is constantly busy at his job, and he also constantly disappoints his son, after he misses his son's karate exposition, his son tells Howard that he wants for Christmas is an action figure of his son's television hero, he tries hard to to make it up to him. Unfortunately for Howard, it is Christmas Eve, and every store is sold out of Turbo Man, now Howard must travel all over town and compete with everybody else to find a Turbo Man action figure.",
+        "plotoutline": "",
+        "rating": 5.5,
+        "runtime": 5340,
+        "tagline": "Two Dads, One Toy, No Prisoners.",
+        "thumbnail": "image://http%3a%2f%2fimage.tmdb.org%2ft%2fp%2foriginal%2faaVkNhUONnkSv5ijPjq7pEmmWyE.jpg/",
+        "title": "Jingle All the Way",
+        "trailer": "plugin://plugin.video.youtube/?action=play_video&videoid=TwecyXBMDUQ",
+        "year": 1996
+      },
+      {
+        "director": [
+          "Ivan Reitman"
+        ],
+        "file": "/file/does/not/exist",
+        "genre": [
+          "Comedy"
+        ],
+        "label": "Kindergarten Cop",
+        "lastplayed": "",
+        "movieid": 11,
+        "originaltitle": "Kindergarten Cop",
+        "playcount": 0,
+        "plot": "Hard-edged cop John Kimble gets more than he bargained for when he goes undercover as a kindergarten teacher to get the goods on a brutal drug lord while at the same time protecting the man's young son. Pitted against a class of boisterous moppets whose antics try his patience and test his mettle, Kimble may have met his match … in more ways than one.",
+        "plotoutline": "",
+        "rating": 5.699999809265137,
+        "runtime": 6660,
+        "tagline": "Go ahead, you tell him you didn't do your homework.",
+        "thumbnail": "image://http%3a%2f%2fimage.tmdb.org%2ft%2fp%2foriginal%2f3QVlUD2R6WHp8aFK4aRtTlqzaQu.jpg/",
+        "title": "Kindergarten Cop",
+        "trailer": "plugin://plugin.video.youtube/?action=play_video&videoid=mwXwHR3mQ8c",
+        "year": 1990
+      },
+      {
+        "director": [
+          "John McTiernan"
+        ],
+        "file": "/file/does/not/exist",
+        "genre": [
+          "Adventure",
+          "Fantasy",
+          "Action",
+          "Comedy",
+          "Family"
+        ],
+        "label": "Last Action Hero",
+        "lastplayed": "",
+        "movieid": 12,
+        "originaltitle": "Last Action Hero",
+        "playcount": 0,
+        "plot": "Danny is obsessed with a fictional movie character action hero Jack Slater. When a magical ticket transports him into Jack's latest adventure, Danny finds himself in a world where movie magic and reality collide. Now it's up to Danny to save the life of his hero and new friend.",
+        "plotoutline": "",
+        "rating": 5.800000190734863,
+        "runtime": 7800,
+        "tagline": "This isn't the movies anymore.",
+        "thumbnail": "image://http%3a%2f%2fimage.tmdb.org%2ft%2fp%2foriginal%2fyeLurMF2Xy3nex17hBbxft6zGR0.jpg/",
+        "title": "Last Action Hero",
+        "trailer": "plugin://plugin.video.youtube/?action=play_video&videoid=WiL4Ht1nUqw",
+        "year": 1993
+      },
+      {
+        "director": [
+          "John McTiernan"
+        ],
+        "file": "/file/does/not/exist",
+        "genre": [
+          "Science Fiction",
+          "Action",
+          "Adventure",
+          "Thriller"
+        ],
+        "label": "Predator",
+        "lastplayed": "",
+        "movieid": 13,
+        "originaltitle": "Predator",
+        "playcount": 0,
+        "plot": "Dutch and his group of commandos are hired by the CIA to rescue downed airmen from guerillas in a Central American jungle. The mission goes well but as they return they find that something is hunting them. Nearly invisible, it blends in with the forest, taking trophies from the bodies of its victims as it goes along. Occasionally seeing through its eyes, the audience sees it is an intelligent alien hunter, hunting them for sport, killing them off one at a time.",
+        "plotoutline": "",
+        "rating": 7.099999904632568,
+        "runtime": 6420,
+        "tagline": "If it bleeds, we can kill it...",
+        "thumbnail": "image://http%3a%2f%2fimage.tmdb.org%2ft%2fp%2foriginal%2fp6fhq04t75yCfE0kSTNZGQvWuQ1.jpg/",
+        "title": "Predator",
+        "trailer": "plugin://plugin.video.youtube/?action=play_video&videoid=K9AT3tQGbIk",
+        "year": 1987
+      },
+      {
+        "director": [
+          "John Irvin"
+        ],
+        "file": "/file/does/not/exist",
+        "genre": [
+          "Action",
+          "Crime",
+          "Thriller"
+        ],
+        "label": "Raw Deal",
+        "lastplayed": "2016-10-30 15:00:38",
+        "movieid": 14,
+        "originaltitle": "Raw Deal",
+        "playcount": 1,
+        "plot": "Mark Kaminsky is kicked out of the FBI for his rough treatment of a suspect. He winds up as the sheriff of a small town in North Carolina. FBI Chief Harry Shannon, whose son has been killed by a mobster named Patrovina, enlists Kaminsky in a personal vendetta with a promise of reinstatement into the FBI if Patrovina is taken down. To accomplish this, he must go undercover and join Patrovina's gang.",
+        "plotoutline": "",
+        "rating": 5.699999809265137,
+        "runtime": 6360,
+        "tagline": "Nobody gives him a Raw Deal",
+        "thumbnail": "image://http%3a%2f%2fimage.tmdb.org%2ft%2fp%2foriginal%2fa6A3h6rAnQ4hTfZ80AQGZtGAVfj.jpg/",
+        "title": "Raw Deal",
+        "trailer": "plugin://plugin.video.youtube/?action=play_video&videoid=Sr1PSyCxb7g",
+        "year": 1986
+      },
+      {
+        "director": [
+          "Walter Hill"
+        ],
+        "file": "/file/does/not/exist",
+        "genre": [
+          "Comedy",
+          "Action",
+          "Crime"
+        ],
+        "label": "Red Heat",
+        "lastplayed": "",
+        "movieid": 15,
+        "originaltitle": "Red Heat",
+        "playcount": 0,
+        "plot": "A tough Russian policeman is forced to partner up with a cocky Chicago police detective when he is sent to Chicago to apprehend a Georgian drug lord who killed his partner and fled the country.",
+        "plotoutline": "",
+        "rating": 5.599999904632568,
+        "runtime": 6240,
+        "tagline": "Moscow's toughest detective. Chicago's craziest cop. There's only one thing worse than making them mad. Making them partners.",
+        "thumbnail": "image://http%3a%2f%2fimage.tmdb.org%2ft%2fp%2foriginal%2ftCBns5Uxpy82dvs0pztDtD2CeL8.jpg/",
+        "title": "Red Heat",
+        "trailer": "plugin://plugin.video.youtube/?action=play_video&videoid=h-q2o-qO0vY",
+        "year": 1988
+      },
+      {
+        "director": [
+          "James Cameron"
+        ],
+        "file": "/file/does/not/exist",
+        "genre": [
+          "Action",
+          "Thriller",
+          "Science Fiction"
+        ],
+        "label": "The Terminator",
+        "lastplayed": "2016-10-30 15:00:43",
+        "movieid": 1,
+        "originaltitle": "The Terminator",
+        "playcount": 1,
+        "plot": "In the post-apocalyptic future, reigning tyrannical supercomputers teleport a cyborg assassin known as the \"Terminator\" back to 1984 to kill Sarah Connor, whose unborn son is destined to lead insurgents against 21st century mechanical hegemony. Meanwhile, the human-resistance movement dispatches a lone warrior to safeguard Sarah. Can he stop the virtually indestructible killing machine?",
+        "plotoutline": "",
+        "rating": 7.099999904632568,
+        "runtime": 6480,
+        "tagline": "Your future is in his hands.",
+        "thumbnail": "image://http%3a%2f%2fimage.tmdb.org%2ft%2fp%2foriginal%2fq8ffBuxQlYOHrvPniLgCbmKK4Lv.jpg/",
+        "title": "The Terminator",
+        "trailer": "plugin://plugin.video.youtube/?action=play_video&videoid=k64P4l2Wmeg",
+        "year": 1984
+      },
+      {
+        "director": [
+          "James Cameron"
+        ],
+        "file": "/file/does/not/exist",
+        "genre": [
+          "Action",
+          "Thriller",
+          "Science Fiction"
+        ],
+        "label": "Terminator 2: Judgment Day",
+        "lastplayed": "",
+        "movieid": 2,
+        "originaltitle": "Terminator 2: Judgment Day",
+        "playcount": 0,
+        "plot": "Nearly 10 years have passed since Sarah Connor was targeted for termination by a cyborg from the future. Now her son, John, the future leader of the resistance, is the target for a newer, more deadly terminator. Once again, the resistance has managed to send a protector back to attempt to save John and his mother Sarah.",
+        "plotoutline": "",
+        "rating": 7.5,
+        "runtime": 8220,
+        "tagline": "It's nothing personal.",
+        "thumbnail": "image://http%3a%2f%2fimage.tmdb.org%2ft%2fp%2foriginal%2f2y4dmgWYRMYXdD1UyJVcn2HSd1D.jpg/",
+        "title": "Terminator 2: Judgment Day",
+        "trailer": "plugin://plugin.video.youtube/?action=play_video&videoid=F1os6UU6jhU",
+        "year": 1991
+      },
+      {
+        "director": [
+          "Jonathan Mostow"
+        ],
+        "file": "/file/does/not/exist",
+        "genre": [
+          "Action",
+          "Thriller",
+          "Science Fiction"
+        ],
+        "label": "Terminator 3: Rise of the Machines",
+        "lastplayed": "",
+        "movieid": 17,
+        "originaltitle": "Terminator 3: Rise of the Machines",
+        "playcount": 0,
+        "plot": "It's been 10 years since John Connor saved Earth from Judgment Day, and he's now living under the radar, steering clear of using anything Skynet can trace. That is, until he encounters T-X, a robotic assassin ordered to finish what T-1000 started. Good thing Connor's former nemesis, the Terminator, is back to aid the now-adult Connor … just like he promised.",
+        "plotoutline": "",
+        "rating": 5.800000190734863,
+        "runtime": 6540,
+        "tagline": "The Machines Will Rise.",
+        "thumbnail": "image://http%3a%2f%2fimage.tmdb.org%2ft%2fp%2foriginal%2flz4xYdF1n09lyiCfZWtWT44SZiG.jpg/",
+        "title": "Terminator 3: Rise of the Machines",
+        "trailer": "plugin://plugin.video.youtube/?action=play_video&videoid=_cEOqHFrQso",
+        "year": 2003
+      },
+      {
+        "director": [
+          "Alan Taylor"
+        ],
+        "file": "/file/does/not/exist",
+        "genre": [
+          "Science Fiction",
+          "Action",
+          "Thriller",
+          "Adventure"
+        ],
+        "label": "Terminator Genisys",
+        "lastplayed": "2016-10-30 15:00:50",
+        "movieid": 18,
+        "originaltitle": "Terminator Genisys",
+        "playcount": 1,
+        "plot": "The year is 2029. John Connor, leader of the resistance continues the war against the machines. At the Los Angeles offensive, John's fears of the unknown future begin to emerge when TECOM spies reveal a new plot by SkyNet that will attack him from both fronts; past and future, and will ultimately change warfare forever.",
+        "plotoutline": "",
+        "rating": 5.900000095367432,
+        "runtime": 7500,
+        "tagline": "Reset the future",
+        "thumbnail": "image://http%3a%2f%2fimage.tmdb.org%2ft%2fp%2foriginal%2f7eIKxotXqJJSqN4dA6dh3kLmITQ.jpg/",
+        "title": "Terminator Genisys",
+        "trailer": "plugin://plugin.video.youtube/?action=play_video&videoid=62E4FJTwSuc",
+        "year": 2015
+      },
+      {
+        "director": [
+          "Paul Verhoeven"
+        ],
+        "file": "/file/does/not/exist",
+        "genre": [
+          "Action",
+          "Adventure",
+          "Science Fiction"
+        ],
+        "label": "Total Recall",
+        "lastplayed": "",
+        "movieid": 19,
+        "originaltitle": "Total Recall",
+        "playcount": 0,
+        "plot": "Construction worker Douglas Quaid discovers a memory chip in his brain during a virtual-reality trip. He also finds that his past has been invented to conceal a plot of planetary domination. Soon, he's off to Mars to find out who he is and who planted the chip.",
+        "plotoutline": "",
+        "rating": 6.800000190734863,
+        "runtime": 6780,
+        "tagline": "They stole his mind, now he wants it back.",
+        "thumbnail": "image://http%3a%2f%2fimage.tmdb.org%2ft%2fp%2foriginal%2fikYpJ0AjGBNnAYFnPJDUVIOcduR.jpg/",
+        "title": "Total Recall",
+        "trailer": "plugin://plugin.video.youtube/?action=play_video&videoid=2DwNb-ZGVjE",
+        "year": 1990
+      },
+      {
+        "director": [
+          "James Cameron"
+        ],
+        "file": "/file/does/not/exist",
+        "genre": [
+          "Action",
+          "Thriller"
+        ],
+        "label": "True Lies",
+        "lastplayed": "",
+        "movieid": 20,
+        "originaltitle": "True Lies",
+        "playcount": 0,
+        "plot": "Harry Tasker is a secret agent for the United States Government. For years, he has kept his job from his wife, but is forced to reveal his identity and try to stop nuclear terrorists when he and his wife are kidnapped by them.",
+        "plotoutline": "",
+        "rating": 6.5,
+        "runtime": 8460,
+        "tagline": "When he said I do, he never said what he did.",
+        "thumbnail": "image://http%3a%2f%2fimage.tmdb.org%2ft%2fp%2foriginal%2fmTAHr5h5i64hTLqo0cW2X2083Cx.jpg/",
+        "title": "True Lies",
+        "trailer": "plugin://plugin.video.youtube/?action=play_video&videoid=3B7HG8_xbDw",
+        "year": 1994
+      },
+      {
+        "director": [
+          "Ivan Reitman"
+        ],
+        "file": "/file/does/not/exist",
+        "genre": [
+          "Comedy",
+          "Drama"
+        ],
+        "label": "Twins",
+        "lastplayed": "",
+        "movieid": 21,
+        "originaltitle": "Twins",
+        "playcount": 0,
+        "plot": "Julius and Vincent Benedict are the results of an experiment that would allow for the perfect child. Julius was planned and grows to athletic proportions. Vincent is an accident and is somewhat smaller in stature. Vincent is placed in an orphanage while Julius is taken to a south seas island and raised by philosophers. Vincent becomes the ultimate low life and is about to be killed by loan sharks.",
+        "plotoutline": "",
+        "rating": 5.5,
+        "runtime": 6420,
+        "tagline": "Only their mother can tell them apart.",
+        "thumbnail": "image://http%3a%2f%2fimage.tmdb.org%2ft%2fp%2foriginal%2fi0mKmkxhLQuYBR9JPjShMbse2k6.jpg/",
+        "title": "Twins",
+        "trailer": "plugin://plugin.video.youtube/?action=play_video&videoid=eRdcL2qKt6k",
+        "year": 1988
+      }
+    ]
+  }
+}
