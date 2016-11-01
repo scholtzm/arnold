@@ -42,7 +42,7 @@ ReactDOM.render(
   <div>
     <Router history={hashHistory}>
       <Route path='/' component={App}>
-        <IndexRoute component={Movies} />
+        <IndexRoute component={Remote} />
         <Route path='remote' component={Remote} />
         <Route path='movies' component={Movies} />
         <Route path='tvshows' component={TvShows} />

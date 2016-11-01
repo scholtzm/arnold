@@ -15,7 +15,7 @@ class App extends Component {
 
     const pathname = this.props.location.pathname.replace('/', '');
     const activeItem = pathname === ''
-      ? 'movies'
+      ? 'remote'
       : pathname;
 
     this.state = {
