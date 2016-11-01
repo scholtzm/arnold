@@ -5,7 +5,7 @@ export function prefixImage(url) {
   if(isMockMode) {
 
     const decoded = decodeURIComponent(url.replace('image://', ''));
-    return decoded.substr(0, decoded.length - 1);
+    return decoded.substr(0, decoded.length - 1).replace('http://', 'https://');
 
   } else {
 
