@@ -64,7 +64,7 @@ function getMovies() {
         return movie;
       });
 
-      fs.writeFileSync(movieStoreDataFile, JSON.stringify(body, null, 2));
+      fs.writeFileSync(movieStoreDataFile, JSON.stringify(body));
       console.log('Received mock data for movie library.');
     })
     .catch(catchError);
@@ -97,7 +97,7 @@ function getTvShows() {
 
   makeRequest(method, params)
     .then((body) => {
-      fs.writeFileSync(tvShowStoreDataFile, JSON.stringify(body, null, 2));
+      fs.writeFileSync(tvShowStoreDataFile, JSON.stringify(body));
       console.log('Received mock data for TV show library.');
 
       const seasonPromises = body.result.tvshows.map(tvshow => {
@@ -114,7 +114,7 @@ function getTvShows() {
         seasons[tvshowid] = result;
       });
 
-      fs.writeFileSync(seasonStoreDataFile, JSON.stringify(seasons, null, 2));
+      fs.writeFileSync(seasonStoreDataFile, JSON.stringify(seasons));
       console.log('Received mock data for seasons.');
 
       const episodePromises = [];
@@ -134,7 +134,7 @@ function getTvShows() {
         episodes[id] = result;
       });
 
-      fs.writeFileSync(episodeStoreDataFile, JSON.stringify(episodes, null, 2));
+      fs.writeFileSync(episodeStoreDataFile, JSON.stringify(episodes));
       console.log('Received mock data for episodes.');
     })
     .catch(catchError);
