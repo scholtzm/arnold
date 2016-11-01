@@ -12,7 +12,7 @@
         "director": [
           "Roger Spottiswoode"
         ],
-        "file": "/file/does/not/exist",
+        "file": "",
         "genre": [
           "Action",
           "Mystery",
@@ -38,7 +38,7 @@
         "director": [
           "Joel Schumacher"
         ],
-        "file": "/file/does/not/exist",
+        "file": "",
         "genre": [
           "Fantasy",
           "Action",
@@ -65,7 +65,7 @@
         "director": [
           "Mark L. Lester"
         ],
-        "file": "/file/does/not/exist",
+        "file": "",
         "genre": [
           "Action",
           "Adventure",
@@ -90,7 +90,7 @@
         "director": [
           "John Milius"
         ],
-        "file": "/file/does/not/exist",
+        "file": "",
         "genre": [
           "Adventure",
           "Fantasy",
@@ -115,7 +115,7 @@
         "director": [
           "Peter Hyams"
         ],
-        "file": "/file/does/not/exist",
+        "file": "",
         "genre": [
           "Action",
           "Fantasy",
@@ -141,7 +141,7 @@
         "director": [
           "Chuck Russell"
         ],
-        "file": "/file/does/not/exist",
+        "file": "",
         "genre": [
           "Action",
           "Drama",
@@ -167,7 +167,7 @@
         "director": [
           "Mikael Håfström"
         ],
-        "file": "/file/does/not/exist",
+        "file": "",
         "genre": [
           "Action",
           "Thriller"
@@ -191,7 +191,7 @@
         "director": [
           "Simon West"
         ],
-        "file": "/file/does/not/exist",
+        "file": "",
         "genre": [
           "Action",
           "Adventure",
@@ -216,7 +216,7 @@
         "director": [
           "Arthur Allan Seidelman"
         ],
-        "file": "/file/does/not/exist",
+        "file": "",
         "genre": [
           "Action",
           "Adventure",
@@ -243,7 +243,7 @@
         "director": [
           "Brian Levant"
         ],
-        "file": "/file/does/not/exist",
+        "file": "",
         "genre": [
           "Comedy",
           "Family"
@@ -267,7 +267,7 @@
         "director": [
           "Ivan Reitman"
         ],
-        "file": "/file/does/not/exist",
+        "file": "",
         "genre": [
           "Comedy"
         ],
@@ -290,7 +290,7 @@
         "director": [
           "John McTiernan"
         ],
-        "file": "/file/does/not/exist",
+        "file": "",
         "genre": [
           "Adventure",
           "Fantasy",
@@ -317,7 +317,7 @@
         "director": [
           "John McTiernan"
         ],
-        "file": "/file/does/not/exist",
+        "file": "",
         "genre": [
           "Science Fiction",
           "Action",
@@ -343,7 +343,7 @@
         "director": [
           "John Irvin"
         ],
-        "file": "/file/does/not/exist",
+        "file": "",
         "genre": [
           "Action",
           "Crime",
@@ -368,7 +368,7 @@
         "director": [
           "Walter Hill"
         ],
-        "file": "/file/does/not/exist",
+        "file": "",
         "genre": [
           "Comedy",
           "Action",
@@ -393,7 +393,7 @@
         "director": [
           "James Cameron"
         ],
-        "file": "/file/does/not/exist",
+        "file": "",
         "genre": [
           "Action",
           "Thriller",
@@ -418,7 +418,7 @@
         "director": [
           "James Cameron"
         ],
-        "file": "/file/does/not/exist",
+        "file": "",
         "genre": [
           "Action",
           "Thriller",
@@ -443,7 +443,7 @@
         "director": [
           "Jonathan Mostow"
         ],
-        "file": "/file/does/not/exist",
+        "file": "",
         "genre": [
           "Action",
           "Thriller",
@@ -468,7 +468,7 @@
         "director": [
           "Alan Taylor"
         ],
-        "file": "/file/does/not/exist",
+        "file": "",
         "genre": [
           "Science Fiction",
           "Action",
@@ -494,7 +494,7 @@
         "director": [
           "Paul Verhoeven"
         ],
-        "file": "/file/does/not/exist",
+        "file": "",
         "genre": [
           "Action",
           "Adventure",
@@ -519,7 +519,7 @@
         "director": [
           "James Cameron"
         ],
-        "file": "/file/does/not/exist",
+        "file": "",
         "genre": [
           "Action",
           "Thriller"
@@ -543,7 +543,7 @@
         "director": [
           "Ivan Reitman"
         ],
-        "file": "/file/does/not/exist",
+        "file": "",
         "genre": [
           "Comedy",
           "Drama"

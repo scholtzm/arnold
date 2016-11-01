@@ -60,7 +60,7 @@ function getMovies() {
   makeRequest(method, params)
     .then((body) => {
       body.result.movies = body.result.movies.map(movie => {
-        movie.file = '/file/does/not/exist';
+        movie.file = '';
         return movie;
       });
 
