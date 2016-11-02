@@ -50,6 +50,19 @@ Arnold can run standalone on any machine on your local network and can connect t
 
 **Note:** Depending on how your Kodi is setup, when using AJAX transport layer, you might want to use browser extension that allows you to bypass CORS headers, such as [this one](https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi).
 
+#### Debugger
+
+This project uses [debug](https://www.npmjs.com/package/debug) module for debugging. You can turn debugging on and off via the `localStorage.debug` value in your browser.
+
+The most important values are:
+
+```js
+localStorage.debug = 'arnold:*' // debug everything
+localStorage.debug = null       // turn debug off
+```
+
+Once you change the flag, you need to refresh your browser to see the changes in debug output.
+
 ## LICENSE
 
 MIT. See `LICENSE`.
