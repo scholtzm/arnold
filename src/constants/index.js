@@ -39,10 +39,5 @@ export default {
 
   NotificationActions: {
     ADD_NOTIFICATION: 'ADD_NOTIFICATION'
-  },
-
-  AjaxActions: {
-    SUCCESS: 'SUCCESS',
-    ERROR: 'ERROR'
   }
 }
