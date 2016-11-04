@@ -55,10 +55,6 @@ it('allows to retrieve songs for other albums', () => {
 
 it('adds extra property to songs', () => {
   const albumId = 1;
-  const mockListener = jest.fn();
-
-  SongStore.addChangeListener(mockListener);
-
   getSongs(albumId);
 
   jest.runAllTimers();

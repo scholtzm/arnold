@@ -29,10 +29,6 @@ it('allows to retrieve movies', () => {
 });
 
 it('adds youtube ID to each movie', () => {
-  const mockListener = jest.fn();
-
-  MovieStore.addChangeListener(mockListener);
-
   getMovies();
 
   jest.runAllTimers();
