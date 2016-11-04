@@ -52,3 +52,17 @@ it('allows to retrieve songs for other albums', () => {
   expect(songs1[0].title).toEqual(SongStoreData[albumId1].result.songs[0].title);
   expect(songs2[0].title).toEqual(SongStoreData[albumId2].result.songs[0].title);
 });
+
+it('adds extra property to songs', () => {
+  const albumId = 1;
+  const mockListener = jest.fn();
+
+  SongStore.addChangeListener(mockListener);
+
+  getSongs(albumId);
+
+  jest.runAllTimers();
+
+  const songs = SongStore.getBy(albumId);
+  songs.forEach(song => expect(song.durationReadable).toBeDefined());
+});

@@ -27,3 +27,16 @@ it('allows to retrieve movies', () => {
   expect(movies[0].title).toEqual(MovieStoreData.result.movies[0].title);
   expect(movies[10].title).toEqual(MovieStoreData.result.movies[10].title);
 });
+
+it('adds youtube ID to each movie', () => {
+  const mockListener = jest.fn();
+
+  MovieStore.addChangeListener(mockListener);
+
+  getMovies();
+
+  jest.runAllTimers();
+
+  const movies = MovieStore.get().movies;
+  movies.forEach(movie => expect(movie.youtubeId).toBeDefined());
+});
