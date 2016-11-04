@@ -90,9 +90,6 @@ EpisodeStore.dispatchToken = Dispatcher.register(function(action) {
     case Constants.EpisodeActions.SET_EPISODES:
       episodeStore.addEpisodes(action.episodes);
       break;
-
-    default:
-      // ignore
   }
 });
 

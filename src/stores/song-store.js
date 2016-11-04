@@ -72,9 +72,6 @@ SongStore.dispatchToken = Dispatcher.register(function(action) {
     case Constants.SongActions.SET_SONGS:
       songStore.addSongs(action.songs);
       break;
-
-    default:
-      // ignore
   }
 });
 

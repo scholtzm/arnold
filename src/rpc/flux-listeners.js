@@ -72,9 +72,6 @@ function initVideoLibrary() {
           setEpisodes(episodes);
         });
         break;
-
-      default:
-        // ignore
     }
   });
 }
@@ -125,9 +122,6 @@ function initAudioLibrary() {
           setSongs(songs);
         });
         break;
-
-      default:
-        // ignore
     }
   });
 }

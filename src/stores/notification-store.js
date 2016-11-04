@@ -46,9 +46,6 @@ NotificationStore.dispatchToken = Dispatcher.register(function(action) {
     case Constants.NotificationActions.ADD_NOTIFICATION:
       notificationStore.addNotification(action.notification);
       break;
-
-    default:
-      // ignore
   }
 });
 
