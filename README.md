@@ -40,7 +40,7 @@ Arnold can run standalone on any machine on your local network and can connect t
 3. Serve the contents of `webinterface.ARNOLD` folder with an HTTP server.
 4. Do not forget to set the IP address and transport layer in the settings.
 
-## Developers
+## Development
 
 1. Clone this repo.
 2. Run `npm i` to install all dependencies.
