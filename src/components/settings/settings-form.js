@@ -3,7 +3,7 @@ import { Form, Button, Header, Segment } from 'semantic-ui-react';
 import SettingsStore from '../../stores/settings-store.js';
 import { setSettings } from '../../actions/settings-actions.js';
 import { addNotification } from '../../actions/notification-actions.js';
-import { isProduction, isMockMode } from '../../util/env.js';
+import { isProduction, isDemoMode } from '../../util/env.js';
 
 class SettingsForm extends Component {
   state = {
@@ -22,26 +22,26 @@ class SettingsForm extends Component {
     });
   }
 
-  _getTransportLayers(isProduction, isMockMode) {
+  _getTransportLayers(isProduction, isDemoMode) {
     let transportLayers;
 
     const webSocketLayer = { text: 'WebSocket', value: 'websocket' };
     const ajaxLayer = { text: 'AJAX', value: 'ajax' };
-    const mockLayer = { text: 'Static data', value: 'mock' };
+    const demoLayer = { text: 'Static data', value: 'demo' };
 
-    if(isProduction && isMockMode) {
-      transportLayers = [ mockLayer ];
+    if(isProduction && isDemoMode) {
+      transportLayers = [ demoLayer ];
     } else if(isProduction) {
       transportLayers = [ webSocketLayer, ajaxLayer ];
     } else {
-      transportLayers = [ webSocketLayer, ajaxLayer, mockLayer ];
+      transportLayers = [ webSocketLayer, ajaxLayer, demoLayer ];
     }
 
     return transportLayers;
   }
 
   render() {
-    const transportLayers = this._getTransportLayers(isProduction, isMockMode);
+    const transportLayers = this._getTransportLayers(isProduction, isDemoMode);
 
     return (
       <div>

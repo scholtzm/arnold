@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 import GlobalSearch from './misc/global-search.js';
 import packageJson from '../../package.json';
 import icon from '../static/image/icon-rounded.png';
-import { isMockMode } from '../util/env.js';
+import { isDemoMode } from '../util/env.js';
 
 const { version, repository } = packageJson;
 const releaseUrl = `${repository.url}/releases/tag/v${version}`;
@@ -30,7 +30,7 @@ class App extends Component {
     const { activeItem } = this.state;
 
     let demoLabel = null;
-    if(isMockMode) {
+    if(isDemoMode) {
       demoLabel = (
         <Label as='a' href={repository.url} target='_blank' color='blue'>
           <Icon name='github' />

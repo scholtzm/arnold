@@ -4,7 +4,7 @@ import assign from 'object-assign';
 import Dispatcher from '../dispatcher/';
 import Constants from '../constants';
 import storage from '../util/storage.js';
-import { isMockMode } from '../util/env.js';
+import { isDemoMode } from '../util/env.js';
 
 const CHANGE_EVENT = 'change';
 const LOCAL_STORAGE_KEY = 'SettingsStore';
@@ -18,8 +18,8 @@ const _defaultSettings = {
   itemsPerRow: 10
 };
 
-if(isMockMode) {
-  _defaultSettings.transportLayer = 'mock';
+if(isDemoMode) {
+  _defaultSettings.transportLayer = 'demo';
 }
 
 class SettingsStore extends EventEmitter {

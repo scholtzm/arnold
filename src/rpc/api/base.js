@@ -10,7 +10,7 @@ export function request(...args) {
     wsRequest(...args);
   } else if(transportLayer === 'ajax') {
     ajaxRequest(...args);
-  } else if(transportLayer === 'mock') {
+  } else if(transportLayer === 'demo') {
     mockRequest(...args);
   } else {
     throw new Error('Unknown transport layer', transportLayer)

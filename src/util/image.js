@@ -1,8 +1,8 @@
 import SettingsStore from '../stores/settings-store.js';
-import { isMockMode } from '../util/env.js';
+import { isDemoMode } from '../util/env.js';
 
 export function prefixImage(url) {
-  if(isMockMode) {
+  if(isDemoMode) {
 
     const decoded = decodeURIComponent(url.replace('image://', ''));
     return decoded.substr(0, decoded.length - 1).replace('http://', 'https://');

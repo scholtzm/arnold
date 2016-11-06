@@ -1,6 +1,6 @@
 export default {
   checkForUpdatesOnInitialLoad: true,
-  transportLayer: 'mock',
+  transportLayer: 'demo',
   ipAddress: location.hostname,
   ajaxPort: 8080,
   webSocketPort: 9090,

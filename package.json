@@ -20,9 +20,9 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "deploy": "gh-pages -d build",
-    "start:demo": "REACT_APP_MOCK_MODE=true npm start",
-    "build:demo": "REACT_APP_MOCK_MODE=true npm run build",
-    "test:demo": "REACT_APP_MOCK_MODE=true npm test",
+    "start:demo": "REACT_APP_DEMO_MODE=true npm start",
+    "build:demo": "REACT_APP_DEMO_MODE=true npm run build",
+    "test:demo": "REACT_APP_DEMO_MODE=true npm test",
     "make": "gulp",
     "pack": "gulp pack",
     "clean": "gulp clean"

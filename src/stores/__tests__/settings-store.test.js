@@ -1,6 +1,6 @@
 import SettingsStore from '../settings-store.js';
 import { setSettings } from '../../actions/settings-actions.js';
-import { isMockMode } from '../../util/env.js';
+import { isDemoMode } from '../../util/env.js';
 
 const defaultSettings = {
   checkForUpdatesOnInitialLoad: true,
@@ -13,7 +13,7 @@ const defaultSettings = {
 
 const defaultMockSettings = {
   checkForUpdatesOnInitialLoad: true,
-  transportLayer: 'mock',
+  transportLayer: 'demo',
   ipAddress: location.hostname,
   ajaxPort: 8080,
   webSocketPort: 9090,
@@ -22,7 +22,7 @@ const defaultMockSettings = {
 
 const testSettings = {
   checkForUpdatesOnInitialLoad: false,
-  transportLayer: 'mock',
+  transportLayer: 'demo',
   ipAddress: '0.0.0.0',
   ajaxPort: 80,
   webSocketPort: 90,
@@ -31,7 +31,7 @@ const testSettings = {
 
 it('provides settings', () => {
   const settings = SettingsStore.get();
-  if(isMockMode) {
+  if(isDemoMode) {
     expect(settings).toEqual(defaultMockSettings);
   } else {
     expect(settings).toEqual(defaultSettings);
