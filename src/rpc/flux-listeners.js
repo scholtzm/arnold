@@ -1,7 +1,7 @@
 import Dispatcher from '../dispatcher/';
 import Constants from '../constants/';
 
-import { prefixImage } from '../util/image.js';
+import { fixImageUrl } from '../util/image.js';
 
 import { setMovies, getMoviesError } from '../actions/movie-actions.js';
 import { setTvShows, getTvShowsError } from '../actions/tvshow-actions.js';
@@ -26,7 +26,7 @@ function initVideoLibrary() {
           };
 
           let movies = (res.result.movies || []).map(movie => {
-            movie.thumbnail = prefixImage(movie.thumbnail);
+            movie.thumbnail = fixImageUrl(movie.thumbnail);
             movie.youtubeId = movie.trailer.replace(/^(.+?)videoid=/, '');
             return movie;
           });
@@ -43,7 +43,7 @@ function initVideoLibrary() {
           };
 
           let tvShows = (res.result.tvshows || []).map(tvshow => {
-            tvshow.thumbnail = prefixImage(tvshow.thumbnail);
+            tvshow.thumbnail = fixImageUrl(tvshow.thumbnail);
             return tvshow;
           });
 
@@ -54,7 +54,7 @@ function initVideoLibrary() {
       case Constants.SeasonActions.GET_SEASONS:
         videoLibrary.getSeasons(action.tvshowid, (err, res) => {
           let seasons = (res.result.seasons || []).map(season => {
-            season.thumbnail = prefixImage(season.thumbnail);
+            season.thumbnail = fixImageUrl(season.thumbnail);
             return season;
           });
 
@@ -65,7 +65,7 @@ function initVideoLibrary() {
       case Constants.EpisodeActions.GET_EPISODES:
         videoLibrary.getEpisodes(action.tvshowid, action.season, (err, res) => {
           let episodes = (res.result.episodes || []).map(episode => {
-            episode.thumbnail = prefixImage(episode.thumbnail);
+            episode.thumbnail = fixImageUrl(episode.thumbnail);
             return episode;
           });
 
@@ -93,7 +93,7 @@ function initAudioLibrary() {
             if(album.thumbnail === '') {
               album.thumbnail = defaultAlbumCover;
             } else {
-              album.thumbnail = prefixImage(album.thumbnail);
+              album.thumbnail = fixImageUrl(album.thumbnail);
             }
 
             return album;
