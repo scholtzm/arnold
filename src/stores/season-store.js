@@ -72,6 +72,9 @@ SeasonStore.dispatchToken = Dispatcher.register(function(action) {
     case Constants.SeasonActions.SET_SEASONS:
       seasonStore.addSeasons(action.seasons);
       break;
+
+    default:
+      // ignore
   }
 });
 

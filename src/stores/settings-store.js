@@ -66,6 +66,9 @@ SettingsStore.dispatchToken = Dispatcher.register(function(action) {
     case Constants.SettingsActions.SET_SETTINGS:
       settingsStore.setSettings(action.settings);
       break;
+
+    default:
+      // ignore
   }
 });
 

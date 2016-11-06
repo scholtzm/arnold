@@ -78,6 +78,9 @@ MovieStore.dispatchToken = Dispatcher.register(function(action) {
     case Constants.MovieActions.GET_MOVIES_ERROR:
       movieStore.setLastFetchFailed(true);
       break;
+
+    default:
+      // ignore
   }
 });
 

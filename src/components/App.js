@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { Menu, Label } from 'semantic-ui-react';
+import { Menu, Label, Icon } from 'semantic-ui-react';
 import { Link } from 'react-router';
 
 import GlobalSearch from './misc/global-search.js';
 import packageJson from '../../package.json';
 import icon from '../static/image/icon-rounded.png';
+import { isMockMode } from '../util/env.js';
 
 const { version, repository } = packageJson;
 const releaseUrl = `${repository.url}/releases/tag/v${version}`;
@@ -28,12 +29,23 @@ class App extends Component {
   render() {
     const { activeItem } = this.state;
 
+    let demoLabel = null;
+    if(isMockMode) {
+      demoLabel = (
+        <Label as='a' href={repository.url} target='_blank' color='blue'>
+          <Icon name='github' />
+          Fork me on GitHub
+        </Label>
+      );
+    }
+
     return (
       <div>
         <Menu>
           <Menu.Item>
             <img src={icon} alt='Arnold' />
             <Label as='a' href={releaseUrl} target='_blank' content={`v${version}`} color='green' />
+            {demoLabel}
           </Menu.Item>
           <Menu.Item as={Link} to='remote' name='remote' content='Remote' active={activeItem === 'remote'} onClick={this.onItemClick} />
           <Menu.Item as={Link} to='movies' name='movies' content='Movies' active={activeItem === 'movies'} onClick={this.onItemClick} />

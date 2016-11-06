@@ -78,6 +78,9 @@ TvShowStore.dispatchToken = Dispatcher.register(function(action) {
     case Constants.TvShowActions.GET_TVSHOWS_ERROR:
       tvShowStore.setLastFetchFailed(true);
       break;
+
+    default:
+      // ignore
   }
 });
 

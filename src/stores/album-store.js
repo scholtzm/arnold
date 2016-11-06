@@ -78,6 +78,9 @@ AlbumStore.dispatchToken = Dispatcher.register(function(action) {
     case Constants.AlbumActions.GET_ALBUMS_ERROR:
       albumStore.setLastFetchFailed(true);
       break;
+
+    default:
+      // ignore
   }
 });
 
