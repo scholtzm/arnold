@@ -8,7 +8,7 @@ import EpisodeStoreData from '../../../data/EpisodeStoreData.json';
 import AlbumStoreData from '../../../data/AlbumStoreData.json';
 import SongStoreData from '../../../data/SongStoreData.json';
 
-const logger = debug('mock:request');
+const logger = debug('static:request');
 const RESPONSE_DELAY = 500;
 
 function getDataForMethodAndParams(method, params) {
