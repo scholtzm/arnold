@@ -11,7 +11,7 @@ const LOCAL_STORAGE_KEY = 'SettingsStore';
 
 const _defaultSettings = {
   checkForUpdatesOnInitialLoad: true,
-  transportLayer: 'websocket',
+  transportLayer: 'ajax',
   ipAddress: location.hostname,
   ajaxPort: 8080,
   webSocketPort: 9090,
