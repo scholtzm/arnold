@@ -19,7 +19,7 @@ const _defaultSettings = {
 };
 
 if(isDemoMode) {
-  _defaultSettings.transportLayer = 'demo';
+  _defaultSettings.transportLayer = 'static';
 }
 
 class SettingsStore extends EventEmitter {

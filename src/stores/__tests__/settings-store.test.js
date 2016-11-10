@@ -13,7 +13,7 @@ const defaultSettings = {
 
 const defaultMockSettings = {
   checkForUpdatesOnInitialLoad: true,
-  transportLayer: 'demo',
+  transportLayer: 'static',
   ipAddress: location.hostname,
   ajaxPort: 8080,
   webSocketPort: 9090,
@@ -22,7 +22,7 @@ const defaultMockSettings = {
 
 const testSettings = {
   checkForUpdatesOnInitialLoad: false,
-  transportLayer: 'demo',
+  transportLayer: 'static',
   ipAddress: '0.0.0.0',
   ajaxPort: 80,
   webSocketPort: 90,

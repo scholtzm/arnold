@@ -27,7 +27,7 @@ class SettingsForm extends Component {
 
     const webSocketLayer = { text: 'WebSocket', value: 'websocket' };
     const ajaxLayer = { text: 'AJAX', value: 'ajax' };
-    const demoLayer = { text: 'Static data', value: 'demo' };
+    const demoLayer = { text: 'Static data', value: 'static' };
 
     if(isProduction && isDemoMode) {
       transportLayers = [ demoLayer ];
