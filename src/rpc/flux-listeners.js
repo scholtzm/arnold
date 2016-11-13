@@ -14,6 +14,7 @@ import { setSongs } from '../actions/song-actions.js';
 import audioLibrary from './api/audio-library.js';
 
 import defaultAlbumCover from '../static/image/default-album-cover.svg';
+import defaultFilmCover from '../static/image/default-film-cover.svg';
 
 function initVideoLibrary() {
   Dispatcher.register(function(action) {
@@ -26,7 +27,11 @@ function initVideoLibrary() {
           };
 
           let movies = (res.result.movies || []).map(movie => {
-            movie.thumbnail = fixImageUrl(movie.thumbnail);
+            if(movie.thumbnail === '') {
+              movie.thumbnail = defaultFilmCover;
+            } else {
+              movie.thumbnail = fixImageUrl(movie.thumbnail);
+            }
             movie.youtubeId = movie.trailer.replace(/^(.+?)videoid=/, '');
             return movie;
           });
@@ -43,7 +48,11 @@ function initVideoLibrary() {
           };
 
           let tvShows = (res.result.tvshows || []).map(tvshow => {
-            tvshow.thumbnail = fixImageUrl(tvshow.thumbnail);
+            if(tvshow.thumbnail === '') {
+              tvshow.thumbnail = defaultFilmCover;
+            } else {
+              tvshow.thumbnail = fixImageUrl(tvshow.thumbnail);
+            }
             return tvshow;
           });
 
