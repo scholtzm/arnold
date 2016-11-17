@@ -1,12 +1,9 @@
 const del = require('del');
-const gutil = require('gulp-util');
 
-function clean(cb) {
+function clean(callback) {
   del(['package'])
-    .then(() => cb())
-    .catch(error => {
-      throw new gutil.PluginError('[clean]', error);
-    });
+    .then(() => callback())
+    .catch(error => callback(error));
 }
 
 module.exports = clean;

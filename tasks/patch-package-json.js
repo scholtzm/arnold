@@ -14,15 +14,11 @@ function patchPackageJson(callback) {
 
   parsed.homepage = `http://localhost/addons/webinterface.${parsed.name.toUpperCase()}`;
 
-  fs.writeFileSync('package.json', JSON.stringify(parsed, null, 2));
-
-  callback();
+  fs.writeFile('package.json', JSON.stringify(parsed, null, 2), callback);
 }
 
 function unpatchPackageJson(callback) {
-  fs.writeFileSync('package.json', originalPackageJson);
-
-  callback();
+  fs.writeFile('package.json', originalPackageJson, callback);
 }
 
 module.exports = {

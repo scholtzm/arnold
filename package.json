@@ -50,7 +50,6 @@
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-rename": "^1.2.2",
     "gulp-shell": "^0.5.2",
-    "gulp-util": "^3.0.7",
     "gulp-zip": "^3.2.0",
     "jstoxml": "^0.2.4",
     "react-scripts": "0.7.0",

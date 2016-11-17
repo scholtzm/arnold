@@ -1,7 +1,6 @@
 const fs = require('fs');
 const jstoxml = require('jstoxml');
 const _ = require('lodash');
-const gutil = require('gulp-util');
 const packageJson = require('../package.json');
 
 const addonXmlObject = {
@@ -69,13 +68,7 @@ const targetFileName = `./package/${addonXmlObject._attrs.id}/addon.xml`;
 function generateAddonXml(callback) {
   const addonXml = jstoxml.toXML(addonXmlObject, {header: true, indent: '\t'});
 
-  fs.writeFile(targetFileName, addonXml, err => {
-    if(err) {
-      throw new gutil.PluginError('[generate-addon-xml] Failed to write addon.xml file.', err);
-    }
-
-    callback();
-  });
+  fs.writeFile(targetFileName, addonXml, callback);
 }
 
 module.exports = generateAddonXml;
