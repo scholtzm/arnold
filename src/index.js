@@ -21,7 +21,7 @@ import { checkUpdate } from './util/updater.js';
 
 import favicon from './static/image/favicon.ico';
 
-import 'semantic-ui-css/semantic.css';
+import './styles/semantic.custom.css';
 
 const logger = debug('index');
 

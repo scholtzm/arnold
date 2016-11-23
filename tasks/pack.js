@@ -22,23 +22,23 @@ function copyFiles() {
 }
 
 function copyLicense() {
-  return src(['LICENSE'])
+  return src('LICENSE')
     .pipe(rename('LICENSE.txt'))
     .pipe(dest(webinterfaceFolder));
 }
 
 function copyReadme() {
-  return src(['README.md'])
+  return src('README.md')
     .pipe(dest(webinterfaceFolder));
 }
 
 function copyIcon() {
-  return src(['src/static/image/icon.png'])
+  return src('src/static/image/icon.png')
     .pipe(dest(webinterfaceFolder));
 }
 
 function pack() {
-  return src(['package/**/*'])
+  return src('package/**/*')
     .pipe(zip(packageName))
     .pipe(dest(packageFolder));
 }

@@ -1,6 +1,6 @@
 {
   "name": "arnold",
-  "description": "🎬 A modern Kodi web interface",
+  "description": "A modern Kodi web interface",
   "version": "0.1.0",
   "author": {
     "name": "Michael Scholtz",
@@ -25,7 +25,8 @@
     "test:demo": "REACT_APP_DEMO_MODE=true npm test",
     "make": "gulp",
     "pack": "gulp pack",
-    "clean": "gulp clean"
+    "clean": "gulp clean",
+    "customize-semantic": "gulp customize-semantic"
   },
   "dependencies": {
     "debug": "^2.2.0",
@@ -50,6 +51,7 @@
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-rename": "^1.2.2",
     "gulp-shell": "^0.5.2",
+    "gulp-transform": "^1.1.0",
     "gulp-zip": "^3.2.0",
     "jstoxml": "^0.2.4",
     "react-scripts": "0.7.0",
