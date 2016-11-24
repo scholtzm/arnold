@@ -1,6 +1,8 @@
 language: node_js
 node_js:
   - '6'
+before_script:
+  - npm run customize-semantic
 script:
   - REACT_APP_MOCK_MODE=true npm test
   - npm test -- --coverage
