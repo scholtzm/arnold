@@ -1,3 +1,7 @@
+# custom semantic
+src/styles/themes/*
+src/styles/semantic.custom.css
+
 # dependencies
 node_modules
 

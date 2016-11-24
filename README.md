@@ -44,9 +44,10 @@ Arnold can run standalone on any machine on your local network and can connect t
 
 1. Clone this repo.
 2. Run `npm i` to install all dependencies.
-3. Start with `npm start` and navigate your browser to `localhost:3000`.
-4. Once you are satisfied with your changes, build a zip package with `npm run make`.
-5. Submit a pull request here if possible.
+3. Create custom Semantic-UI stylesheet by running `npm run customize-semantic`.
+4. Start with `npm start` and navigate your browser to `localhost:3000`.
+5. Once you are satisfied with your changes, build a zip package with `npm run make`.
+6. Submit a pull request here if possible.
 
 **Note:** Depending on how your Kodi is setup, when using AJAX transport layer, you might want to use browser extension that allows you to bypass CORS headers, such as [this one](https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi).
 
