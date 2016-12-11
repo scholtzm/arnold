@@ -55,7 +55,7 @@
     "gulp-transform": "^1.1.0",
     "gulp-zip": "^3.2.0",
     "jstoxml": "^0.2.4",
-    "react-scripts": "0.7.0",
+    "react-scripts": "0.8.4",
     "request": "^2.79.0",
     "request-promise": "^4.1.1"
   }
