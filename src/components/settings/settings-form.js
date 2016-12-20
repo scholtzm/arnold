@@ -10,10 +10,10 @@ class SettingsForm extends Component {
     settings: SettingsStore.get()
   }
 
-  _handleSubmit(e, serializedForm) {
+  _handleSubmit(e, { formData }) {
     e.preventDefault();
-    this.setState(serializedForm);
-    setSettings(serializedForm);
+    this.setState(formData);
+    setSettings(formData);
 
     addNotification({
       title: 'Settings',
