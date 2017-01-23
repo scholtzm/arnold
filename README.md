@@ -19,6 +19,7 @@ Check out the [demo](https://scholtzm.github.io/arnold/) to see how Arnold works
 * Receive automatic update notifications.
 * Choose between multiple transport layers - WebSocket and AJAX.
 * Access your library even if your Kodi is offline thanks to client-side caching.
+* Works as a Kodi addon but also as a standalone web app.
 
 ## Installation
 
