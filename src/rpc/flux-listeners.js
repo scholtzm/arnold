@@ -13,8 +13,8 @@ import { setAlbums, getAlbumsError } from '../actions/album-actions.js';
 import { setSongs } from '../actions/song-actions.js';
 import audioLibrary from './api/audio-library.js';
 
-import defaultAlbumCover from '../static/image/default-album-cover.svg';
-import defaultFilmCover from '../static/image/default-film-cover.svg';
+import defaultAlbumCover from '../static/image/default-album-cover.png';
+import defaultFilmCover from '../static/image/default-film-cover.png';
 
 function initVideoLibrary() {
   Dispatcher.register(function(action) {

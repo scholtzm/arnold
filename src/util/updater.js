@@ -39,16 +39,16 @@ export function checkUpdate(notifyOnAllActions = false) {
             <Button as='a' href={json[0].html_url} target='_blank' color='green' content='Download' style={{marginTop: '5px'}} />
           )
         });
+
+        return;
       }
 
       if(notifyOnAllActions) {
-        if(semver.eq(pkg.version, latestVersion)) {
-          addNotification({
-            title: 'All good!',
-            message: 'You are running the latest version.',
-            level: 'info'
-          });
-        }
+        addNotification({
+          title: 'All good!',
+          message: 'You are running the latest version.',
+          level: 'info'
+        });
       }
 
     })
