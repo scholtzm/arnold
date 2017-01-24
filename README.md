@@ -6,6 +6,8 @@ Arnold is a modern Kodi web interface which aims to provide relevant information
 
 Written in JavaScript using [React](https://facebook.github.io/react/), [Flux](https://facebook.github.io/flux/) and [Semantic-UI-React](http://react.semantic-ui.com/) and bootstrapped by [create-react-app](https://github.com/facebookincubator/create-react-app).
 
+![Arnold Demo Library Screenshot](https://cloud.githubusercontent.com/assets/2640934/22247682/69e4962e-e23b-11e6-9c30-3a9f342ce9d0.png)
+
 ## Demo
 
 Check out the [demo](https://scholtzm.github.io/arnold/) to see how Arnold works.
