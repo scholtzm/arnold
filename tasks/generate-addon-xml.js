@@ -56,7 +56,7 @@ const addonXmlObject = {
         },
         {platform: 'all'},
         {license: packageJson.license},
-        {forum: 'To be added.'},
+        {forum: 'http://forum.kodi.tv/showthread.php?tid=304815'},
         {source: packageJson.repository.url}
       ]
     }
