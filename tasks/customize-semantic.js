@@ -7,7 +7,6 @@
 const { src, dest, series, parallel } = require('gulp');
 const rename = require('gulp-rename');
 const transform = require('gulp-transform');
-const cleanCSS = require('gulp-clean-css');
 const del = require('del');
 
 const semanticUiPath = './node_modules/semantic-ui-css';
@@ -26,7 +25,6 @@ function cleanAssets(callback) {
 function customizeSemanticCss() {
   return src(semanticUiCssPath)
     .pipe(transform(contents => contents.replace(/@import url\(.*?\);/, '@import url("./fonts.css");'), {encoding: 'utf8'}))
-    .pipe(cleanCSS({processImport: false}))
     .pipe(rename('semantic.custom.css'))
     .pipe(dest(destPath));
 }
