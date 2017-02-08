@@ -1,5 +1,7 @@
 # Arnold [![Build Status](https://travis-ci.org/scholtzm/arnold.svg?branch=master)](https://travis-ci.org/scholtzm/arnold) [![codecov](https://codecov.io/gh/scholtzm/arnold/branch/master/graph/badge.svg)](https://codecov.io/gh/scholtzm/arnold)
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/scholtzm/arnold.svg)](https://greenkeeper.io/)
+
 > 🎬 A modern Kodi web interface
 
 Arnold is a modern Kodi web interface which aims to provide relevant information and functionality in a sleek and intuitive design. Arnold is designed to be able to run directly as a Kodi addon, but also as a completely standalone web app.
