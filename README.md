@@ -1,6 +1,4 @@
-# Arnold [![Build Status](https://travis-ci.org/scholtzm/arnold.svg?branch=master)](https://travis-ci.org/scholtzm/arnold) [![codecov](https://codecov.io/gh/scholtzm/arnold/branch/master/graph/badge.svg)](https://codecov.io/gh/scholtzm/arnold)
-
-[![Greenkeeper badge](https://badges.greenkeeper.io/scholtzm/arnold.svg)](https://greenkeeper.io/)
+# Arnold [![Build Status](https://travis-ci.org/scholtzm/arnold.svg?branch=master)](https://travis-ci.org/scholtzm/arnold) [![codecov](https://codecov.io/gh/scholtzm/arnold/branch/master/graph/badge.svg)](https://codecov.io/gh/scholtzm/arnold) [![Greenkeeper badge](https://badges.greenkeeper.io/scholtzm/arnold.svg)](https://greenkeeper.io/)
 
 > 🎬 A modern Kodi web interface
 
