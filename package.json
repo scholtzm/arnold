@@ -29,7 +29,6 @@
     "customize-semantic": "gulp customize-semantic"
   },
   "dependencies": {
-    "babel-runtime": "^6.22.0",
     "debug": "^2.4.5",
     "flux": "^3.1.2",
     "localforage": "^1.4.3",
